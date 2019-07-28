@@ -28,7 +28,7 @@
       function doit() {
         var txt = $("#mytext").val().trim()
         let apiHost = window.location.origin
-        let src = apiHost + '/api/v1/web/' + getNamespace() + '/calc/eval.json?text=' + encodeURIComponent(txt)
+        let src = apiHost + '/api/calc/eval.json?text=' + encodeURIComponent(txt)
         $.get(src, function(jsonResult) { update(jsonResult) })
       }
       function update(jsonResult) {
