@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your Serverless Cloud Example. Beautiful.</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body style="padding-top:100px">
+    <div class="container" style="width:600px">
+      <center><img src="https://nimbella.com/wp-content/uploads/2018/12/Nimbella-Logo-e1545669635971.png" width="150"></center>
+      <h1>Simple Calculator</h1>
+      <div class="form-group" style="height:30px">
+        <form id="myform" onsubmit="generate(); return false">
+          <input id="mytext" class="form-control" style="float:left;width:85%;" type="text" name="text" maxlength="128"
+                 placeholder="type a simple numerical expression and click Evaluate" value=""/>
+          <button id="mysubmit" type="button" class="btn btn-primary" style="float:right">Evaluate</button>
+        </form>
+      </div>
+      <div style="container" style="width:600px" id="myresult"></div>
+    </div>
+    <script type="text/javascript">
+      $("#mysubmit").click(function() { doit() })
+      // Obtain user namespace from 
+      function getNamespace() {
+        let pieces = window.location.hostname.split('.')[0].split('-')
+        return pieces.slice(0, Math.max(1, pieces.length - 1)).join('-')
+      }
+      function doit() {
+        var txt = $("#mytext").val().trim()
+        let apiHost = window.location.origin
+        let src = apiHost + '/api/v1/web/' + getNamespace() + '/calc/eval.json?text=' + encodeURIComponent(txt)
+        $.get(src, function(jsonResult) { update(jsonResult) })
+      }
+      function update(jsonResult) {
+        let result = jsonResult['result']
+        let count = jsonResult['count']
+        $("#myresult").html('Result: ' + result + '<br><br><i>Served ' + count + ' times</i>')
+      }
+    </script>
+  </body>
+</html>
