@@ -1,0 +1,10 @@
+export const SET_USERNAME = 'SET_USERNAME';
+export const GET_USERLIST = 'GET_USERLIST';
+export const DEL_USERNAME = 'DEL_USERNAME';
+
+export const POST_MESSAGE = 'POST_MESSAGE';
+export const GET_MESSAGES = 'GET_MESSAGES';
+export const DEL_MESSAGE = 'DEL_MESSAGE';
+
+export const GET_LOOPUSERLIST = 'GET_LOOPUSERLIST';
+export const GET_LOOPMESSAGES = 'GET_LOOPMESSAGES';

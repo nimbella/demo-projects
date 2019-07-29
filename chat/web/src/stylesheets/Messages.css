@@ -1,0 +1,12 @@
+.messages-wrap { list-style: none; padding-left: 0; padding-bottom: 60px; overflow-y: auto; height: 1000px; }
+.messages-wrap .message{ margin: 10px auto; }
+
+.messages-wrap .message .init{ display: inline-block; margin-right: 10px; vertical-align: top; margin-top: 15px; }
+.messages-wrap .message .info{ display: inline-block; width: 60%; }
+.messages-wrap .message .info span:first-of-type{ margin-right: 10px; }
+.messages-wrap .message .info .message-box{ display: inline-block; background-color: #E2F6F9; border: 1px solid #CDE2E5; padding: 10px; width: 100%; border-radius: 5px; word-wrap: break-word; word-break: break-word; }
+
+.messages-wrap .message.me .info{ margin-left: 90px; position: relative; }
+.messages-wrap .message.me .info .del-btn{ position: absolute; right: -25px; top: 50%; cursor: pointer; transition: opacity .3s ease-in-out; opacity: 0; }
+.messages-wrap .message.me .info:hover .del-btn{ opacity: 0.5; }
+.messages-wrap .message.me .info .message-box{ background-color: #E4F9E2; border-color: #D1E5CF; }

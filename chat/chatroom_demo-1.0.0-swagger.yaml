@@ -1,0 +1,285 @@
+---
+swagger: "2.0"
+info:
+  description: This is the server-side Nimbella function API for the React client-side chatroom demo. You can find out more about Nimbella at [https://nimbella.com](https://nimbella.com). For this sample, you can use the api key `special-key` to test the authorization filters.
+  version: 1.0.0
+  title: Nimbella Chatroom Demo
+  termsOfService: http://nimbella.com/demo/terms/
+  contact:
+    email: demo-team@nimbella.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: apidev.nimbella.io
+basePath: /api/v1/web/nimbella/chatroom/
+tags:
+- name: account
+  description: username and chat group list
+  externalDocs:
+    description: Find out more
+    url: http://nimbella.com
+- name: message
+  description: messages information
+schemes:
+- https
+- http
+paths:
+  /newUserId.json:
+    post:
+      tags:
+      - account
+      summary: Create a new user
+      description: Submit username.<br>Backend verify if the username has been taken. <br> Not taken => <font color="blue">returnCode = 0</font><br>Taken => <font color="red">returnCode = -1</font>
+      operationId: newUserId
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: username
+        description: send username
+        required: true
+        schema:
+          $ref: '#/definitions/Username'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/UserData'
+        409:
+          description: Username existed
+  /delByUserId.json:
+    post:
+      tags:
+      - account
+      summary: Create a new user
+      description: Submit username.<br>Backend verify if the username is existed. <br> Existed => <font color="blue">returnCode = 0</font><br>Not existed => <font color="red">returnCode = -1</font>
+      operationId: delByUserId
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: username
+        description: send username
+        required: true
+        schema:
+          $ref: '#/definitions/Username'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/UserData'
+  /getUserList.json:
+    get:
+      tags:
+      - account
+      summary: A list of chatroom users
+      description: Returns an array of user list and returnCode 0
+      operationId: getUserList
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Userlist'
+        400:
+          description: Server failure getting user list
+  /postMessage.json:
+    post:
+      tags:
+      - message
+      summary: Post a message
+      description: Submit a message.<br>Backend verify if the username is existed. <br> Existed => <font color="blue">returnCode = 0</font><br>Not existed => <font color="red">returnCode = -1</font>
+      operationId: postMessage
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: send
+        description: send messages
+        required: true
+        schema:
+          $ref: '#/definitions/MessageData'
+      responses:
+        200:
+          description: Message is posted
+        400:
+          description: Invalid username
+  /delMessage.json:
+    post:
+      tags:
+      - message
+      summary: Delete a message
+      description: Match up username, message, and timestamp to delete a message
+      operationId: delMessage
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: send
+        description: send messages
+        required: true
+        schema:
+          $ref: '#/definitions/DelMessageData'
+      responses:
+        200:
+          description: Message is posted
+        400:
+          description: Invalid username
+  /getMessages.json:
+    get:
+      tags:
+      - message
+      summary: Returns messages
+      description: Returns an array of messages object and returnCode 0
+      operationId: getMessages
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Messages'
+  /delAllMessages.json:
+    post:
+      tags:
+      - message
+      summary: Delete all messages
+      description: Call the function to delete all messages by giving admin username and password
+      operationId: delAllMessages
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: delete
+        description: delete all messages
+        required: true
+        schema:
+          $ref: '#/definitions/AdminData'
+      responses:
+        200:
+          description: Message is posted
+        400:
+          description: Invalid username
+  /delAllUsers.json:
+    post:
+      tags:
+      - account
+      summary: Delete all users
+      description: Call the function to delete all users by giving admin username and password
+      operationId: delAllUsers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: delete
+        description: delete all users
+        required: true
+        schema:
+          $ref: '#/definitions/AdminData'
+      responses:
+        200:
+          description: Message is posted
+        400:
+          description: Invalid username
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: http://petstore.swagger.io/oauth/dialog
+    flow: implicit
+    scopes:
+      write:account: modify the account
+      read:account: query the account
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Username:
+    type: object
+    properties:
+      username:
+        type: string
+  UserData:
+    type: object
+    properties:
+      returnCode:
+        type: number
+      username:
+        type: string
+  Userlist:
+    type: object
+    properties:
+      returnCode:
+        type: number
+      userlist:
+        type: array
+        items:
+          $ref: '#/definitions/Userlist_userlist'
+  AdminData:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+  MessageData:
+    type: object
+    properties:
+      username:
+        type: string
+      message:
+        type: string
+  DelMessageData:
+    type: object
+    properties:
+      item:
+        $ref: '#/definitions/DelMessageData_item'
+  Messages:
+    type: object
+    properties:
+      returnCode:
+        type: number
+      messages:
+        type: array
+        items:
+          $ref: '#/definitions/Messages_messages'
+  Userlist_userlist:
+    properties:
+      username:
+        type: string
+  DelMessageData_item:
+    properties:
+      message:
+        type: string
+      timestamp:
+        type: string
+      username:
+        type: string
+  Messages_messages:
+    properties:
+      username:
+        type: string
+      message:
+        type: string
+      timestamp:
+        type: number
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io

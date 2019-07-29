@@ -1,0 +1,37 @@
+{
+  "name": "chatdemo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "jquery": "^3.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-emojione": "^5.0.1",
+    "react-redux": "^6.0.1",
+    "react-scripts": "^3.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "typescript": "^3.3.3333"
+  },
+  "scripts": {
+    "start": "PORT=3001 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6"
+  }
+}

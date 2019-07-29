@@ -1,0 +1,20 @@
+.navbar .logo-text{ display: inline-block; margin:0; padding: 20px 0; min-height:50px; }
+.navbar .navbar-brand{ padding: 0; height: 55px; }
+.navbar .navbar-brand:hover{ color: #55BFD1; }
+.navbar-nav{ list-style: none; float: right; min-height: 50px; padding: 20px; margin-right: 15px; }
+.navbar-nav .nav-item{ margin-left: 40px; }
+.navbar .list-icon{ position: relative; display: line-block; float: right;margin-top: 15px; }
+.navbar .list-icon::before{ content: ''; position: absolute; right: 15px; top: -12px;  background: transparent url(../images/userlist.png) center center no-repeat; background-size: 50px; display: inline-block; width: 50px; height: 50px; }
+.navbar .list-icon:hover, .navbar .list-icon.active{ color: #55BFD1; }
+.navbar .list-icon:hover::before, .navbar .list-icon.active::before{ background-image: url(../images/userlist-active.png); }
+
+
+@media only screen and (max-width: 736px) {
+  .navbar-nav{ padding: 12px 12px 0 0; margin: 0; float: right !important; }
+}
+
+@media only screen and (max-width: 414px) {
+  .navbar-brand{ padding: 15px 5px; }
+  .navbar-collapse{ float: left; }
+  .navbar-collapse .nav-item{ margin-left: 10px; }
+}
