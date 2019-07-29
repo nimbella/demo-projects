@@ -1,0 +1,18 @@
+.sidebar-wrap li{ display: inline-table; width: 100%; padding: 20px 10px; border-bottom: 1px solid #090D16; cursor: pointer; position: relative; }
+
+.sidebar-wrap li:hover, .sidebar-wrap li.active{ background-color: #090D16; }
+.sidebar-wrap li:hover span.symbol, .sidebar-wrap li.active span.symbol{ color: #55BFD1; }
+
+.sidebar-wrap li span.text-box{ font-size: 14px; color: white; padding: 5px 10px; border-radius: 5px; font-weight: 300; float: right; min-width: 80px; text-align: center; }
+
+.sidebar-wrap li span.text-box.positive{ background-color: #417505; }
+.sidebar-wrap li span.text-box.negative{ background-color: #9F2223; }
+
+.sidebar-wrap .ttip{ background-color: rgba(85,191,209, .5); }
+.sidebar-wrap .ttip.place-bottom::after{ border-bottom-color: rgba(85,191,209, .5); }
+
+.sidebar-wrap .nav-sidebar{ padding-bottom: 50px; }
+
+@media only screen and (max-width: 414px) {
+  .sidebar-wrap .nav-sidebar{ padding-bottom: 0; padding-top: 50px; }
+}

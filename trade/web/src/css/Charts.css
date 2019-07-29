@@ -1,0 +1,5 @@
+.react-stockchart{ background-color: #090D16 }
+.tick link{stroke: #B2B2B2 !important;}
+.tick text{fill: #B2B2B2 !important;}
+.list-group .list-group-item{ background-color: transparent; border: none; color: #B2B2B2;}
+.list-group .list-group-item .badge{background-color: transparent; border-radius:0; font-size:inherit; color: #B2B2B2;}

@@ -1,0 +1,323 @@
+swagger: '2.0'
+info:
+  description:
+    This is the server-side Nimbella function API for the React client-side
+    single-page trading application demo. You can find out more about Nimbella
+    at [https://nimbella.com](https://nimbella.com). For this sample, you can
+    use the api key `special-key` to test the authorization filters.
+  version: 1.0.0
+  title: Nimbella Trading Demo
+  termsOfService: 'http://nimbella.com/demo/terms/'
+  contact:
+    email: demo-team@nimbella.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: js.nimbella.io
+basePath: /nimbella.com/f/trade_demo
+tags:
+  - name: account
+    description: brokerage account operations
+    externalDocs:
+      description: Find out more
+      url: 'http://nimbella.com'
+  - name: stock
+    description: stock market information
+schemes:
+  - https
+  - http
+paths:
+  /newAccount:
+    get:
+      tags:
+        - account
+      summary: Creates a new account
+      description: Returns a new account id
+      operationId: newAccount
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: string
+  /getCashBalance:
+    get:
+      tags:
+        - account
+      summary: Return the account's cash balance
+      description: Returns cash balance
+      operationId: getCashBalance
+      produces:
+        - application/json
+      parameters:
+        - name: account_id
+          in: query
+          description: the account id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: string
+  /getPositions:
+    get:
+      tags:
+        - account
+      summary: Lists the stock positions in the brokerage account
+      description: Returns an array of Position objects
+      operationId: getPositions
+      produces:
+        - application/json
+      parameters:
+        - name: account_id
+          in: query
+          description: the account id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Position'
+        '400':
+          description: Server failure getting positions
+      security:
+        - petstore_auth:
+            - 'write:account'
+            - 'read:account'
+  /buyStock:
+    post:
+      tags:
+        - account
+      summary: Buy a stock
+      description: Buys an individual stock
+      operationId: buyStock
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: order
+          in: body
+          description: buy order to process
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '200':
+          description: successful submission
+          schema:
+            $ref: '#/definitions/OrderStatus'
+        '400':
+          description: Invalid stock ticker
+        '405':
+          description: Invalid order
+      security:
+        - petstore_auth:
+            - 'write:account'
+            - 'read:account'
+  /sellStock:
+    post:
+      tags:
+        - account
+      summary: Sell a stock
+      description: Sells an individual stock
+      operationId: sellStock
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: order
+          in: body
+          description: sell order to process
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '200':
+          description: successful submission
+          schema:
+            $ref: '#/definitions/OrderStatus'
+        '400':
+          description: Invalid stock ticker
+        '405':
+          description: Invalid order
+      security:
+        - api_key: []
+  /getStockDescription:
+    get:
+      tags:
+        - stock
+      summary: Returns the description of an individual stock
+      description: Returns a map of status codes to quantities
+      operationId: getStockDescription
+      produces:
+        - application/json
+      parameters:
+        - name: ticker
+          in: query
+          required: true
+          description: The ticker of the stock to get information for
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/StockDescription'
+      security:
+        - api_key: []
+  /getStockHistory:
+    get:
+      tags:
+        - stock
+      summary: Returns historical prices for a stock for graphing
+      description: Returns historical stock prices
+      operationId: getStockHistory
+      produces:
+        - application/json
+      parameters:
+        - name: ticker
+          in: query
+          required: true
+          description: The ticker of the stock to get history for
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockPrice'
+      security:
+        - api_key: []
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:account: "modify the account"
+      read:account: "query the account"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Position:
+    type: "object"
+    properties:
+      ticker:
+        type: "string"
+      companyName:
+        type: "string"
+      numShares:
+        type: "integer"
+        format: "int32"
+      price:
+        type: "number"
+        format: "float"
+      dayChange:
+        type: "number"
+        format: "float"
+      dayChangePct:
+        type: "number"
+        format: "float"
+  Order:
+    type: "object"
+    properties:
+      account_id:
+        type: "string"
+      ticker:
+        type: "string"
+      shares:
+        type: "integer"
+        format: "int64"
+  OrderStatus:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+  StockDescription:
+    type: "object"
+    properties:
+      ticker:
+        type: "string"
+      desc:
+        type: "string"
+      gain:
+        type: "number"
+        format: "float"
+      gainP:
+        type: "number"
+        format: "float"
+      prevClose:
+        type: "number"
+        format: "float"
+      open:
+        type: "number"
+        format: "float"
+      close:
+        type: "number"
+        format: "float"
+      peR:
+        type: "number"
+        format: "float"
+      divY:
+        type: "number"
+        format: "float"
+      mktCap:
+        type: "number"
+        format: "float"
+      volume:
+        type: "number"
+        format: "float"
+      aveVolume:
+        type: "number"
+        format: "float"
+      wkH:
+        type: "number"
+        format: "float"
+      wkL:
+        type: "number"
+        format: "float"
+  StockPrice:
+    type: "object"
+    properties:
+      date:
+        type: "integer"
+        format: "int64"
+      open:
+        type: "number"
+        format: "float"
+      high:
+        type: "number"
+        format: "float"
+      low:
+        type: "number"
+        format: "float"
+      close:
+        type: "number"
+        format: "float"
+      volume:
+        type: "integer"
+        format: "int64"
+      split:
+        type: "integer"
+        format: "int32"
+      dividend:
+        type: "number"
+        format: "float"
+      absoluteChange:
+        type: "integer"
+        format: "int32"
+      percentChange:
+        type: "integer"
+        format: "int32"
+externalDocs:
+  description: "Find out more about Swagger"
+url: "http://swagger.io"

@@ -1,0 +1,13 @@
+.submit-wrap{ position: fixed; bottom: 0; z-index: 9999; }
+.submit-wrap .btn-wrap.bg{ padding: 15px; background-color: #132a2d; }
+.mask{ display: inline-block; width: 100%; height: 100%; background-color: rgba(4,28,33,.8); position: fixed; top: 0; left: 0; z-index: 9999; visibility: hidden; opacity: 0; }
+.mask.show{ visibility: visible; opacity: 1; }
+.mask.hide{ visibility: hidden; opacity: 0; }
+
+.mask .header h3{ display: inline;}
+
+.mask .form-wrap{ background-color: white; margin-top: 5%; padding: 2% 3%; border-radius: 5px; }
+
+.form-group.one-line span { display: inline-block; }
+
+.form-group.has-error div:first-child{ border-color: #a94442; }
