@@ -3,4 +3,7 @@ node_modules
 package-lock.json
 __deployer__.zip
 .nimbella
+.project
+.settings
+.idea
 
