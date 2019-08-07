@@ -16,7 +16,7 @@ The back-end functions connect to the IEX Cloud to obtain live stock information
 6. Click 'API tokens' in the IEX web interface that comes up
 7. In the interface, you see see your secret API token
 
-Place the API token for the IEX Cloud in the projectConfig.yml replacing the string `place_your_api_key_here`.
+Place the API token for the IEX Cloud into the environment as environment variable `IEXCLOUD_API_TOKEN` when using the Nimbella deployer to deploy this project.  One way to do this is to use a `.env` file as described in the Nimbella deployer documentation.
 
 The functions use the Nimbella Redis key-value store to manage persisted data. The Nimbella API host is set at build time via REACT_APP_NIMBELLA_PROJECT_ROOT.
 
