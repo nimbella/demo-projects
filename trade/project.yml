@@ -1,5 +1,5 @@
 packages:
   - name: tradedemo 
     parameters:
-      apitoken: ${IEXClOUD_API_TOKEN}
+      apitoken: ${IEXCLOUD_API_TOKEN}
 
