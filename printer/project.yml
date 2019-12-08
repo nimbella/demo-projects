@@ -1,0 +1,12 @@
+bucket:
+  strip: 1
+packages:
+  - name: admin
+    actions:
+      - name: flush
+        web: false
+
+  - name: printer
+    actions:
+      - name: notify
+        parameters: ${<.slack-env}

@@ -1,0 +1,14 @@
+bucket:
+  strip: 1
+packages:
+  - name: ocr
+    actions:
+      - name: imageToText
+        runtime: tessjs:10
+        limits:
+          memory: 768
+          timeout: 120000
+  - name: utils
+    actions:
+      - name: slack
+        parameters: ${<.slack-env}

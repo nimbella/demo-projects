@@ -1,0 +1,30 @@
+.text-display{ display: inline-block; height: 400px; border: 1px solid #A2B5B8; width: calc(100% - 1px); padding: 20px; border-radius: 5px; position: relative; white-space: pre-line; background-color: #222222; }
+.text-display .content{ overflow-y: auto; height: 310px; }
+.text-display .btn-wrap { margin-top: 10px; }
+.text-display .btn-wrap .btn { width: 100%; margin: 0; }
+
+/*Equalizer Animation*/
+.eq-icon { align-items: flex-end; display: flex; width: 20px; height: 12px; overflow: hidden; opacity: 0.8; float: right; }
+.eq-icon .eq-col { flex: 1; position: relative; height: 100%; margin-right: 1px; }
+.eq-icon .eq-col div { animation-name: ani-eq; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate; background-color: #a2b5b8; position: absolute; width: 100%; height: 100%; transform: translateY(100%); will-change: transform; }
+.eq-item-1-a { animation-duration: 0.3s; }
+.eq-item-1-b { animation-duration: 0.45s; }
+.eq-item-2-a { animation-duration: 0.5s; }
+.eq-item-2-b { animation-duration: 0.4s; }
+.eq-item-3-a { animation-duration: 0.3s; }
+.eq-item-3-b { animation-duration: 0.35s; }
+.eq-item-4-a { animation-duration: 0.4s; }
+.eq-item-4-b { animation-duration: 0.25s; }
+
+@keyframes ani-eq {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@media only screen and (max-width: 991px) {
+  .text-display .content{ height: 200px; text-align: center; }
+  .text-display { height: 300px; }
+  .btn-wrap .btn{ width: 100% !important; }
+  .btn-wrap .btn:first-of-type{ margin-bottom: 10px; }
+}
+

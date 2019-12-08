@@ -1,0 +1,13 @@
+{
+  "name": "workflow",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/compose --js workflow.js -o index.js",
+    "viz": "./node_modules/.bin/compose --ast workflow.js | jq {\"conductor\":.} > annotations.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "openwhisk-composer": "0.11.0"
+  }
+}

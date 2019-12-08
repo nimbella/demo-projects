@@ -1,0 +1,4 @@
+coverage/
+__deployer__.zip
+.slack-env
+**/__mocks__/nim.js

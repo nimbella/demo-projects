@@ -1,0 +1,23 @@
+.file-upload{ width: 100%; height: 400px; min-height: 100px; border: 1px dashed #A2B5B8; border-radius: 5px; position: relative; overflow-y: auto; background-color: #222222; box-shadow: inset 4px 4px 10px rgba(0,0,0,1); display: flex; align-items: center; box-sizing: border-box; }
+
+.file-upload .spinner-border{ position: absolute; z-index: 99; margin-left: calc(50% - 1.5rem); }
+.dnd{ width: 100%; height: 395px; padding: 10px; display: table; text-align: center; box-sizing: border-box; }
+.dnd .content{ display: table-cell; vertical-align: middle; }
+.dnd .upload-icon{ display: inline-block; width: 128px; height: 77px; background: transparent url(../images/upload-icon.svg) center center no-repeat; clear: both; }
+
+.react-html5-camera-photo{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; padding-top: 0; padding-bottom: 40px; z-index: 9999; background-color: #222222; }
+.react-html5-camera-photo video{ width: 100%; }
+
+.file-upload .close{ position: fixed; top: 20px; right: 20px; z-index: 99999; opacity: .5; -webkit-transition: opacity .3s ease-in;-moz-transition: opacity .3s ease-in;-ms-transition: opacity .3s ease-in;-o-transition: opacity .3s ease-in;transition: opacity .3s ease-in;}
+.file-upload .close:hover{ opacity: 1; }
+.file-upload .close span{ color: white; font-size: 60px; }
+
+@media only screen and (max-width: 1023px) {
+  .file-upload{ border: none; }
+  .file-upload.mobile{ background-color: transparent; box-shadow: none; }
+}
+
+@media only screen and (max-width: 812px) {
+  .file-upload{ height: fit-content; margin-bottom: 20px; }
+  .dnd{ height: fit-content; }
+}
