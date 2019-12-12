@@ -16,13 +16,18 @@
   position: absolute;
   bottom: 0;
   z-index: 10;
-  width: 100%;
+  width: 99%;
+  background: rgb(34,34,34);
+  background: linear-gradient(0deg, rgba(34,34,34,0.8) 0%, rgba(34,34,34,0.7) 50%, rgba(34,34,34,0.1) 90%, rgba(34,34,34,0) 100%);
 }
 
 .image-display .progress-wrap p {
   text-align: center;
   margin: 0;
   text-transform: capitalize;
+  color: white;
+  padding: 20px 0 5px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.7);
 }
 
 .image-display .progress-wrap .progress {

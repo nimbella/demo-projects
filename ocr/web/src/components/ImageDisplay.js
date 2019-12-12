@@ -89,13 +89,13 @@ class ImageDisplay extends Component {
               { textOverlay.length !== 0 && textOverlay.map((i, index) => {
                 return (
                   <Rect
-                      x={i.bbox.x0}
-                      y={i.bbox.y0}
-                      width={i.bbox.x1 - i.bbox.x0}
-                      height={i.bbox.y1 - i.bbox.y0}
-                      fill={'green'}
-                      opacity={0.3}
-                      key={index}
+                    x={i.bbox.x0}
+                    y={i.bbox.y0}
+                    width={i.bbox.x1 - i.bbox.x0}
+                    height={i.bbox.y1 - i.bbox.y0}
+                    fill={'green'}
+                    opacity={0.3}
+                    key={index}
                   />
                 )
               })
@@ -111,8 +111,10 @@ class ImageDisplay extends Component {
         <div className={ `image-display ${ (isMobile) ? 'mobile':'' }` } ref={ this.displayRef }>
           { isLoading && <div className="spinner-border">&nbsp;</div> }
           { progress !== undefined && textOverlay.length === 0 && <div className='progress-wrap'>
-            <p>{ status } {progress <= 100 && <Fragment>{progress}%</Fragment>}</p>
-            <p>{(120000/intervalDuration) - timeoutCount} seconds before timeout</p>
+            <p>
+              { status } {progress <= 100 && <Fragment>{progress}%</Fragment>}<br />
+              {(120000/intervalDuration) - timeoutCount} seconds before timeout
+            </p>
             <Progress color='info' max={100} value={progress}/>
           </div>}
           { imageUrl && <ImageWithTextOverlayElem/> }
