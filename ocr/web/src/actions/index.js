@@ -20,7 +20,7 @@ export const imageToText = (file, lang, id) => {
     }
   };
 
-  return fetch(`${apiRoot}/acceptImage`, options).then(handleResponse)
+  return fetch(`${apiRoot}/imageToText`, options).then(handleResponse)
 };
 
 export const progress = (id) => {
