@@ -46,12 +46,11 @@
         var txt = $("#mytext").val().trim()
         if (last != txt) {
           last = txt
-          let API = '/api/demo/qrfunc'
+          let API = '/api/default/qr'
           let src= API + '?text=' + escape(txt)
           console.log("sending", src)
           $.get(src, function(data, status) {
-              console.log("status", status)
-            $( ".result" ).html(data)
+            console.log("status", status)
             $("#myresult").html('<img width="200" style="display:block; margin:auto;padding-top:10px" src="'+data+'" />')
           })
         }
