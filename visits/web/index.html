@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your Serverless Cloud. Beautiful.</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+      .footer {
+         position: absolute;
+         bottom: 0;
+         width: 620px;
+         height: 45px;
+         background-color: #f5f5f5;
+         margin-bottom: 150px;
+      }
+    </style>
+  </head>
+  <body style="padding-top:100px" onload="update()">
+    <div class="container" style="width:650px;color: #43728A">
+      <center><img src="logo.png" width="30%">
+      <div style>
+        <h1>
+          <span id="count"></span><br/>
+          page visits
+        </h1>
+        <p>since <span id="date"></span></p>
+      </div>
+      </center>
+    </div>
+
+    <script type="text/javascript">
+      const base = '/api/visits'
+      const info = base + '/info'
+      const count = base + '/counter'
+      function update() {
+        $.get(info, (data, status) => {
+          console.log("info", status)
+          $("#date").html(data)
+        })
+
+        $.get(count, (data, status) => {
+          console.log("counter", status)
+          $("#count").html(data)
+        })
+      }
+    </script>
+  </body>
+</html>
