@@ -20,11 +20,10 @@
     <div class="container" style="width:650px;color: #43728A">
       <center><img src="logo.png" width="30%">
       <div style>
-        <h1>
-          <span id="count"></span><br/>
-          page visits
+        <h1 id="count">
         </h1>
-        <p>since <span id="date"></span></p>
+        <p id="date">
+        </p>
       </div>
       </center>
     </div>
@@ -34,14 +33,14 @@
       const info = base + '/info'
       const count = base + '/counter'
       function update() {
-        $.get(info, (data, status) => {
-          console.log("info", status)
-          $("#date").html(data)
+        $.post(count, (data, status) => {
+          console.log("counter", status)
+          $("#count").html(`<span>${data}</span><br/>page visits`)
         })
 
-        $.get(count, (data, status) => {
-          console.log("counter", status)
-          $("#count").html(data)
+        $.get(info, (data, status) => {
+          console.log("info", status)
+          $("#date").html(`since ${data}`)
         })
       }
     </script>
