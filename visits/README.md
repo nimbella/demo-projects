@@ -2,8 +2,8 @@ A serverless single page app with a counter for the number of page visits.
 
 This project is organized into a `web` front-end with a single HTML
 file that allows someone visiting the page to see how many times the
-page has been visited since the project was deployed. The backend
-is implemented in PHP.
+page has been uniquely visited since the project was deployed. The 
+backend is implemented in PHP.
 
 ### Prerequisites
 

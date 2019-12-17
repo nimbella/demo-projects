@@ -5,13 +5,28 @@
  */
 
 use Nimbella\Nimbella;
+use Ramsey\Uuid\Uuid;
 
 define('COUNTER', 'page-visits');
 $redis = (new Nimbella())->redis();
 
-function main() : array {
+function main(array $args) : array {
   global $redis;
 
-  $count = $redis->incr(COUNTER);
-  return [ 'body' => $count ];
+  $cookie = $args["__ow_headers"]["cookie"] ?? false;
+  if ($cookie) {
+      $count = $redis->get(COUNTER);
+      return [
+          'body' => $count
+      ];
+  } else {
+      $uuid = Uuid::uuid4();
+      $count = $redis->incr(COUNTER);
+      return [
+          'headers' => [
+              'Set-Cookie' => 'UserID=' . $uuid->toString()
+          ],
+          'body' => $count
+      ];
+  }
 }

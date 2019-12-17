@@ -35,7 +35,7 @@
       function update() {
         $.post(count, (data, status) => {
           console.log("counter", status)
-          $("#count").html(`<span>${data}</span><br/>page visits`)
+          $("#count").html(`<span>${data}</span><br/>unique visitors`)
         })
 
         $.get(info, (data, status) => {
