@@ -1,0 +1,4 @@
+token="your slack token"
+username="notifications"
+url="https://slack.com/api/chat.postMessage"
+channel="#general"

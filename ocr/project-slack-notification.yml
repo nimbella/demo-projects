@@ -8,3 +8,7 @@ packages:
         limits:
           memory: 768
           timeout: 120000
+  - name: utils
+    actions:
+      - name: slack
+        parameters: ${<.slack-env}
