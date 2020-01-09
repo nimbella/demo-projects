@@ -16,17 +16,19 @@ function main(array $args) : array {
   $cookie = $args["__ow_headers"]["cookie"] ?? false;
   if ($cookie) {
       $count = $redis->get(COUNTER);
-      return [
-          'body' => $count
-      ];
-  } else {
-      $uuid = Uuid::uuid4();
-      $count = $redis->incr(COUNTER);
-      return [
-          'headers' => [
-              'Set-Cookie' => 'UserID=' . $uuid->toString()
-          ],
-          'body' => $count
-      ];
+      if ($count) {
+          return [
+              'body' => $count
+          ];
+      }
   }
+
+  $uuid = Uuid::uuid4();
+  $count = $redis->incr(COUNTER);
+  return [
+      'headers' => [
+          'Set-Cookie' => 'UserID=' . $uuid->toString()
+      ],
+      'body' => $count
+  ];
 }
