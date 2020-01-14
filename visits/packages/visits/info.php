@@ -10,13 +10,12 @@
 use Nimbella\Nimbella;
 
 define('FILENAME', 'visits-since.txt');
-$since = false; // locally cache the up date
+$bucket = (new Nimbella())->storage();
+$file   = $bucket->object(FILENAME);
+$since  = false; // locally cache the up date
 
 function main() : array {
-  global $since;
-
-  $bucket = (new Nimbella())->storage();
-  $file   = $bucket->object(FILENAME);
+  global $since, $bucket, $file;
 
   if ($since) {
     // date is locally cached, use it
