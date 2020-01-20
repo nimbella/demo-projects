@@ -4,7 +4,7 @@ This demo allows a user to buy and sell stock (virtually), shows updated stock p
 
 The front-end is written in React.
 
-The back-end is a set of servless functions written in JavaScript.
+The back-end is a set of serverless functions written in JavaScript.
 
 The back-end functions connect to the IEX Cloud to obtain live stock information. The IEX Cloud requires an API token to get stock information. An IEX Cloud API token is available for free by:
 
