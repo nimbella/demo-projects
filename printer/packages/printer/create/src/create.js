@@ -3,7 +3,7 @@ const uuidv4 = require('uuid/v4'),
       redis = nimbella.redis()
 
 async function getSignedUrl(filename) {
-    const bucket = nimbella.storage()
+    const bucket = await nimbella.storage()
     const file = bucket.file(filename)
     const expiration = 60 * 60 * 1000 // 60 minutes
 

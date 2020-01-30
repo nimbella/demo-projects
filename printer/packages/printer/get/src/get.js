@@ -4,7 +4,7 @@ const nimbella = require('nim'),
 const response = (body, statusCode) => ({ statusCode: statusCode || 200, body })
 
 async function getSignedUrl(filename) {
-    const bucket = nimbella.storage()
+    const bucket = await nimbella.storage()
     const file = bucket.file(filename)
     const expiration = 10 * 60 * 1000 // 10 minutes
 
