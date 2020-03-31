@@ -18,7 +18,7 @@ The back-end functions connect to the IEX Cloud to obtain live stock information
 
 Place the API token for the IEX Cloud into the environment as environment variable `IEXCLOUD_API_TOKEN` when using the Nimbella deployer to deploy this project.  One way to do this is to use a `.env` file as described in the Nimbella deployer documentation.
 
-The functions use the Nimbella Redis key-value store to manage persisted data. The Nimbella API host is set at build time via REACT_APP_NIMBELLA_PROJECT_ROOT.
+The functions use the Nimbella Redis key-value store to manage persisted data.
 
 A Swagger API definition for the back-end functions is contained in the swagger .yaml file
 

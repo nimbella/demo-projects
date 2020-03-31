@@ -34,21 +34,11 @@ const colorLog = (m, a, r, err = false, cb = () => {}) => {
   cb();
 };
 
-// TODO switch to simpler URL form for the nimbella bucket use case
-function getVariableUrl() {
-    let ans = process.env.REACT_APP_NIMBELLA_PROJECT_ROOT
-    if (ans) {
-        return ans
-    }
-    return '/api'
-}
-
 const handleAPI = (uri, method, data, cb) => {
-  const VARIABLE_URL = `${getVariableUrl()}/tradedemo/`;
-  console.log("computed URL for API:", VARIABLE_URL)
+  const apibase = '/api/tradedemo/';
   const action = uri.split('?')[0];
   if(method === 'GET') {
-    return axios.get(VARIABLE_URL + uri)
+    return axios.get(apibase + uri)
         .then(res => {
           colorLog(method, action, res.data);
           return res.data;
@@ -58,7 +48,7 @@ const handleAPI = (uri, method, data, cb) => {
         }));
   }
   else if(method === 'POST') {
-    return axios.post(VARIABLE_URL + uri, data)
+    return axios.post(apibase + uri, data)
         .then(res => {
           colorLog(method, action, res.data);
           return res.data;
