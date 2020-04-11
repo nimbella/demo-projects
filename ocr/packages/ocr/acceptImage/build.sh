@@ -1,5 +1,5 @@
 #!/bin/bash
-set +e
+set -e
 rm -f index.js .include
 npm install
 npm run build
