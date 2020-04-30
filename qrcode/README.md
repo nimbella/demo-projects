@@ -1,8 +1,8 @@
 ## QR Code Tutorial
 
-This tutorial explains the [QR Code demo](https://github.com/nimbella/demo-projects/tree/master/qrcode) available on GitHub and shows you how to deploy it to the Nimbella Cloud.
+This tutorial explains the QR Code demo and shows you how to deploy it to the Nimbella Cloud.
 
-The QR Code demo is a stateless single-page web application that generates a [QR code](https://en.wikipedia.org/wiki/QR_code) from text that a user submits. You can [view the app here](https://qrdemo-apigcp.nimbella.io).
+The QR Code demo is a stateless single-page web application that generates a [QR code](https://en.wikipedia.org/wiki/QR_code) from text that a user submits.
 The QR Code demo has the following code and configuration components:
 
 - A single index.html file, which has a field for a visitor to enter some text and click **Submit**.
@@ -31,10 +31,14 @@ The *index.html* file contains the usual markup and logic that you'd write for s
 The *package.json* file in the *qr* directory triggers an automatic build of the action when the *qr.js* file is modified. For more information about builds, see the [section on incorporating build steps in the Nimbella Command Line Tool document](https://nimbella.io/downloads/nim/nim.html#incorporating-build-steps-for-actions-and-web-content).
 
 ### Deploy this project to the Nimbella Cloud
-If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub, either online or from the local repository  cloned to your  disk.
+If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub.  Or, you can clone this repository and deploy from the clone.
 
-- Run the following command in your terminal:
+- To deploy from GitHub
+
+  `nim project deploy github:nimbella/demo-projects/qrcode`
+
+- If you have cloned the repository
 
    `nim project deploy /path/to/qrcode`
 
-   The output of this command will include a link to where the application is running in the cloud.
+The output of this command will include a link to where the application is running in the cloud.

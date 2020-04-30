@@ -65,9 +65,6 @@
                 <path d="M404.638,1130.49L292.53,1559.81" style="fill:none;stroke:rgb(95,158,167);stroke-width:5.9px;"/>
             </g>
             <g transform="matrix(-1.6142,0,0,0.784409,1369.18,-506.732)">
-                <path d="M404.638,1130.49L157.784,1693.18" style="fill:none;stroke:rgb(95,158,167);stroke-width:5.9px;"/>
-            </g>
-            <g transform="matrix(-1.6142,0,0,0.784409,1369.18,-506.732)">
                 <path d="M404.638,1130.49L-50.532,1841.71" style="fill:none;stroke:rgb(95,158,167);stroke-width:5.9px;"/>
             </g>
             <g transform="matrix(-1.6142,0,0,0.784409,1369.18,-506.732)">
@@ -111,9 +108,6 @@
             </g>
             <g transform="matrix(1.34408,0,0,1.95682,436.546,401.791)">
                 <text x="953.956px" y="305.775px" style="font-family:'OpenSans-SemiBold', 'Open Sans', sans-serif;font-weight:600;font-size:24.631px;fill:rgb(95,158,167);">slack-env.template</text>
-            </g>
-            <g transform="matrix(1.34408,0,0,1.95682,-287.898,292.827)">
-                <text x="999.249px" y="305.775px" style="font-family:'OpenSans-SemiBold', 'Open Sans', sans-serif;font-weight:600;font-size:24.631px;fill:rgb(95,158,167);">project.yml</text>
             </g>
             <g transform="matrix(1.34408,0,0,1.95682,2.70865,402.05)">
                 <text x="893.233px" y="305.775px" style="font-family:'OpenSans-SemiBold', 'Open Sans', sans-serif;font-weight:600;font-size:24.631px;fill:rgb(95,158,167);">project-slack-notiﬁcation.yml</text>

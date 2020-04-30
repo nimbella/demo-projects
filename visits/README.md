@@ -1,8 +1,8 @@
 ## Page Visit Counter Tutorial
 
-This tutorial describes the [Visits demo](https://github.com/nimbella/demo-projects/tree/master/visits) and shows you how to deploy it to the Nimbella Cloud.
+This tutorial describes the Visits demo and shows you how to deploy it to the Nimbella Cloud.
 
-The Visits app is stateful and displays on a web page how many times the page has been uniquely visited since the project was deployed. You can [view the app here](LINK).
+The Visits app is stateful and displays on a web page how many times the page has been uniquely visited since the project was deployed.
 
 This project has the following components:
 
@@ -19,7 +19,7 @@ The GitHub project has the file structure that Nimbella uses to deploy the proje
 
 Actions are located under the _packages_ directory and determined by the subdirectory structure. In this case, the subdirectory called _visits_ serves as a qualifier for the project's two actions. The _visits_ directory contains two PHP files, which are determined to be two actions: `visits/counter` and `visits/info`.
 
-- The code for the `counter` action in _counter.php_ creates an instance of a [Redis key-value store](https://redis.io) that is built into the Nimbella Cloud. It checks for a cookie first, and if none is found, it increments the count by one and writes to the cookie.
+- The code for the `counter` action in _counter.php_ uses an instance of a [Redis key-value store](https://redis.io).  Nimbella provides a unique Redis instance for each user account.  The `counter` action checks for a cookie first, and if none is found, it increments the count by one and writes to the cookie.
 
 - The `info` action checks for a file in the data bucket returns its contents, which are the date since the project was deployed. If it can't find the file, it creates one and adds the current date.
 
@@ -36,9 +36,13 @@ With this directory structure, you don't need any project  configuration or spec
 
 ### Deploy this project to the Nimbella Cloud
 
-If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub, either online or from the local repository  cloned to your  disk.
+If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub.  Or, you can clone this repository and deploy from the clone.
 
-- Run the following command in your terminal:
+- To deploy from GitHub
+
+  `nim project deploy github:nimbella/demo-projects/visits`
+
+- If you have cloned the repository
 
    `nim project deploy /path/to/visits`
 

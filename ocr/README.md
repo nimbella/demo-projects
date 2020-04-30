@@ -1,6 +1,6 @@
 ## OCR Tutorial
 
-This tutorial explains the [Optical Character Recognition (OCR) demo](https://github.com/nimbella/demo-projects/tree/master/ocr) available on GitHub and shows you how to deploy it to the Nimbella Cloud.
+This tutorial explains the Optical Character Recognition (OCR) demo and shows you how to deploy it to the Nimbella Cloud.
 
 The OCR application displays a web page where visitors select a language (English, Spanish, or Chinese) and then drag a JPG, GIF, or PNG image onto the page, where it is automatically converted to text. If the conversion is successful, users can read the text and click a **Speak** button to hear the text. You can [try out the application here](https://ocrdemo-apigcp.nimbella.io).
 
@@ -79,9 +79,13 @@ The starting point of the React logic is _index.js_ in the _src_ directory. It i
 _App.js_ contains the sequencing of the other components. It imports _Header_, _FileUpload_, and _Result_. It also adds handlers for various components (language, browsing, camera, file upload) and creates some of the HTML markup. The `Result` code imports the `ImageDisplay` and `TextDisplay` components that control how the image and text are displayed after OCR occurs. If you've tried the demo, it's easy to see what these components refer to.
 
 ### Deploy this project to the Nimbella Cloud
-If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub, either online or from the local repository  cloned to your  disk.
+If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub.  Or, you can clone this repository and deploy from the clone.
 
-- Run the following command in your terminal:
+- To deploy from GitHub
+
+  `nim project deploy github:nimbella/demo-projects/ocr`
+
+- If you have cloned the repository
 
    `nim project deploy /path/to/ocr`
 
