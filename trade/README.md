@@ -14,7 +14,7 @@ The back-end functions connect to the IEX Cloud to obtain live stock information
 4. Select the '$0/Start' option
 5. Verify your email address by click on the link in the email sent to you
 6. Click 'API tokens' in the IEX web interface that comes up
-7. In the interface, you see see your secret API token
+7. In the interface, you will see your secret API token
 
 Place the API token for the IEX Cloud into the environment as environment variable `IEXCLOUD_API_TOKEN` when using the Nimbella deployer to deploy this project.  One way to do this is to use a `.env` file as described in the Nimbella deployer documentation.
 
