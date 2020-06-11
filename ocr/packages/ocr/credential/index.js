@@ -37,8 +37,6 @@ const main = (args) => {
     } else return errorResponse('filename required')
 }
 
-exports.main = main
-
 function errorResponse(msg) {
     return {
         statusCode: 400,
