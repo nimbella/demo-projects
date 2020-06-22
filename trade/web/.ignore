@@ -1,8 +1,0 @@
-public/
-src/
-build.sh
-.gitignore
-package-lock.json
-package.json
-build/
-node_modules/
