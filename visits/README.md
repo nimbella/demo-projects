@@ -2,7 +2,7 @@
 
 This tutorial describes the Page Visits Counter demo and shows you how to deploy it to the Nimbella Cloud.
 
-This app is stateful and displays on a web page how many times the page has been uniquely visited since the project was deployed.
+This app is stateful and displays on a web page how many times the page has been visited since the project was deployed.
 
 This project has the following components:
 
@@ -29,7 +29,7 @@ Actions are located under the [`packages`](./packages/visits) directory and dete
 
 The [`web`](./web) directory contains static web content for the project. In this case, there is one HTML file and a logo image.
 
-The [`index.html`](./web/index.html) file contains client-side JavaScript code which makes API calls to the actions and displays the number of unique visitors and the date that the count started.
+The [`index.html`](./web/index.html) file contains client-side JavaScript code which makes API calls to the actions and displays the number of visitors and the date that the count started.
 
 ### No other configuration or build instructions required
 

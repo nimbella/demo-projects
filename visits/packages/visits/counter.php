@@ -13,21 +13,11 @@ $redis = (new Nimbella())->redis();
 function main(array $args) : array {
   global $redis;
 
-  $cookie = $args["__ow_headers"]["cookie"] ?? false;
-  if ($cookie) {
-      $count = $redis->get(COUNTER);
-      if ($count) {
-          return [
-              'body' => $count
-          ];
-      }
-  }
-
   $uuid = Uuid::uuid4();
   $count = $redis->incr(COUNTER);
   return [
       'headers' => [
-          'Set-Cookie' => 'UserID=' . $uuid->toString()
+          'Set-Cookie' => 'VisitID=' . $uuid->toString()
       ],
       'body' => $count
   ];

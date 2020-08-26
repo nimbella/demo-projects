@@ -35,7 +35,7 @@
       function update() {
         $.post(count, (data, status) => {
           console.log("counter", status)
-          $("#count").html(`<span>🎉 you are visitor<br/># ${data}</span>`)
+          $("#count").html(`<span>🎉 ${data} visitors</span>`)
         })
 
         $.get(info, (data, status) => {
