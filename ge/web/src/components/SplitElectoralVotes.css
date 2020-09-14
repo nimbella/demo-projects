@@ -1,0 +1,51 @@
+.container {
+  display: inline-block;
+  margin-top: 0;
+  width: inherit;
+  margin-left: 750px;
+  margin-right: 0;
+  white-space: nowrap;
+}
+
+.btn-group {
+  float: left;
+  margin-right: 20%;
+}
+
+.btn-group button {
+  height: 30px;
+  width: 30px;
+
+  background-color: #d3d3d3; /* Green background */
+  border: 1px solid black; /* Green border */
+  color: black; /* White text */
+  font-weight: bold;
+  padding: 2px 2px;
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.state {
+  width: 60px !important;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.red {
+  background-color: red !important;
+}
+
+.blue {
+  background-color: #007bff !important;
+}
