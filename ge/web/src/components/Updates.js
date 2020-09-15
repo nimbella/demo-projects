@@ -8,7 +8,6 @@ const newDate = new Date();
 let currentDate = newDate;
 
 function Updates({updates}) {
-  console.log(updates);
   useLayoutEffect(() => {
     currentDate = newDate;
   });
@@ -54,7 +53,7 @@ function Updates({updates}) {
                     formatDistance(new Date(activity.created), new Date())
                   ) + ' ago'}
                 </h5>
-                <a href={activity.link}>
+                <a href={activity.link} target="_blank">
                   <h4
                     dangerouslySetInnerHTML={{
                       __html: activity.title,

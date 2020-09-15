@@ -10,10 +10,7 @@ const Timer = ({end}) => {
     "d 'Days' h 'Hours' m 'Minutes' s 'Seconds'"
   );
   return (
-    <div className="jumbotron">
-      <h1>Presidential Election 2020</h1>
-      <h2>{formattedDuration}</h2>
-    </div>
+      <h1>{formattedDuration}</h1>
   );
 };
 export default Timer;

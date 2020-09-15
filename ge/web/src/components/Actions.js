@@ -1,5 +1,5 @@
 import ActionsPanel from './ActionsPanel';
-
+import {API_ROOT_URL} from '../constants';
 import {fetcher} from '../utils/commonFunctions';
 
 import React, {useState, useEffect, lazy, Suspense} from 'react';
@@ -14,7 +14,7 @@ const Actions = ({setYear, years}) => {
   const [lastViewedLog, setLastViewedLog] = useLocalStorage('lastViewedLog', 0);
   const [isTimelineMode, setIsTimelineMode] = useState(false);
   const {data: updates} = useSWR(
-    'https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020/newz',
+    `${API_ROOT_URL}/news`,
     fetcher,
     {
       revalidateOnFocus: true,
@@ -22,7 +22,7 @@ const Actions = ({setYear, years}) => {
   );
 
   useEffect(() => {
-    if (updates) {
+    if (updates && updates.length> 0) {
       const lastTimestamp = updates.slice().reverse()[0].created;
       if (lastTimestamp !== lastViewedLog) {
         setNewUpdate(true);

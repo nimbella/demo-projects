@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import Footer from './Footer';
-
+import {API_ROOT_URL} from '../constants';
 import GenericTable from '../utils/genericTable';
 
 import React, {useState, useEffect, useMemo} from 'react';
@@ -90,7 +90,7 @@ function ExitPolls() {
     (async () => {
       const result = await (
         await fetch(
-          'https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020/exitpolls'
+          `${API_ROOT_URL}/exitpolls`
         )
       ).json();
       setData(result);

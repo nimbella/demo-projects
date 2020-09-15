@@ -1,0 +1,346 @@
+{
+    "resources": [{
+            "link": "https://developers.google.com/civic-information/",
+            "category": "API",
+            "subcategory": "Upcoming Elections, Candidates, Elected Officials",
+            "sno": "1",
+            "text": "Google Civic Information API"
+        },
+        {
+            "link": "https://democracy.works/elections-api/",
+            "category": "API",
+            "subcategory": "Upcoming Elections",
+            "sno": "2",
+            "text": "Democracy Works"
+        },
+        {
+            "link": "https://www.ballotready.org/",
+            "category": "API",
+            "subcategory": "Candidates",
+            "sno": "4",
+            "text": "Ballot Ready"
+        },
+        {
+            "link": "http://opencivicdata.readthedocs.io/en/latest/ocdids.html",
+            "category": "API",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "Open Civic Data Identifier"
+        },
+        {
+            "link": "https://votesmart.org/share/api",
+            "category": "API",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "Vote Smart"
+        },
+        {
+            "link": "https://www.propublica.org/datastore/api/propublica-congress-api",
+            "category": "API",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "ProPublica Congress"
+        },
+        {
+            "link": "http://docs.openstates.org/en/latest/api/",
+            "category": "API",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "Open States"
+        },
+        {
+            "link": "https://developer.ap.org/ap-elections-api/",
+            "category": "API",
+            "subcategory": "Election Results",
+            "sno": "5",
+            "text": "Associated Press Elections"
+        },
+        {
+            "link": "https://developer.ap.org/ap-elections-api/",
+            "category": "API",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "U.S. Census"
+        },
+        {
+            "link": "https://www.census.gov/data/developers/data-sets/acs-1year.html",
+            "category": "API",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "American Community Survey"
+        },
+        {
+            "link": "https://socratadiscovery.docs.apiary.io/#reference/0/find-by-domain",
+            "category": "API",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "Discovery API from Socrata"
+        },
+        {
+            "link": "https://editor.swagger.io/?url=https://api.open.fec.gov/swagger/",
+            "category": "API",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "Federal Election Commission"
+        },
+        {
+            "link": "https://www.opensecrets.org/open-data/api",
+            "category": "API",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "Center for Responsive Politics"
+        },
+        {
+            "link": "https://maplight.org/data_guide/bulk-data-sets-and-apis/",
+            "category": "API",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "MapLight"
+        },
+        {
+            "link": "https://www.census.gov/data/developers/data-sets/Geocoding-services.html",
+            "category": "API",
+            "subcategory": "Boundaries and Geocoding",
+            "sno": "5",
+            "text": "Census Geocoding API"
+        },
+        {
+            "link": "https://ballotpedia.org/Statewide_elections_calendar",
+            "category": "DATASET",
+            "subcategory": "Upcoming Elections",
+            "sno": "5",
+            "text": "Ballotpedia Guides"
+        },
+        {
+            "link": "https://www.reddit.com/r/Political_Revolution/wiki/election-calendar",
+            "category": "DATASET",
+            "subcategory": "Upcoming Elections",
+            "sno": "5",
+            "text": "Reddit crowd-sourced election calendar"
+        },
+        {
+            "link": "https://github.com/democrats/data/tree/master/election-calendar",
+            "category": "DATASET",
+            "subcategory": "Upcoming Elections",
+            "sno": "5",
+            "text": "DNC election calendar"
+        },
+        {
+            "link": "https://docs.google.com/spreadsheets/d/1Pxx1MSHt53u8JmGEU5fBhpYYbG0r2hZ5UjiSsCewt6s/edit#gid=1579971",
+            "category": "DATASET",
+            "subcategory": "Upcoming Elections",
+            "sno": "5",
+            "text": "Google spreadsheet"
+        },
+        {
+            "link": "https://docs.google.com/spreadsheets/d/1peOepPqFLcThlNGJpJeUC4BkztRDwyP179SU2wwD5-w/edit#gid=555614770",
+            "category": "DATASET",
+            "subcategory": "Candidates",
+            "sno": "5",
+            "text": "Candidates in the 2018 congressional elections"
+        },
+        {
+            "link": "https://ballotpedia.org/List_of_candidates_running_in_U.S._Congress_elections,_2018",
+            "category": "DATASET",
+            "subcategory": "Candidates",
+            "sno": "5",
+            "text": "2018 congressional candidates"
+        },
+        {
+            "link": "https://www.propublica.org/datastore/dataset/2016-election-congressional-and-presidential-candidates",
+            "category": "DATASET",
+            "subcategory": "Candidates",
+            "sno": "5",
+            "text": "Candidates in the 2016 elections"
+        },
+        {
+            "link": "https://ballotpedia.org/List_of_candidates_who_ran_in_U.S._Congress_elections,_2016",
+            "category": "DATASET",
+            "subcategory": "Candidates",
+            "sno": "5",
+            "text": "Candidates in the 2016 elections from Ballotpedia"
+        },
+        {
+            "link": "https://github.com/democrats/data/tree/master/elected-officials-roster",
+            "category": "DATASET",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "DNC Elected Officials Roster"
+        },
+        {
+            "link": "https://docs.google.com/spreadsheets/d/1oRl7vxEJUUDWJCyrjo62cELJD2ONIVl-D9TSUKiK9jk/edit?ts=595180a1#gid=1178631925",
+            "category": "DATASET",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "115th Congress Members Guide"
+        },
+        {
+            "link": "http://clerk.house.gov/xml/lists/MemberData.xml",
+            "category": "DATASET",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "House"
+        },
+        {
+            "link": "https://www.senate.gov/general/contact_information/senators_cfm.xml",
+            "category": "DATASET",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "Senate"
+        },
+        {
+            "link": "https://www.dailykos.com/stories/2012/11/19/1163009/-Daily-Kos-Elections-presidential-results-by-congressional-county-for-the-2012-2008-elections",
+            "category": "DATASET",
+            "subcategory": "Election Results",
+            "sno": "5",
+            "text": "Presidential election results"
+        },
+        {
+            "link": "https://www.dailykos.com/stories/2013/07/09/1220127/-Daily-Kos-Elections-2012-election-results-by-congressional-and-legislative-counties",
+            "category": "DATASET",
+            "subcategory": "Statewide election results",
+            "sno": "5",
+            "text": "Presidential election results"
+        },
+        {
+            "link": "https://www2.census.gov/",
+            "category": "DATASET",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "Raw data from census.gov"
+        },
+        {
+            "link": "https://docs.google.com/spreadsheets/d/1rdjW-janoQaMdnH4VSvKwjB2lhHmNiiXbFHyqGC7WjA/edit#gid=1271315670",
+            "category": "DATASET",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "State wise"
+        },
+        {
+            "link": "https://docs.google.com/spreadsheets/d/1BIJPzoJpKHXuQZjJSIpaHXN9ZIGM-YsP0jFzfuXTj7c/edit?ts=59e677bd#gid=1591888487",
+            "category": "DATASET",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "Congressional county"
+        },
+        {
+            "link": "https://docs.google.com/spreadsheets/d/1cuZudpzlQglvg86gfxd8eiOrlg7u8aWMs2O00zGaGP4/edit#gid=0",
+            "category": "DATASET",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "Religious affiliation by congressional county"
+        },
+        {
+            "link": "https://www.fec.gov/data/advanced/",
+            "category": "DATASET",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "Bulk data from FEC"
+        },
+        {
+            "link": "https://www.opensecrets.org/bulk-data/",
+            "category": "DATASET",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "Bulk data from opensecrets"
+        },
+        {
+            "link": "https://drive.google.com/drive/folders/0Bz_uFI8VY7xLbVRlZC1RMnRGODQ",
+            "category": "DATASET",
+            "subcategory": "Boundaries and Geocoding",
+            "sno": "5",
+            "text": "Congressional county boundary shapefiles"
+        },
+        {
+            "link": "https://register.vote.org/",
+            "category": "WEBSITE",
+            "subcategory": "Upcoming elections",
+            "sno": "5",
+            "text": "Register to vote"
+        },
+        {
+            "link": "https://absentee.vote.org/",
+            "category": "WEBSITE",
+            "subcategory": "Upcoming elections",
+            "sno": "5",
+            "text": "Request an absentee ballot"
+        },
+        {
+            "link": "https://www.runforoffice.org/",
+            "category": "WEBSITE",
+            "subcategory": "Upcoming elections",
+            "sno": "5",
+            "text": "Run for Office"
+        },
+        {
+            "link": "https://www.usvotefoundation.org/vote/state-elections/state-election-dates-deadlines.htm",
+            "category": "WEBSITE",
+            "subcategory": "Upcoming elections",
+            "sno": "5",
+            "text": "U.S. Vote Foundation Election Dates & Deadlines"
+        },
+        {
+            "link": "https://progressivevotersguide.com/",
+            "category": "WEBSITE",
+            "subcategory": "Candidates",
+            "sno": "5",
+            "text": "Progressive Voters Guide"
+        },
+        {
+            "link": "https://www.govtrack.us/",
+            "category": "WEBSITE",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "GovTrack"
+        },
+        {
+            "link": "https://stampslicked.org/",
+            "category": "WEBSITE",
+            "subcategory": "Elected Officials",
+            "sno": "5",
+            "text": "Stamps Licked"
+        },
+        {
+            "link": "https://www.nytimes.com/interdemocrat/2018/us/elections/calendar-primary-results.html",
+            "category": "WEBSITE",
+            "subcategory": "Election Results",
+            "sno": "5",
+            "text": "The New York Times election site"
+        },
+        {
+            "link": "https://www.opendatanetwork.com/",
+            "category": "WEBSITE",
+            "subcategory": "Census and other government data",
+            "sno": "5",
+            "text": "Open Data Network"
+        },
+        {
+            "link": "https://www.fec.gov/data/receipts/individual-contributions/",
+            "category": "WEBSITE",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "FEC (newer, responsive website)"
+        },
+        {
+            "link": "https://www.opensecrets.org/",
+            "category": "WEBSITE",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "opensecrets"
+        },
+        {
+            "link": "http://www.darkmoneywatch.org/",
+            "category": "WEBSITE",
+            "subcategory": "Contributions and Financial Disclosures",
+            "sno": "5",
+            "text": "Dark Money Watch"
+        },
+        {
+            "link": "https://www.dailykos.com/stories/2011/09/09/1013737/-Mapping-the-New-CDs/",
+            "category": "WEBSITE",
+            "subcategory": "Boundaries and Geocoding",
+            "sno": "5",
+            "text": "Google Maps overlays of congressional boundaries"
+        }
+    ]
+}

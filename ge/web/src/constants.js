@@ -82,7 +82,7 @@ export const TABLE_STATISTICS_EXPANDED = Object.keys(STATISTIC_DEFINITIONS);
 
 export const TIMESERIES_STATISTICS = [...PRIMARY_STATISTICS];
 
-export const UPDATES_COUNT = 5;
+export const UPDATES_COUNT = 10;
 
 export const COUNTY_TABLE_COUNT = 30;
 

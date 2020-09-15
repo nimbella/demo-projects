@@ -1,6 +1,6 @@
 import Footer from './Footer';
 
-import definition from '../data/swagger.yaml';
+import definition from '../data/google_civic_information.json';
 import {useTimeout} from '../hooks/useTimeout';
 
 import React, {useEffect} from 'react';

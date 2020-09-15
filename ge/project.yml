@@ -13,3 +13,17 @@ packages:
         runtime: 'nodejs:default'        
       - name: state_counties
         runtime: 'nodejs:default'
+      - name: divisions
+        runtime: 'nodejs:default'
+        parameters: ${<.env}
+      - name: elections
+        runtime: 'nodejs:default'
+        parameters: ${<.env}
+      - name: reps
+        runtime: 'nodejs:default'
+        parameters: ${<.env}
+      - name: voterinfo
+        runtime: 'nodejs:default'
+        parameters: ${<.env}
+      - name: resources
+        runtime: 'nodejs:default'

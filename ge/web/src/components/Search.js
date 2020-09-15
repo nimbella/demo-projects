@@ -1,3 +1,4 @@
+import {API_ROOT_URL} from '../constants';
 import {
   STATE_CODES_ARRAY,
   STATE_CODES,
@@ -72,7 +73,7 @@ function Search() {
           indexRemote: true,
           remote: {
             url:
-              'https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020/state_counties',
+              `${API_ROOT_URL}/state_counties`,
             transform: function (response) {
               const counties = [];
               Object.keys(response)

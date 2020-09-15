@@ -1,5 +1,5 @@
-import USAState from './components/USAState';
-import data from './data/usa-map-dimensions';
+import USAState from './USAState';
+import data from '../data/usa-map-dimensions';
 
 import PropTypes from 'prop-types';
 import React from 'react';

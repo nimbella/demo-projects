@@ -8,8 +8,7 @@ function main(args) {
 		contents = fs.readFileSync(__dirname + '/exitpolls.json', 'UTF-8');
 	}
 
-	return {body:JSON.parse(contents)};
-
+	return { body: JSON.parse(contents) };
 }
 
 exports.main = main;

@@ -1,4 +1,5 @@
 import {promises as fs} from 'fs';
+import {API_ROOT_URL} from '../constants';
 
 export function removeFileExtension(fileName) {
   return fileName.substr(0, fileName.lastIndexOf('.'));
@@ -10,7 +11,7 @@ function removeUnknown(e) {
 
 export async function getStatesAndCountiesFromAPI() {
   const url =
-    'https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020/state_counties';
+    `${API_ROOT_URL}/state_counties`;
   const stateCountyWiseResponse = await (await fetch(url)).json();
   const states = Object.keys(stateCountyWiseResponse).filter(removeUnknown);
   const result = {};

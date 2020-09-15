@@ -5,27 +5,27 @@ import {
   SLIDE_OUT_MOBILE,
 } from '../animations';
 
-import React, {useState, useCallback, useRef} from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import * as Icon from 'react-feather';
-import {Link} from 'react-router-dom';
-import {useSpring, useTransition, animated} from 'react-spring';
-import {useLockBodyScroll, useWindowSize} from 'react-use';
+import { Link } from 'react-router-dom';
+import { useSpring, useTransition, animated } from 'react-spring';
+import { useLockBodyScroll, useWindowSize } from 'react-use';
 
-function Navbar({pages, darkMode}) {
+function Navbar({ pages, darkMode }) {
   const [expand, setExpand] = useState(false);
 
   useLockBodyScroll(expand);
   const windowSize = useWindowSize();
 
-  const [spring, set, stop] = useSpring(() => ({opacity: 0}));
-  set({opacity: 1});
+  const [spring, set, stop] = useSpring(() => ({ opacity: 0 }));
+  set({ opacity: 1 });
   stop();
 
   const transitions = useTransition(expand, null, {
     from: windowSize.width < 769 ? SLIDE_IN_MOBILE : SLIDE_IN,
     enter: windowSize.width < 769 ? SLIDE_OUT_MOBILE : SLIDE_OUT,
     leave: windowSize.width < 769 ? SLIDE_IN_MOBILE : SLIDE_IN,
-    config: {mass: 1, tension: 210, friction: 26},
+    config: { mass: 1, tension: 210, friction: 26 },
   });
 
   const handleMouseEnter = useCallback(() => {
@@ -60,9 +60,9 @@ function Navbar({pages, darkMode}) {
                 <Icon.Home {...activeNavIcon('/')} />
               </span>
             </Link>
-            <Link to="/map">
+            <Link to="/trends">
               <span>
-                <Icon.Map {...activeNavIcon('/map')} />
+                <Icon.TrendingUp {...activeNavIcon('/trends')} />
               </span>
             </Link>
             <Link to="/exitpolls">
@@ -80,27 +80,32 @@ function Navbar({pages, darkMode}) {
                 <Icon.Link {...activeNavIcon('/resources')} />
               </span>
             </Link>
+            <Link to="/source">
             <span>
-              <SunMoon {...{darkMode}} />
+              <Icon.Code {...activeNavIcon('/source')} />
+            </span>
+          </Link>
+            <span>
+              <SunMoon {...{ darkMode }} />
             </span>
           </React.Fragment>
         )}
       </div>
 
-      {transitions.map(({item, key, props}) =>
+      {transitions.map(({ item, key, props }) =>
         item ? (
           <animated.div key={key} style={props}>
-            <Expand {...{pages, setExpand, darkMode, windowSize}} />
+            <Expand {...{ pages, setExpand, darkMode, windowSize }} />
           </animated.div>
         ) : (
-          <animated.div key={key} style={props}></animated.div>
-        )
+            <animated.div key={key} style={props}></animated.div>
+          )
       )}
     </animated.div>
   );
 }
 
-function Expand({pages, setExpand, darkMode, windowSize}) {
+function Expand({ pages, setExpand, darkMode, windowSize }) {
   const expandElement = useRef(null);
 
   const handleMouseLeave = useCallback(() => {
@@ -130,7 +135,7 @@ function Expand({pages, setExpand, darkMode, windowSize}) {
         return null;
       })}
 
-      {windowSize.width < 768 && <SunMoon {...{darkMode}} />}
+      {windowSize.width < 768 && <SunMoon {...{ darkMode }} />}
 
       <div className="expand-bottom"></div>
     </div>
@@ -149,7 +154,7 @@ const activeNavIcon = (path) => ({
   },
 });
 
-const SunMoon = ({darkMode}) => {
+const SunMoon = ({ darkMode }) => {
   return (
     <div className="SunMoon" onClick={darkMode.toggle}>
       <div>

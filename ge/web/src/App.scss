@@ -4555,3 +4555,15 @@ a {
 .Api html {
   font-size: 62.2% !important;
 }
+
+.jumbotron select {
+  width: 180px;
+  height: 35px;
+  text-align-last:center;
+  // padding: 5px 35px 5px 5px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

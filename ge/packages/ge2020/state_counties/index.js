@@ -8,8 +8,7 @@ function main(args) {
 		contents = fs.readFileSync(__dirname + '/state_county_wise.json', 'UTF-8');
 	}
 
-	return {body:JSON.parse(contents)};
-
+	return { body: JSON.parse(contents) };
 }
 
 exports.main = main;
