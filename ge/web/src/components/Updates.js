@@ -53,7 +53,7 @@ function Updates({updates}) {
                     formatDistance(new Date(activity.created), new Date())
                   ) + ' ago'}
                 </h5>
-                <a href={activity.link} target="_blank">
+                <a href={activity.link} target="_blank" rel="noopener noreferrer">
                   <h4
                     dangerouslySetInnerHTML={{
                       __html: activity.title,

@@ -1,0 +1,255 @@
+{
+	"info": {
+		"name": "Nimbella Election API",
+		"description": "Provides election news, polling places, early vote locations, contest data, exit polls data, county wise historical voting data, election officials, and government representatives for U.S. residential addresses.\n\nContact Support:\n Name: Nimbella",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "reps",
+			"item": [
+				{
+					"name": "Representative Info By Address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reps?address=<string>&includeOffices=true&levels=[<string>]&roles=[<string>]",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reps"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "<string>",
+									"description": "(Required) The address to look up. May only be specified if the field ocdId is not given in the URL."
+								},
+								{
+									"key": "includeOffices",
+									"value": "true",
+									"description": "Whether to return information about offices and officials. If false, only the top-level district information will be returned."
+								},
+								{
+									"key": "levels",
+									"value": "[<string>]",
+									"description": "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."
+								},
+								{
+									"key": "roles",
+									"value": "[<string>]",
+									"description": "A list of office roles to filter by. Only offices fulfilling one of these roles will be returned. Divisions that don't contain a matching office will not be returned."
+								}
+							]
+						},
+						"description": "Looks up political geography and representative information for a single address."
+					},
+					"response": []
+				},
+				{
+					"name": "Representative Info By Division",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reps/:ocdId?levels=[<string>]&recursive=<boolean>&roles=[<string>]",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reps",
+								":ocdId"
+							],
+							"query": [
+								{
+									"key": "levels",
+									"value": "[<string>]",
+									"description": "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."
+								},
+								{
+									"key": "recursive",
+									"value": "<boolean>",
+									"description": "If true, information about all divisions contained in the division requested will be included as well. For example, if querying ocd-division/country:us/district:dc, this would also return all DC's wards and ANCs.\n"
+								},
+								{
+									"key": "roles",
+									"value": "[<string>]",
+									"description": "A list of office roles to filter by. Only offices fulfilling one of these roles will be returned. Divisions that don't contain a matching office will not be returned.\n"
+								}
+							],
+							"variable": [
+								{
+									"id": "68f893df-c40c-4c47-baef-cf76a4f0f517",
+									"key": "ocdId",
+									"value": "<string>",
+									"type": "string",
+									"description": "(Required) The Open Civic Data division identifier of the division to look up."
+								}
+							]
+						},
+						"description": "Looks up representative information for a single geographic division."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Divisions Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/divisions?query=<string>",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"divisions"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "<string>",
+							"description": "The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html"
+						}
+					]
+				},
+				"description": "Searches for political divisions by their natural name or OCD ID."
+			},
+			"response": []
+		},
+		{
+			"name": "County State Wise Results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/counties?year=<string>",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"counties"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "<string>",
+							"description": "The year to get data for."
+						}
+					]
+				},
+				"description": "Searches for political divisions by their natural name or OCD ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Elections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/elections",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"elections"
+					]
+				},
+				"description": "List of available elections to query."
+			},
+			"response": []
+		},
+		{
+			"name": "Exit Polls",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/exitpolls",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"exitpolls"
+					]
+				},
+				"description": "List of available elections to query."
+			},
+			"response": []
+		},
+		{
+			"name": "Voter Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/voterinfo?address=<string>&electionId=0&officialOnly=false&returnAllAvailableData=false",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"voterinfo"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "<string>",
+							"description": "(Required) The registered address of the voter to look up."
+						},
+						{
+							"key": "electionId",
+							"value": "0",
+							"description": "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/elections"
+						},
+						{
+							"key": "officialOnly",
+							"value": "false",
+							"description": "If set to true, only data from official state sources will be returned."
+						},
+						{
+							"key": "returnAllAvailableData",
+							"value": "false",
+							"description": "If set to true, the query will return the success code and include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries."
+						}
+					]
+				},
+				"description": "Looks up information relevant to a voter based on the voter's registered address."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "aa9be94a-4d06-45f6-bdad-9ca9b784e1ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b4ed4c94-92d3-4407-a988-c567f45de729",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

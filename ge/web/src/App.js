@@ -3,7 +3,7 @@ import API from './components/API';
 import ExitPolls from './components/ExitPolls';
 import Map from './components/Home';
 import Navbar from './components/Navbar';
-
+import VoterInfo from './components/VoterInfo';
 import React, {lazy, Suspense} from 'react';
 import ReactNotification from 'react-notifications-component';
 import {Route, Redirect, Switch, useLocation} from 'react-router-dom';
@@ -51,7 +51,7 @@ const App = () => {
     },
     {
       pageLink: '/source',
-      view: Resources,
+      view: VoterInfo,
       displayName: 'Source',
       showInNavbar: true,
     },

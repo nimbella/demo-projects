@@ -1,10 +1,10 @@
 import Footer from './Footer';
 
 import definition from '../data/google_civic_information.json';
-import {useTimeout} from '../hooks/useTimeout';
-
-import React, {useEffect} from 'react';
-import {Helmet} from 'react-helmet';
+import { useTimeout } from '../hooks/useTimeout';
+// import useScript from '../hooks/useScript';
+import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Lincoln from 'react-lincoln';
 import useDarkMode from 'use-dark-mode';
 
@@ -20,11 +20,7 @@ function API() {
     1 * 500,
     darkMode
   );
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  // useScript('../utils/postman.js');
   return (
     <React.Fragment>
       <Helmet>
@@ -34,15 +30,18 @@ function API() {
           content="Nimbella API - General Election 2020 USA Related Information"
         />
       </Helmet>
+
       <div className="jumbotron">
         <h1>Nimbella API for General Election 2020 USA</h1>
         <h2>
           Look up the representatives, polling places, early vote location,
           candidate data, and other election official information.
         </h2>
+        <div className="postman-run-button" data-postman-action="collection/import" data-postman-var="8dcbd2a6e1ca1550ff48">
+        </div>
       </div>
       <div className="Api">
-        <Lincoln definition={definition} {...{darkMode}} />
+        <Lincoln definition={definition} {...{ darkMode }} />
       </div>
       <Footer />
     </React.Fragment>

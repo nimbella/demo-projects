@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './ProgressBar.css';
+import '../ProgressBar.scss';
 import marker from '../img/270-marker.png';
 
 class ProgressBar extends Component {

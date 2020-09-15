@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './SplitElectoralVotes.css';
+import '../SplitElectoralVotes.scss';
 
 class SplitElectoralVotes extends Component {
   render() {

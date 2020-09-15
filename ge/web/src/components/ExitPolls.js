@@ -1,155 +1,39 @@
 /* eslint-disable react/jsx-key */
 import Footer from './Footer';
-import {API_ROOT_URL} from '../constants';
-import GenericTable from '../utils/genericTable';
-
-import React, {useState, useEffect, useMemo} from 'react';
-import {Helmet} from 'react-helmet';
-import styled from 'styled-components';
-
-const Styles = styled.div`
-  padding: 1rem;
-
-  .table {
-    ${''}
-    display: block;
-    ${''}
-    overflow: auto;
-
-    border-spacing: 0;
-    border: 1px solid black;
-
-    .thead {
-      ${''}
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-
-    .tbody {
-      ${''}
-      overflow-y: scroll;
-      overflow-x: hidden;
-      height: 250px;
-    }
-
-    .tr {
-      :last-child {
-        .td {
-          border-bottom: 0;
-        }
-      }
-      border-bottom: 1px solid black;
-    }
-
-    .th,
-    .td {
-      margin: 0;
-      padding: 0.5rem;
-      border-right: 1px solid black;
-
-      ${''}
-      position: relative;
-
-      :last-child {
-        border-right: 0;
-      }
-
-      .resizer {
-        right: -5px;
-        background: blue;
-        width: 10px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        z-index: 1;
-        ${''}
-        touch-action:none;
-
-        &.isResizing {
-          background: red;
-        }
-      }
-    }
-
-    .th {
-      &:last-of-type {
-        .resizer {
-          ${''}
-          ${''}
-          right: -15px;
-        }
-      }
-    }
-  }
-`;
+import { API_ROOT_URL } from '../constants';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { AgGridColumn, AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import useDarkMode from 'use-dark-mode';
+import { useTimeout } from '../hooks/useTimeout';
 
 function ExitPolls() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await (
-        await fetch(
-          `${API_ROOT_URL}/exitpolls`
-        )
-      ).json();
-      setData(result);
-    })();
-  }, []);
-
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Poll Source',
-        accessor: 'Poll source',
-      },
-      {
-        Header: 'Date',
-        accessor: 'Date',
-      },
-      {
-        Header: 'Sample size',
-        accessor: 'Sample size',
-      },
-      {
-        Header: 'Margin of error',
-        accessor: 'Margin of error',
-      },
-      {
-        Header: 'Donald Trump (Republican)',
-        accessor: 'Donald Trump (Republican)',
-      },
-      {
-        Header: 'Joe Biden (Democratic)',
-        accessor: 'Joe Biden (Democratic)',
-      },
-      {
-        Header: 'Jo Jorgensen (Libertarian)',
-        accessor: 'Jo Jorgensen (Libertarian)',
-      },
-      {
-        Header: 'Howie Hawkins (Green)',
-        accessor: 'Howie Hawkins (Green)',
-      },
-      {
-        Header: 'Other',
-        accessor: 'Other',
-      },
-      {
-        Header: 'Abstention',
-        accessor: 'Abstention',
-      },
-      {
-        Header: 'Undecided',
-        accessor: 'Undecided',
-      },
-      {
-        Header: 'Lead',
-        accessor: 'Lead',
-      },
-    ],
-    []
+  const darkMode = useDarkMode(false);
+  useTimeout(
+    () => {
+      const gridDiv = document.querySelector('#grid');
+      if (darkMode.value) {
+        gridDiv.classList.add('ag-theme-alpine-dark');
+        gridDiv.classList.remove('ag-theme-alpine')
+      }
+      else {
+        gridDiv.classList.remove('ag-theme-alpine-dark')
+        gridDiv.classList.add('ag-theme-alpine')
+      }
+    },
+    0,
+    darkMode
   );
+
+  const [rowData, setRowData] = useState([]);
+  useEffect(() => {
+    fetch(`${API_ROOT_URL}/exitpolls`)
+      .then(result => result.json())
+      .then(rowData => setRowData(rowData))
+  }, []);
 
   return (
     <React.Fragment>
@@ -159,12 +43,25 @@ function ExitPolls() {
       </Helmet>
       <div className="jumbotron">
         <h1>Exit Polls</h1>
-        <h2></h2>
       </div>
       <div className="Map">
-        <Styles>
-          <GenericTable columns={columns} data={data} />
-        </Styles>
+        <div id='grid' className="ag-theme-alpine-dark" style={{ width: '100%' }}>
+          <AgGridReact defaultColDef={{ sortable: true, filter: true, resizable: true }}
+            rowData={rowData} pagination={true} paginationPageSize={25} domLayout='autoHeight'>
+            <AgGridColumn field="Poll source"></AgGridColumn>
+            <AgGridColumn field="Date"></AgGridColumn>
+            <AgGridColumn field="Sample size"></AgGridColumn>
+            <AgGridColumn field="Margin of error"></AgGridColumn>
+            <AgGridColumn field="Donald Trump (Republican)"></AgGridColumn>
+            <AgGridColumn field="Joe Biden (Democratic)"></AgGridColumn>
+            <AgGridColumn field="Jo Jorgensen (Libertarian)"></AgGridColumn>
+            <AgGridColumn field="Howie Hawkins (Green)"></AgGridColumn>
+            <AgGridColumn field="Other"></AgGridColumn>
+            <AgGridColumn field="Abstention"></AgGridColumn>
+            <AgGridColumn field="Undecided"></AgGridColumn>
+            <AgGridColumn field="Lead"></AgGridColumn>
+          </AgGridReact>
+        </div>
       </div>
       <Footer />
     </React.Fragment>

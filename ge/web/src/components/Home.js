@@ -6,7 +6,7 @@ import SplitElectoralVotes from './SplitElectoralVotes';
 import HistoricalMaps from '../data/historical-maps';
 import { notify } from '../utils/commonFunctions';
 
-import React, { Component, useState, useRef, lazy, Suspense } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 const Timer = lazy(() => import('./Timer'));
 class Home extends Component {
@@ -703,10 +703,10 @@ class Home extends Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>Electoral College Map -General Election 2020 USA</title>
+          <title>General Election 2020 USA</title>
           <meta
             name="title"
-            content="Electoral College Map -General Election 2020 USA"
+            content="General Election 2020 USA"
           />
         </Helmet>
         <div className="jumbotron">
