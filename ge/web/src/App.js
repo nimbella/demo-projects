@@ -4,9 +4,9 @@ import ExitPolls from './components/ExitPolls';
 import Map from './components/Home';
 import Navbar from './components/Navbar';
 import VoterInfo from './components/VoterInfo';
-import React, {lazy, Suspense} from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactNotification from 'react-notifications-component';
-import {Route, Redirect, Switch, useLocation} from 'react-router-dom';
+import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
 import 'react-notifications-component/dist/theme.css';
 
@@ -30,11 +30,17 @@ const App = () => {
       view: Home,
       displayName: 'News & Trends',
       showInNavbar: true,
-    },   
+    },
     {
       pageLink: '/exitpolls',
       view: ExitPolls,
       displayName: 'Exit Polls',
+      showInNavbar: true,
+    },
+    {
+      pageLink: '/voter',
+      view: VoterInfo,
+      displayName: 'Voter Info',
       showInNavbar: true,
     },
     {
@@ -43,6 +49,7 @@ const App = () => {
       displayName: 'API',
       showInNavbar: true,
     },
+  
     {
       pageLink: '/resources',
       view: Resources,
@@ -51,7 +58,7 @@ const App = () => {
     },
     {
       pageLink: '/source',
-      view: VoterInfo,
+      view: Resources,
       displayName: 'Source',
       showInNavbar: true,
     },
@@ -66,7 +73,7 @@ const App = () => {
   return (
     <div className="App">
       <ReactNotification />
-      <Navbar pages={pages} {...{darkMode}} />
+      <Navbar pages={pages} {...{ darkMode }} />
 
       <Suspense fallback={<div />}>
         <Switch location={location}>
@@ -75,7 +82,7 @@ const App = () => {
               <Route
                 exact
                 path={page.pageLink}
-                render={({match}) => <page.view />}
+                render={({ match }) => <page.view />}
                 key={index}
               />
             );

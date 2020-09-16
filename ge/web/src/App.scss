@@ -73,7 +73,7 @@ $dark-m-purple-mid: #9673b9bb;
 $dark-m-purple-light: #40008050;
 
 * {
-  font-family: 'archia';
+  font-family: "archia";
 }
 
 html {
@@ -2744,7 +2744,7 @@ input {
     &::after {
       background-color: $gray-mid;
       border-radius: 50%;
-      content: '';
+      content: "";
       height: 10px;
       left: 0;
       position: absolute;
@@ -4149,7 +4149,7 @@ footer {
       }
 
       &:not(.zone) {
-        filter: invert(1) hue-rotate(180deg) saturate(1.5) url('#balance-color');
+        filter: invert(1) hue-rotate(180deg) saturate(1.5) url("#balance-color");
       }
     }
 
@@ -4470,7 +4470,6 @@ path:hover {
   cursor: pointer;
 }
 
- 
 .results {
   margin-left: 10px;
 }
@@ -4490,7 +4489,9 @@ path:hover {
   text-transform: uppercase;
 }
 
-.btn:focus, .btn:active:focus, .btn.active:focus {
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
   outline: 0 none;
 }
 
@@ -4499,7 +4500,8 @@ path:hover {
   color: #ffffff;
 }
 
-.btn-primary:active, .btn-primary.active {
+.btn-primary:active,
+.btn-primary.active {
   background: #007299;
   box-shadow: none;
 }
@@ -4532,7 +4534,6 @@ path:hover {
   cursor: pointer;
 }
 
- 
 // API
 .Api {
   margin-left: 8rem;
@@ -4552,10 +4553,26 @@ a {
 .jumbotron select {
   width: 180px;
   height: 35px;
-  text-align-last:center;
+  text-align-last: center;
   font-size: 18px;
   border: 2px solid #ccc;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+#_vit.vit-modal {
+  width: 90% !important;
+  margin-left: 29% !important;
+  height: 250px !important;
+  border: none!important;
+}
+#_vit #address-view #user-image {
+  display: none !important;
+}
+#_vit #select-language {
+  display: none !important;
+}
+#_vit #address-view .title,.footer,#app-info  {
+  display: none !important;
 }

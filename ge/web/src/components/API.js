@@ -3,7 +3,7 @@ import Footer from './Footer';
 import definition from '../data/Nimbella Election API.yaml';
 import { useTimeout } from '../hooks/useTimeout';
 import useScript from '../hooks/useScript';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import Lincoln from 'react-lincoln';
 import useDarkMode from 'use-dark-mode';
@@ -20,7 +20,7 @@ function API() {
     1 * 500,
     darkMode
   );
-  useScript(`(function (p, o, s, t, m, a, n) {
+  useScript(null, `(function (p, o, s, t, m, a, n) {
     !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); })
     !o.getElementById(s + t) && o.getElementsByTagName("head")[0].appendChild((
       (n = o.createElement("script")),
