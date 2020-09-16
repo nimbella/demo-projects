@@ -49,17 +49,16 @@ const App = () => {
       displayName: 'API',
       showInNavbar: true,
     },
-  
-    {
-      pageLink: '/resources',
-      view: Resources,
-      displayName: 'Resources',
-      showInNavbar: true,
-    },
     {
       pageLink: '/source',
       view: Resources,
       displayName: 'Source',
+      showInNavbar: true,
+    },
+    {
+      pageLink: '/resources',
+      view: Resources,
+      displayName: 'Resources',
       showInNavbar: true,
     },
     {

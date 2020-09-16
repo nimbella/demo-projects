@@ -67,7 +67,7 @@ function Navbar({ pages, darkMode }) {
             </Link>
             <Link to="/exitpolls">
               <span>
-                <Icon.DivideCircle {...activeNavIcon('/exitpolls')} />
+                <Icon.Percent {...activeNavIcon('/exitpolls')} />
               </span>
             </Link>
             <Link to="/voter">
@@ -79,17 +79,17 @@ function Navbar({ pages, darkMode }) {
               <span>
                 <Icon.Database {...activeNavIcon('/api')} />
               </span>
-            </Link>
-            <Link to="/resources">
-              <span>
-                <Icon.Link {...activeNavIcon('/resources')} />
-              </span>
-            </Link>
+            </Link>           
             <Link to="/source">
               <span>
                 <Icon.Code {...activeNavIcon('/source')} />
               </span>
             </Link>
+            <Link to="/resources">
+            <span>
+              <Icon.Link {...activeNavIcon('/resources')} />
+            </span>
+          </Link>
             <span>
               <SunMoon {...{ darkMode }} />
             </span>

@@ -20,8 +20,6 @@ const Level = lazy(() => import('./Level'));
 const MapSwitcher = lazy(() => import('./MapSwitcher'));
 const StateHeader = lazy(() => import('./StateHeader'));
 
-// const Voter = lazy(() => import('./VoterInfo'));
-
 function Trends() {
   const [regionHighlighted, setRegionHighlighted] = useState({
     stateCode: 'TT',
@@ -62,7 +60,7 @@ function Trends() {
   return (
     <React.Fragment>
       <Helmet>
-        <title>General Election 2020 USA</title>
+        <title>News and Trends - General Election 2020 USA</title>
         <meta name="title" content="General Election 2020 USA" />
       </Helmet>
       <div className="jumbotron">
