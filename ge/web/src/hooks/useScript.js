@@ -1,18 +1,22 @@
 import { useEffect } from 'react';
 
-const useScript = url => {
+const useScript = (url, body) => {
   useEffect(() => {
     const script = document.createElement('script');
-
-    script.src = url;
-    script.async = true;
-
+    if (url) {
+      script.src = url;
+      // script.async = true;
+    }
+    if (body) {
+      const scriptText = document.createTextNode(body);
+      script.appendChild(scriptText);
+    }
     document.body.appendChild(script);
 
     return () => {
       document.body.removeChild(script);
     }
-  }, [url]);
+  }, [url, body]);
 };
 
 export default useScript;

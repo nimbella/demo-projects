@@ -1,12 +1,13 @@
 {
 	"info": {
+		"_postman_id": "3aaea53a-0cda-4d39-9a2d-fbe086d88fce",
 		"name": "Nimbella Election API",
 		"description": "Provides election news, polling places, early vote locations, contest data, exit polls data, county wise historical voting data, election officials, and government representatives for U.S. residential addresses.\n\nContact Support:\n Name: Nimbella",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "reps",
+			"name": "Representatives",
 			"item": [
 				{
 					"name": "Representative Info By Address",
@@ -81,10 +82,8 @@
 							],
 							"variable": [
 								{
-									"id": "68f893df-c40c-4c47-baef-cf76a4f0f517",
 									"key": "ocdId",
 									"value": "<string>",
-									"type": "string",
 									"description": "(Required) The Open Civic Data division identifier of the division to look up."
 								}
 							]
@@ -142,7 +141,25 @@
 						}
 					]
 				},
-				"description": "Searches for political divisions by their natural name or OCD ID."
+				"description": "County and State wise voting stats for a particualr election year, defaults to 2016."
+			},
+			"response": []
+		},
+		{
+			"name": "Timeseries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/timeseries",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"timeseries"
+					]
+				},
+				"description": "Party wise voting stats since 1979, segregated by county and state."
 			},
 			"response": []
 		},
@@ -165,6 +182,24 @@
 			"response": []
 		},
 		{
+			"name": "Resources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resources",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resources"
+					]
+				},
+				"description": "Elections related APIs, Datasets and Websites."
+			},
+			"response": []
+		},
+		{
 			"name": "Exit Polls",
 			"request": {
 				"method": "GET",
@@ -178,7 +213,25 @@
 						"exitpolls"
 					]
 				},
-				"description": "List of available elections to query."
+				"description": "Exit polls data from various sources."
+			},
+			"response": []
+		},
+		{
+			"name": "News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/news",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"news"
+					]
+				},
+				"description": "Presidential Election related news with title, description and source, sorted in timely fashion."
 			},
 			"response": []
 		},
@@ -227,7 +280,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "aa9be94a-4d06-45f6-bdad-9ca9b784e1ea",
+				"id": "78ed5dd5-dd3e-4f21-8d6a-6b32e24b89a9",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -237,7 +290,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b4ed4c94-92d3-4407-a988-c567f45de729",
+				"id": "0ee9a81c-6613-4040-91bc-c31121619d22",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -247,6 +300,7 @@
 	],
 	"variable": [
 		{
+			"id": "1bd9ac2a-a783-4b91-bc8c-f5a59b9a1566",
 			"key": "baseUrl",
 			"value": "https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020"
 		}

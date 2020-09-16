@@ -32,10 +32,8 @@ body {
 
 .progress-bar {
   position: relative;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  height: 30px;
-  width: 1000px;
+  height: 18%;
+  width: 100%;
   background: #d3d3d3;
   border-radius: 50px;
   border: 1px solid #333;
@@ -59,7 +57,7 @@ body {
 .dem-filler {
   float: left;
   background: #007bff;
-  height: inherit;
+  height: 100%;
   min-width: 0px;
   border-radius: inherit;
   transition: width 0.2s ease-in;

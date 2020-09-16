@@ -1,8 +1,8 @@
 import Footer from './Footer';
 
-import definition from '../data/google_civic_information.json';
+import definition from '../data/Nimbella Election API.yaml';
 import { useTimeout } from '../hooks/useTimeout';
-// import useScript from '../hooks/useScript';
+import useScript from '../hooks/useScript';
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Lincoln from 'react-lincoln';
@@ -20,7 +20,15 @@ function API() {
     1 * 500,
     darkMode
   );
-  // useScript('../utils/postman.js');
+  useScript(`(function (p, o, s, t, m, a, n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); })
+    !o.getElementById(s + t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+      (n.id = s + t), (n.async = 1), (n.src = m), n
+    ));
+  
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+  `);
   return (
     <React.Fragment>
       <Helmet>
@@ -30,7 +38,6 @@ function API() {
           content="Nimbella API - General Election 2020 USA Related Information"
         />
       </Helmet>
-
       <div className="jumbotron">
         <h1>Nimbella API for General Election 2020 USA</h1>
         <h2>

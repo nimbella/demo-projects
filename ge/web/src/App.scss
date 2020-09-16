@@ -4433,8 +4433,16 @@ footer {
   }
 }
 
-// Map
+.Polls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 12rem;
+  margin-right: 6rem;
+}
 
+// Map
 .Map {
   display: flex;
   flex-direction: row;
@@ -4462,10 +4470,7 @@ path:hover {
   cursor: pointer;
 }
 
-// button {
-//   margin: 5px;
-// }
-
+ 
 .results {
   margin-left: 10px;
 }
@@ -4504,6 +4509,7 @@ path:hover {
   background-color: #007bff;
   font-weight: bold;
   color: #ffffff;
+  border-radius: 12px;
 }
 
 .dem-btn:hover {
@@ -4517,6 +4523,7 @@ path:hover {
   background-color: red;
   font-weight: bold;
   color: #ffffff;
+  border-radius: 12px;
 }
 
 .rep-btn:hover {
@@ -4525,17 +4532,7 @@ path:hover {
   cursor: pointer;
 }
 
-// .dropdown {
-//   display: inline-block;
-//   margin-top: 0%;
-//   margin-left: 500px;
-//   /* margin-right: 25%; */
-// }
-
-// .dropdown select {
-//   margin-left: 20%;
-// }
-
+ 
 // API
 .Api {
   margin-left: 8rem;
