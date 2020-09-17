@@ -33,7 +33,7 @@ To configure your Nimbella Cloud account and install `nim`, see [How To Use the 
 
 ### How to deploy the demos
 
-Besides the Nimbella GitHub demos used as tutorials in the guide, there are other demos that are also available in this repository.
+Besides the Nimbella GitHub demos used as tutorials in this guide, there are other demos that are also available in this repository.
 
 To deploy any demo project directly from GitHub to the Nimbella Cloud, run the following nim command in your terminal:
 ```
