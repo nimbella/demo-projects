@@ -73,7 +73,7 @@ $dark-m-purple-mid: #9673b9bb;
 $dark-m-purple-light: #40008050;
 
 * {
-  font-family: "archia";
+  font-family: 'Open Sans', sans-serif;
 }
 
 html {
@@ -167,7 +167,7 @@ h6 {
   .navbar-middle {
     color: $gray;
     font-size: 18px;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
 
     span {
@@ -178,11 +178,11 @@ h6 {
   .navbar-right {
     color: $gray;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     padding: 1.5rem;
     text-align: center;
-    width: 3rem;
+    width: 80%;
   }
 
   .language-toggle {
@@ -241,7 +241,7 @@ h6 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 9rem;
+  margin-left: 12rem;
   margin-right: 3rem;
 
   .home-left,
@@ -3138,20 +3138,24 @@ footer {
 }
 
 .Resources {
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
   min-height: 30rem;
-  width: 100%;
+  margin-left: 12rem;
+  width: calc(100% - 12rem);
+  padding: 2rem;
+  box-sizing: border-box;
 
   & > * {
     align-self: center;
     margin-bottom: 1.5rem;
-    width: 34rem;
+    width: 33%;
+    float: right;
   }
-
-  & > *:first-child {
-    margin-top: 4rem;
-  }
+  //
+  //& > *:first-child {
+  //  margin-top: 4rem;
+  //}
 
   h2 {
     font-weight: 600;
@@ -3647,6 +3651,7 @@ footer {
     height: 100%;
     justify-content: flex-start;
     min-width: 5rem;
+    width: 12rem;
     position: fixed;
     z-index: 999;
 
@@ -3658,34 +3663,36 @@ footer {
     }
 
     .navbar-middle {
-      font-size: 0.7rem;
+      font-size: 1rem;
       order: 1;
-      padding-bottom: 2rem;
-      padding-top: 2rem;
+      padding: 1.5rem 2rem;
       text-align: center;
-      width: 57px;
+      width: 80%;
       word-wrap: break-word;
     }
 
     .navbar-right {
-      align-items: center;
+      align-items: flex-start;
       background: $gray-light-opaque;
       display: flex;
       flex-direction: column;
       order: 2;
-      padding-bottom: 0;
-      padding-top: 0;
+      padding: 0 0 0 1.5rem;
 
       span {
         display: flex;
         flex-direction: row;
-        height: 1.5rem;
         justify-content: center;
-        margin-bottom: 1.5rem;
-        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        align-items: center;
+
+        &.focused {
+          color: $blue;
+        }
 
         &:hover {
-          color: $gray-mid;
+          color: $blue;
         }
       }
     }
@@ -4438,8 +4445,8 @@ footer {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 12rem;
-  margin-right: 6rem;
+  margin-left: 15rem;
+  margin-right: 3rem;
 }
 
 // Map
@@ -4448,12 +4455,22 @@ footer {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 12rem;
-  margin-right: 12rem;
+  margin-left: 15rem;
+  margin-right: 6rem;
+
+  & > div {
+    width: 100%;
+
+    .progress-bar-labels {
+      width: 100%;
+    }
+  }
 }
 
 .jumbotron {
   text-align: center;
+  margin-left: 12rem;
+  width: calc(100% - 12rem);
 }
 
 .winner-text {
@@ -4536,12 +4553,23 @@ path:hover {
 
 // API
 .Api {
-  margin-left: 8rem;
+  margin-left: 12rem;
+  .page-0-143 { width: 99%; }
+  .main-0-144 {
+    overflow-y: auto;
+    height: calc(100vh - 5rem);
+    width: 75% !important;
+    font-size: 1em;
+    * { font-size: 1rem !important; }
+    h1 { font-size: 1.8em !important; font-weight: 600; }
+    h2 { font-size: 1.4em !important; font-weight: 600; }
+    h3 { font-size: 1.2em !important; font-weight: 600; }
+    h4 { font-weight: 600; }
+    .method-0-140 { margin-bottom: 0; padding-bottom: 2rem; border-bottom: 1px solid $gray-dark; }
+  }
 }
 
-.main-0-144 {
-  width: 75% !important;
-}
+
 
 html {
   font-size: 100% !important;
@@ -4575,4 +4603,18 @@ a {
 }
 #_vit #address-view .title,.footer,#app-info  {
   display: none !important;
+}
+
+@media (max-width: 769px) {
+  .navbar-middle {
+    a {
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+  }
+
+  .jumbotron, .Home, .Map, .Polls, .Api { margin-left: 0; width: 100%; padding: 1rem; box-sizing: border-box; }
+  .Api {
+    .main-0-144 { margin: 0; width: 100% !important; height: auto; }
+  }
 }

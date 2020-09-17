@@ -20,52 +20,60 @@ const App = () => {
 
   const pages = [
     {
-      pageLink: '/',
+      pageLink: '/election/',
       view: Map,
       displayName: 'Home',
       showInNavbar: true,
+      icon: 'Home'
     },
     {
-      pageLink: '/trends',
+      pageLink: '/election/trends',
       view: Home,
       displayName: 'News & Trends',
       showInNavbar: true,
-    },
+      icon: 'TrendingUp'
+    },   
     {
-      pageLink: '/exitpolls',
+      pageLink: '/election/exitpolls',
       view: ExitPolls,
       displayName: 'Exit Polls',
       showInNavbar: true,
+      icon: 'Percent'
     },
     {
-      pageLink: '/voter',
+      pageLink: '/election/voter',
       view: VoterInfo,
       displayName: 'Voter Info',
       showInNavbar: true,
+        icon: 'Info'
     },
     {
-      pageLink: '/api',
+      pageLink: '/election/api',
       view: API,
       displayName: 'API',
       showInNavbar: true,
+      icon: 'Database'
     },
     {
-      pageLink: '/source',
+      pageLink: '/election/sources',
       view: Resources,
       displayName: 'Source',
       showInNavbar: true,
+      icon: 'Code'
     },
     {
-      pageLink: '/resources',
+      pageLink: '/election/resource',
       view: Resources,
       displayName: 'Resources',
       showInNavbar: true,
+      icon: 'Link'
     },
     {
-      pageLink: '/state/:stateCode',
+      pageLink: '/election/state/:stateCode',
       view: State,
       displayName: 'State',
       showInNavbar: false,
+      icon: 'SunMoon'
     },
   ];
 
@@ -86,7 +94,7 @@ const App = () => {
               />
             );
           })}
-          <Redirect to="/" />
+          <Redirect to="/election/" />
         </Switch>
       </Suspense>
     </div>
