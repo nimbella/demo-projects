@@ -36,17 +36,16 @@ function Navbar({ pages, darkMode }) {
 
   return (
     <animated.div className="Navbar" style={spring}>
-      <div className="navbar-left"></div>
+      {/*<div className="navbar-left"></div>*/}
       <div className="navbar-middle">
-        <Link to="/" onClick={setExpand.bind(this, false)}>
-          General Election 2020 <br />
-          <span> USA </span>
+        <Link to="/election/" onClick={setExpand.bind(this, false)}>
+          General Election 2020 <span> USA </span>
         </Link>
       </div>
 
       <div
         className="navbar-right"
-        onMouseEnter={handleMouseEnter}
+        // onMouseEnter={handleMouseEnter}
         {...(windowSize.width < 769 && {
           onClick: setExpand.bind(this, !expand),
         })}
@@ -55,41 +54,16 @@ function Navbar({ pages, darkMode }) {
 
         {windowSize.width > 769 && (
           <React.Fragment>
-            <Link to="/">
-              <span>
-                <Icon.Home {...activeNavIcon('/')} />
-              </span>
-            </Link>
-            <Link to="/trends">
-              <span>
-                <Icon.TrendingUp {...activeNavIcon('/trends')} />
-              </span>
-            </Link>
-            <Link to="/exitpolls">
-              <span>
-                <Icon.Percent {...activeNavIcon('/exitpolls')} />
-              </span>
-            </Link>
-            <Link to="/voter">
-              <span>
-                <Icon.Info {...activeNavIcon('/voter')} />
-              </span>
-            </Link>
-            <Link to="/api">
-              <span>
-                <Icon.Database {...activeNavIcon('/api')} />
-              </span>
-            </Link>           
-            <Link to="/source">
-              <span>
-                <Icon.Code {...activeNavIcon('/source')} />
-              </span>
-            </Link>
-            <Link to="/resources">
-            <span>
-              <Icon.Link {...activeNavIcon('/resources')} />
-            </span>
-          </Link>
+            {pages.map((page, key) => (
+                <React.Fragment>
+                  {(pages.length - 1) > key && <Link to={page.pageLink}>
+                    <span {...navLinkProps(page.pageLink, page.animationDelayForNavbar)}>
+                      {React.createElement(Icon[page.icon], {...activeNavIcon(page.pageLink)})}&nbsp;&nbsp;
+                      {page.displayName}
+                    </span>
+                  </Link>}
+                </React.Fragment>
+            ))}
             <span>
               <SunMoon {...{ darkMode }} />
             </span>

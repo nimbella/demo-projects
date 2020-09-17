@@ -2,6 +2,7 @@
   "name": "ge2020usa",
   "version": "1.0.0",
   "private": true,
+  "homepage": "/election",
   "dependencies": {
     "@juggle/resize-observer": "^3.2.0",
     "@material-ui/core": "^4.11.0",
@@ -41,7 +42,7 @@
     "react-lincoln": "^0.4.1",
     "react-notifications-component": "^2.4.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.3",
     "react-spring": "^8.0.27",
     "react-swipeable": "^5.5.1",
     "react-syntax-highlighter": "^13.5.3",
@@ -59,7 +60,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "npm run compress_maps && cp build/index.html build/404.html && npm run build:sw",
+    "postbuild": "cp build/index.html build/404.html && npm run build:sw",
     "compress_maps": "rollup -c",
     "test": "react-scripts test --testPathIgnorePatterns=src/tests/mapAndApiStateNames.test.js",
     "test:map": "react-scripts test src/tests/mapAndApiStateNames.test.js",
