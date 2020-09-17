@@ -6,11 +6,11 @@ function Footer() {
     <footer>
       <div className="link">
         <a
-          href="https://github.com/nimbella/demo-projects/ge2020usa"
+          href="https://github.com/nimbella/demo-projects/election"
           target="_blank"
           rel="noopener noreferrer"
         >
-          ge2020usa
+        election2020
         </a>
       </div>
 

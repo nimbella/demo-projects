@@ -21,56 +21,56 @@ const App = () => {
 
   const pages = [
     {
-      pageLink: '/election/',
+      pageLink: '/',
       view: Map,
       displayName: 'Home',
       showInNavbar: true,
       icon: 'Home'
     },
     {
-      pageLink: '/election/trends',
+      pageLink: '/trends',
       view: Home,
       displayName: 'News & Trends',
       showInNavbar: true,
       icon: 'TrendingUp'
     },   
     {
-      pageLink: '/election/exitpolls',
+      pageLink: '/exitpolls',
       view: ExitPolls,
       displayName: 'Exit Polls',
       showInNavbar: true,
       icon: 'Percent'
     },
     {
-      pageLink: '/election/voter',
+      pageLink: '/voter',
       view: VoterInfo,
       displayName: 'Voter Info',
       showInNavbar: true,
         icon: 'Info'
     },
     {
-      pageLink: '/election/api',
+      pageLink: '/api',
       view: API,
       displayName: 'API',
       showInNavbar: true,
       icon: 'Database'
     },
     {
-      pageLink: '/election/build',
+      pageLink: '/build',
       view: Build,
       displayName: 'Build',
       showInNavbar: true,
       icon: 'Tool'
     },
     {
-      pageLink: '/election/resource',
+      pageLink: '/resource',
       view: Resources,
       displayName: 'Resources',
       showInNavbar: true,
       icon: 'Link'
     },
     {
-      pageLink: '/election/state/:stateCode',
+      pageLink: '/state/:stateCode',
       view: State,
       displayName: 'State',
       showInNavbar: false,
@@ -95,7 +95,7 @@ const App = () => {
               />
             );
           })}
-          <Redirect to="/election/" />
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </div>
