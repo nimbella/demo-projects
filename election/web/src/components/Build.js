@@ -2,8 +2,8 @@ import Footer from './Footer';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import 'github-markdown-css'
-const ReactMarkdown = require('react-markdown/with-html')
-const mdPath = require('../data/README.md')
+const ReactMarkdown = require('react-markdown')
+const mdPath = require('../data/buildpagecontent.md')
 
 function Build() {
   const [markdown, setMarkdown] = useState('');

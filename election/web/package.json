@@ -1,5 +1,5 @@
 {
-  "name": "ge2020usa",
+  "name": "election",
   "version": "1.0.0",
   "private": true,
   "homepage": "/election",
@@ -61,7 +61,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build",   
     "postbuild": "cp build/index.html build/404.html && npm run build:sw",
     "compress_maps": "rollup -c",
     "test": "react-scripts test --testPathIgnorePatterns=src/tests/mapAndApiStateNames.test.js",

@@ -1,12 +1,12 @@
 ## Inspiration
 
-35th president of the United States, John F. Kennedy once said
+John F. Kennedy, the 35th president of the United States, once said
 
 > The ignorance of one voter in a democracy impairs the security of all.
 
-The importance of free and easily accessible information can never be overestimated. With November round the corner, it's election time!
+The importance of free and easily accessible information can never be overestimated. With November around the corner, it's election time!
 
-Inspire your friends, family, and everyone you know to know more and vote in the 2020 Presidential Election by building, sharing or extending these election related APIs and App — backed by powerful serverless technology, these allow you to look up the representatives, polling places, early vote location, candidate data, and other election official information without the hassles of sign ups, auth keys or having to provision servers and worrying about hosting.
+Inspire your friends, family, and everyone you know to know more and vote in the 2020 Presidential Election by building, sharing, or extending these election-related APIs and App — backed by powerful serverless technology, these allow you to look up the representatives, polling places, early vote location, candidate data, and other election official information without the hassles of sign-ups, auth keys or having to provision servers and worrying about hosting.
 
 From Roald Dahl's unforgettable words about social change
 
@@ -23,11 +23,11 @@ So let's build a nation of citizens armed with the tools and information to choo
 Our Application Programming Interface (API) gives you maximum flexibility to create web pages and applications using all or selected parts of Nimbella Election APIs.
 e.g.
 
-- party/candidate wise, county/state wise voting trends since 1976 to 2016.
-- categorized list of elections related APIs, Datasets and Websites available on www.
-- latest news from prominent news sites ordered in timely fashion.
+- party/candidate wise, county/state wise voting trends from 1976 to 2016.
+- categorized list of election-related APIs, Datasets, and Websites available on www.
+- latest news from prominent news sites ordered in a timely fashion.
 
-Lastly as Nanette L. Avery puts it
+Lastly, as Nanette L. Avery puts it
 
 > Talk is cheap, voting is free; take it to the polls.
 
@@ -92,11 +92,11 @@ If you have the [Nimbella command line tool called `nim`](https://nimbella.io/do
 
 - To deploy from GitHub
 
-  `nim project deploy github:nimbella/demo-projects/ge`
+  `nim project deploy github:nimbella/demo-projects/election`
 
 - If you have cloned the repository
 
-  `nim project deploy /path/to/ge`
+  `nim project deploy /path/to/election`
 
 The output of this command will include a link to where the application is running in the cloud for your account.
 
