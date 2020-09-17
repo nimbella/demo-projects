@@ -73,7 +73,7 @@ $dark-m-purple-mid: #9673b9bb;
 $dark-m-purple-light: #40008050;
 
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 html {
@@ -4467,6 +4467,16 @@ footer {
   }
 }
 
+.Build
+{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  // justify-content: center;
+  margin-left: 15rem;
+  margin-right: 6rem;
+}
+
 .jumbotron {
   text-align: center;
   margin-left: 12rem;
@@ -4554,22 +4564,39 @@ path:hover {
 // API
 .Api {
   margin-left: 12rem;
-  .page-0-143 { width: 99%; }
+  .page-0-143 {
+    width: 99%;
+  }
   .main-0-144 {
     overflow-y: auto;
     height: calc(100vh - 5rem);
     width: 75% !important;
     font-size: 1em;
-    * { font-size: 1rem !important; }
-    h1 { font-size: 1.8em !important; font-weight: 600; }
-    h2 { font-size: 1.4em !important; font-weight: 600; }
-    h3 { font-size: 1.2em !important; font-weight: 600; }
-    h4 { font-weight: 600; }
-    .method-0-140 { margin-bottom: 0; padding-bottom: 2rem; border-bottom: 1px solid $gray-dark; }
+    * {
+      font-size: 1rem !important;
+    }
+    h1 {
+      font-size: 1.8em !important;
+      font-weight: 600;
+    }
+    h2 {
+      font-size: 1.4em !important;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 1.2em !important;
+      font-weight: 600;
+    }
+    h4 {
+      font-weight: 600;
+    }
+    .method-0-140 {
+      margin-bottom: 0;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $gray-dark;
+    }
   }
 }
-
-
 
 html {
   font-size: 100% !important;
@@ -4593,7 +4620,7 @@ a {
   width: 90% !important;
   margin-left: 29% !important;
   height: 250px !important;
-  border: none!important;
+  border: none !important;
 }
 #_vit #address-view #user-image {
   display: none !important;
@@ -4601,7 +4628,9 @@ a {
 #_vit #select-language {
   display: none !important;
 }
-#_vit #address-view .title,.footer,#app-info  {
+#_vit #address-view .title,
+.footer,
+#app-info {
   display: none !important;
 }
 
@@ -4613,8 +4642,21 @@ a {
     }
   }
 
-  .jumbotron, .Home, .Map, .Polls, .Api { margin-left: 0; width: 100%; padding: 1rem; box-sizing: border-box; }
+  .jumbotron,
+  .Home,
+  .Map,
+  .Polls,
   .Api {
-    .main-0-144 { margin: 0; width: 100% !important; height: auto; }
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .Api {
+    .main-0-144 {
+      margin: 0;
+      width: 100% !important;
+      height: auto;
+    }
   }
 }

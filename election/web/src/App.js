@@ -12,6 +12,7 @@ import 'react-notifications-component/dist/theme.css';
 
 const Home = lazy(() => import('./components/Trends'));
 const Resources = lazy(() => import('./components/Resources'));
+const Build = lazy(() => import('./components/Build'));
 const State = lazy(() => import('./components/State'));
 
 const App = () => {
@@ -55,11 +56,11 @@ const App = () => {
       icon: 'Database'
     },
     {
-      pageLink: '/election/sources',
-      view: Resources,
-      displayName: 'Source',
+      pageLink: '/election/build',
+      view: Build,
+      displayName: 'Build',
       showInNavbar: true,
-      icon: 'Code'
+      icon: 'Tool'
     },
     {
       pageLink: '/election/resource',
