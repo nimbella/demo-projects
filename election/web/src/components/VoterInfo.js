@@ -14,7 +14,7 @@ function VoterInfo() {
         ? searchDiv.forEach((e) => e.classList.add('dark-mode'))
         : searchDiv.forEach((e) => e.classList.remove('dark-mode'));
     },
-    200,
+    300,
     darkMode
   );
 

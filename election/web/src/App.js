@@ -49,23 +49,23 @@ const App = () => {
         icon: 'Info'
     },
     {
+      pageLink: '/sourcecode',
+      view: Build,
+      displayName: 'Source Code',
+      showInNavbar: true,
+      icon: 'Code'
+    },
+    {
       pageLink: '/api',
       view: API,
       displayName: 'API',
       showInNavbar: true,
       icon: 'Database'
-    },
-    {
-      pageLink: '/build',
-      view: Build,
-      displayName: 'Build',
-      showInNavbar: true,
-      icon: 'Tool'
-    },
+    },    
     {
       pageLink: '/resource',
       view: Resources,
-      displayName: 'Resources',
+      displayName: 'Useful Links',
       showInNavbar: true,
       icon: 'Link'
     },
