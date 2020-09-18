@@ -1,0 +1,6 @@
+attic/
+__pycache__/
+virtualenv/
+*.zip
+*.pyc
+*.done

@@ -199,3 +199,11 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+   
+========================================================================
+End of Apache License 2.0
+========================================================================
+
+The 'layout' and 'news and trends' page of election web app (election/web) 
+in this repository was derived from a project under The MIT License (MIT), 
+located at election/web/LICENSE.md
