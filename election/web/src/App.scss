@@ -3069,6 +3069,7 @@ footer {
   flex-direction: column;
   margin-bottom: 4rem;
   margin-top: 4rem;
+  margin-left: 4rem;
   width: 100%;
 
   & > * {
@@ -4467,8 +4468,7 @@ footer {
   }
 }
 
-.Build
-{
+.Build {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -4481,11 +4481,23 @@ footer {
   text-align: center;
   margin-left: 12rem;
   width: calc(100% - 12rem);
+  .dropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    h5 {
+      font-size: 1em !important;
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+  }
 }
 
 .winner-text {
   font-size: 200%;
-  margin-left: 18%;
+  margin-left: 33%;
   margin-right: 0%;
 }
 
@@ -4618,7 +4630,7 @@ a {
 
 #_vit.vit-modal {
   width: 90% !important;
-  margin-left: 29% !important;
+  margin-left: 33% !important;
   height: 250px !important;
   border: none !important;
 }
@@ -4632,6 +4644,9 @@ a {
 .footer,
 #app-info {
   display: none !important;
+}
+.Voter {
+  min-height: 600px;
 }
 
 @media (max-width: 769px) {
@@ -4657,6 +4672,9 @@ a {
       margin: 0;
       width: 100% !important;
       height: auto;
+    }
+    .navigationIcon-0-45 {
+      color: #4c555a;
     }
   }
 }

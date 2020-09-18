@@ -28,7 +28,6 @@ const states = [
 fetch(url, settings)
     .then(res => res.json())
     .then((json) => {
-        // console.log(json);
         years.forEach(year => {
             states.forEach(state => {
                 Object.entries(json[state].years[year].total).forEach(e => {
@@ -40,6 +39,5 @@ fetch(url, settings)
 
             });
         });
-        // console.log(JSON.stringify(TT,null,3));
         fs.writeFileSync(`total.json`, JSON.stringify(TT, null, 4))
     });

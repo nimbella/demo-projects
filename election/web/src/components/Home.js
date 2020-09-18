@@ -323,7 +323,6 @@ class Home extends Component {
         redStates: redStates,
       },
       () => {
-        console.log(`newColor: ${newColor}`);
         /* if one was clicked, update the display of ME and NE so that their 
         colors can be updated based upon split county votes  */
         if (
@@ -790,7 +789,6 @@ class Home extends Component {
         <Suspense fallback={<div />}>
           <Footer />
         </Suspense>
-
       </React.Fragment>
     );
   }

@@ -27,7 +27,7 @@ function Build() {
         <h2>
           The Github project for this React application is <a href="https://github.com/nimbella/demo-projects/tree/master/election">here</a>:
       </h2>
-        <p>It's also very easy to use the APIs or the App components/snippets into an existing react app.
+        <p>It's also very easy to use the <a href="api">APIs</a> or the App components/snippets into an existing react app.
          To begin with let's say, you want to show the exit polls data in your react app. It's as simple as this.</p>
         <p> Top level imports:</p>
         <SyntaxHighlighter language="javascript" showLineNumbers style={darkMode.value ? darcula : prism}>
@@ -46,7 +46,7 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";`
 const [rowData, setRowData] = useState([]);
 useEffect(() => {
   grid.current.api.showLoadingOverlay();
-  fetch(API_ROOT_URL/exitpolls)
+  fetch(\`\${API_ROOT_URL}/exitpolls\`)
   .then((result) => result.json())
   .then((rowData) => {
   setRowData(rowData);

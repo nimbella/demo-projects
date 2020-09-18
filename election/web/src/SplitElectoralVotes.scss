@@ -1,21 +1,20 @@
-.container {
-  display: inline-block;
-  margin-top: 0;
-  width: inherit;
-  margin-left: 750px;
-  margin-right: 0;
-  white-space: nowrap;
-}
+// .container {
+//   display: inline-block;
+//   margin-top: 0;
+//   width: inherit;
+//   margin-left: 750px;
+//   margin-right: 0;
+//   white-space: nowrap;
+// }
 
 .btn-group {
   float: left;
-  margin-right: 20%;
+  margin-right:2%;
 }
 
 .btn-group button {
   height: 30px;
   width: 30px;
-
   background-color: #d3d3d3; /* Green background */
   border: 1px solid black; /* Green border */
   color: black; /* White text */

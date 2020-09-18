@@ -37,6 +37,7 @@ function VoterInfo() {
           content="Vote Info - General Election 2020 USA Related Information"
         />
       </Helmet>
+      <div className="Voter">
       <div className="jumbotron">
         <h1>Voter Information</h1>
         <h2>
@@ -44,6 +45,7 @@ function VoterInfo() {
         </h2>
       </div>
       <div id="_vit"></div>
+      </div>
       <Footer />
     </React.Fragment>
   );
