@@ -1,6 +1,6 @@
 # Contributing to Nimbella Demo Projects
 
-You are here to help on Demo Projects? Awesome, feel welcome and read the following sections in order to know how to ask questions and how to work on something.
+You are here to help on Demo Projects? Awesome! We want you to know you are welcome and we look forward to your contributions. Please read the following sections in order to understand this project and the contribution process better.
 
 
 ### We welcome all contributions
