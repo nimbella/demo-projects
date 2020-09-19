@@ -4,7 +4,6 @@ packages:
   - name: ge2020
     actions:
       - name: news
-      - name: newz
       - name: timeseries
         runtime: 'nodejs:default'
       - name: counties
@@ -13,17 +12,21 @@ packages:
         runtime: 'nodejs:default'        
       - name: state_counties
         runtime: 'nodejs:default'
-      - name: divisions
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
-      - name: elections
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
-      - name: reps
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
-      - name: voterinfo
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
       - name: resources
         runtime: 'nodejs:default'
+      - name: divisions
+        runtime: 'nodejs:default'
+        parameters:
+          google_api_token: ${GOOGLE_API_TOKEN}
+      - name: elections
+        runtime: 'nodejs:default'
+        parameters:
+          google_api_token: ${GOOGLE_API_TOKEN}
+      - name: reps
+        runtime: 'nodejs:default'
+        parameters:
+          google_api_token: ${GOOGLE_API_TOKEN}
+      - name: voterinfo
+        runtime: 'nodejs:default'
+        parameters:
+          google_api_token: ${GOOGLE_API_TOKEN}

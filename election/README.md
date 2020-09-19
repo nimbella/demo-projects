@@ -100,4 +100,27 @@ If you have the [Nimbella command line tool called `nim`](https://nimbella.io/do
 
 The output of this command will include a link to where the application is running in the cloud for your account.
 
+
+This project uses Civic Information API for the following endpoints:
+- divisions
+- elections
+- reps
+- voterinfo
+
+Deploying the project in your own namespace and using these endpoints will require a Google API Key.
+
+To create an API key, open [google console](https://console.cloud.google.com/) and go to
+
+`APIs & Services > Credentials > Create credentials > API key`
+
+You should restrict the key before using it by clicking Restrict key and selecting Google Civic Information API.
+
+To use the key, you can pass as param while deploying
+
+`GOOGLE_API_TOKEN=<your_google_api_key> nim project deploy github:nimbella/demo-projects/election`
+
+`GOOGLE_API_TOKEN=<your_google_api_key> nim project deploy /path/to/election`
+
+One more way to use the token is to put it into `.env-template` at the root of the project, and rename it as `.env`
+
 ---

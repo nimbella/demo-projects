@@ -1,9 +1,9 @@
-path = `/civicinfo/v2/elections&key=${g_token}`;
+path = `/civicinfo/v2/elections&key=${google_api_token}`;
 const axios = require("axios");
 
 async function main(args) {
-    const { g_token } = args
-    const path = `/civicinfo/v2/elections&key=${g_token}`;
+    const { google_api_token } = args
+    const path = `/civicinfo/v2/elections&key=${google_api_token}`;
 
     return axios.get(`https://www.googleapis.com/${path}`)
         .then(res => {

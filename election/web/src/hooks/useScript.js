@@ -5,7 +5,7 @@ const useScript = (url, body) => {
     const script = document.createElement('script');
     if (url) {
       script.src = url;
-      // script.async = true;
+      script.async = true;
     }
     if (body) {
       const scriptText = document.createTextNode(body);
