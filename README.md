@@ -18,6 +18,18 @@ The tutorial introduction has the following parts:
   - **[Optical Character Recognition (OCR)](/ocr) -**
     A serverless application using a React front end and stateful functions on the back end. This demo uses the [Tesseract OCR Engine](https://github.com/tesseract-ocr/tesseract) to convert text from user-uploaded images to text. It uses integrated Nimbella storage service for managing file uploads and recording function progress. [Try it live here.](https://ocrdemo-apigcp.nimbella.io)
 
+  - **[Election 2020](/election) -**
+    A serverless application using a React front end and functions on the back end. This project also is a repository of public APIs and Nimbella APIs and functions to get election news, polling places, early vote locations, contest data, exit polls data, county wise historical voting data, election officials, and government representatives for U.S. residential addresses which can be used for developing any election app. [Try it live here.](https://electiondemo-apigcp.nimbella.io/)
+
+  - **[Stock Trading](/trade) -**
+    A serverless application using a React front end and stateful functions on the back end. This demo simulates stock trading process and uses Redis to store user data. [Try it live here.](https://tradedemo-apigcp.nimbella.io/)
+
+  - **[Chatroom](/chat) -**
+    A serverless application using a React front end and stateful functions on the back end. This demo uses Redis to store and fetch user lists and messages. [Try it live here.](https://chatdemo-apigcp.nimbella.io/)
+
+  - **[Calculator](/calculator) -**
+    A stateful application with one static web page and one function. The web page has a input field in which a visitor can enter a numeric expression and output a result. [Try it live here.](https://calcdemo-apigcp.nimbella.io/)
+
 ### Prerequisites
 
 To understand these tutorials, the following developer skills are helpful:
