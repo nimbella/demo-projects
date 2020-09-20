@@ -1,40 +1,26 @@
 ## Inspiration
 
-John F. Kennedy, the 35th president of the United States, once said
-
-> The ignorance of one voter in a democracy impairs the security of all.
+John F. Kennedy, the 35th president of the United States, once said _"The ignorance of one voter in a democracy impairs the security of all."_
 
 The importance of free and easily accessible information can never be overestimated. With November around the corner, it's election time!
 
-Inspire your friends, family, and everyone you know to know more and vote in the 2020 Presidential Election by building, sharing, or extending these election-related APIs and App — backed by powerful serverless technology, these allow you to look up the representatives, polling places, early vote location, candidate data, and other election official information without the hassles of sign-ups, auth keys or having to provision servers and worrying about hosting.
+We created this project to aggregate election-related services into a convenient set of APIs and an example Cloud application. You can use these powerful APIs to quickly build and run your own Election cloud applications, or customize our example application with your own inspirations. Then, deploy your project to the cloud with one command so you can easily share it your friends, family, and everyone you know. Your ideas can increase awareness of the upcoming 2020 Election and inspire others to vote.
 
-From Roald Dahl's unforgettable words about social change
+This application uses election-related APIs to look up representatives, polling places, early voting locations, candidate data, and other election official information. The application is deployed to the Nimbella cloud, which for you means the easiest cloud development experience there is, with no fussy sign-ups, services or infrastructure to worry about for hosting your application. This is our burden, so you can get on with your inspiration.
 
-> Somewhere inside of all of us is the power to change the world
+The Nimbella Election APIs offer you maximum flexibility to create web pages and applications using all or selected parts of available data.
+For example, you can use the APIs to:
+- Visualize Party/Candidate and County/State voting trends from 1976 to 2016.
+- Order the latest news available from prominent news sites in a timely fashion.
 
-to Thomas Jefferson's historic truisms
+From Roald Dahl's unforgettable words _"Somewhere inside of all of us is the power to change the world"_, to Thomas Jefferson's truisms _"We do not have government by the majority. We have government by the majority who participate._", to Nanette L. Avery who puts it as _"Talk is cheap, voting is free; take it to the polls"_, there's something to inspire every activist and voter out there.
 
-> We do not have government by the majority. We have government by the majority who participate
+## Time to Act: an example
 
-there's something to inspire just about every voter out there.
+This project is built with a React front-end for the user interface. The front-end is backed by the Nimbella Election API.
+As an example, let's show you how to share exit poll data in your application. It's as simple as 1, 2, 3 & deploy.
 
-So let's build a nation of citizens armed with the tools and information to choose wisely.
-
-Our Application Programming Interface (API) gives you maximum flexibility to create web pages and applications using all or selected parts of Nimbella Election APIs.
-e.g.
-
-- party/candidate wise, county/state wise voting trends from 1976 to 2016.
-- categorized list of election-related APIs, Datasets, and Websites available on www.
-- latest news from prominent news sites ordered in a timely fashion.
-
-Lastly, as Nanette L. Avery puts it
-
-> Talk is cheap, voting is free; take it to the polls.
-
-## Time to act
-To begin with let's say, you want to show the exit polls data in your react app. It's as simple as 1,2,3.
-
-Top level imports
+1. In your front-end React application, import the following.
 ```js
 import { API_ROOT_URL } from "../constants";
 import React, { useState, useEffect, useRef } from "react";
@@ -43,7 +29,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 ```
 
-Function level
+2. Add this function to make the API call and retrieve the relevant data.
 ```js
 const grid = useRef(null);
 const [rowData, setRowData] = useState([]);
@@ -58,7 +44,7 @@ useEffect(() => {
 }, []);
 ```
 
-Inside return()
+3. Render the data in the `return()` block.
 ```js
 <div id="grid" className="ag-theme-alpine-dark" style={{ width: "80%" }}>
   <AgGridReact
@@ -86,41 +72,65 @@ Inside return()
 </div>
 ```
 
-### Deploy this project to the Nimbella Cloud as a whole
+You're one `deploy` step away from sharing your inspiration with the world.
 
-If you have the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim) installed, you can deploy this project directly from GitHub. Or, you can clone this repository and deploy it from the clone.
+### How to deploy your project
 
-- To deploy from GitHub
+This project is built for the Nimbella cloud. This means you can share your project with the world by deploying the application
+to the cloud. The benefits of this approach are:
+- You will get a dedicated domain name for your project.
+- Your domain is automatically secured with an SSL certificate so all traffic is encrypted.
+- The front-end is served from a globally Content Delivery Network (CDN).
+- Your API calls run as needed, with no servers for you to run.
 
-  `nim project deploy github:nimbella/demo-projects/election`
+You will need a [Google Civic Information API key](https://developers.google.com/civic-information) for several of the endpoints.
+- You may create an API key from the [Google cloud console](https://console.cloud.google.com/) by navigating to
+`APIs & Services > Credentials > Create credentials > API key`.
+- You should restrict the key before using it by clicking `Restrict Key` and selecting Google Civic Information API.
 
-- If you have cloned the repository
+The project is deployed to the Nimbella cloud with one command: `nim project deploy`. Here is how.
 
-  `nim project deploy /path/to/election`
+1. Install the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim).
+2. Run `nim login` to sign up (or login if you have an existing account). We strongly recommend signing up with a GitHub id.
+3. Deploy this project directly from GitHub if you signed up with a GitHub id.
 
-The output of this command will include a link to where the application is running in the cloud for your account.
+```
+GOOGLE_CIVIC_API_TOKEN=<your_google_api_key> \
+  nim project deploy github:nimbella/demo-projects/election
+```
 
+If you did not sign up with a GitHub id, then clone the project locally first, then deploy. This is because the GitHub rate limits are
+too low to deploy without cloning unless you're authenticated with GitHub.
 
-This project uses Civic Information API for the following endpoints:
-- divisions
-- elections
-- reps
-- voterinfo
+```
+git clone https://github.com/nimbella/demo-projects.git
+export GOOGLE_CIVIC_API_TOKEN=<your_google_api_key>
+nim project deploy demo-projects/election
+```
 
-Deploying the project in your own namespace and using these endpoints will require a Google API Key.
+You may save your `GOOGLE_CIVIC_API_TOKEN` to a file called `.env`. See the template in [`.env-template`] as an example.
+This file should be located at the root of your election project.
 
-To create an API key, open [google console](https://console.cloud.google.com/) and go to
+### How to share your project?
 
-`APIs & Services > Credentials > Create credentials > API key`
+The output of `nim project deploy` will will include a URL to where your application is running in the Nimbella cloud.
+You may also find this URL by running `nim auth current --web`.
 
-You should restrict the key before using it by clicking Restrict key and selecting Google Civic Information API.
-
-To use the key, you can pass as param while deploying
-
-`GOOGLE_API_TOKEN=<your_google_api_key> nim project deploy github:nimbella/demo-projects/election`
-
-`GOOGLE_API_TOKEN=<your_google_api_key> nim project deploy /path/to/election`
-
-One more way to use the token is to put it into `.env-template` at the root of the project, and rename it as `.env`
+An example output of the project deployment follows.
+```
+Deployed 106 web content items to
+  https://<your-account>-apigcp.nimbella.io
+Deployed actions:
+  - ge2020/counties
+  - ge2020/divisions
+  - ge2020/elections
+  - ge2020/exitpolls
+  - ge2020/news
+  - ge2020/reps
+  - ge2020/resources
+  - ge2020/state_counties
+  - ge2020/timeseries
+  - ge2020/voterinfo
+```
 
 ---
