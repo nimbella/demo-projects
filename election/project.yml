@@ -1,5 +1,6 @@
 bucket:
   strip: 1
+
 packages:
   - name: ge2020
     actions:
@@ -16,17 +17,13 @@ packages:
         runtime: 'nodejs:default'
       - name: divisions
         runtime: 'nodejs:default'
-        parameters:
-          google_api_token: ${GOOGLE_API_TOKEN}
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: elections
         runtime: 'nodejs:default'
-        parameters:
-          google_api_token: ${GOOGLE_API_TOKEN}
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: reps
         runtime: 'nodejs:default'
-        parameters:
-          google_api_token: ${GOOGLE_API_TOKEN}
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: voterinfo
         runtime: 'nodejs:default'
-        parameters:
-          google_api_token: ${GOOGLE_API_TOKEN}
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
