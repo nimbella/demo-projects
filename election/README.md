@@ -113,7 +113,7 @@ This file should be located at the root of your election project.
 
 ### How to share your project?
 
-The output of `nim project deploy` will will include a URL to where your application is running in the Nimbella cloud.
+The output of `nim project deploy` will include a URL to where your application is running in the Nimbella cloud.
 You may also find this URL by running `nim auth current --web`.
 
 An example output of the project deployment follows.
