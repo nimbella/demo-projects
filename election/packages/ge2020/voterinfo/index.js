@@ -7,7 +7,6 @@ async function main(args) {
 
     return axios
         .get(`https://www.googleapis.com/${path}`)
-        .get(path)
         .then(res => ({ body: res.data }))
         .catch(error => ({ body: error.message }))
 }
