@@ -4,10 +4,6 @@
   "description": "Election Related News",
   "main": "index.js",
   "dependencies": {
-    "rss-to-json": "^1.1.1"
-  },
-  "devDependencies": {},
-  "engines": {
-    "node": "^10.22.0"
+    "google-news-rss": "^0.4.1"
   }
 }

@@ -1,16 +1,14 @@
-const axios = require("axios");
+const axios = require('axios')
+const google_api_token = process.env.GOOGLE_CIVIC_API_TOKEN
 
 async function main(args) {
-    const { g_token, query = '' } = args
-    const path = `/civicinfo/v2/divisions?query=${encodeURI(query)}&key=${g_token}`
-    if (ocdId)
-        path = `/civicinfo/v2/representatives/${encodeURI(ocdId)}?recursive=${recursive}${levels ? `&levels=${levels}` : ''}${roles ? `&roles=${roles}` : ''}&key=${g_token}`
+    const { query = '' } = args
+    const path = `/civicinfo/v2/divisions?query=${encodeURI(query)}&key=${google_api_token}`
 
-    return axios.get(`https://www.googleapis.com/${path}`)
-        .then(res => {
-            return { body: res.data }
-        })
-        .catch(error => { return { body: error }; })
+    return axios
+        .get(`https://www.googleapis.com/${path}`)
+        .then(res => ({ body: res.data }))
+        .catch(error => ({ body: error.message }))
 }
 
-exports.main = main;
+exports.main = main

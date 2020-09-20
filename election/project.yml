@@ -1,29 +1,20 @@
 bucket:
   strip: 1
+
 packages:
   - name: ge2020
     actions:
       - name: news
-      - name: newz
       - name: timeseries
-        runtime: 'nodejs:default'
       - name: counties
-        runtime: 'nodejs:default'
       - name: exitpolls
-        runtime: 'nodejs:default'        
       - name: state_counties
-        runtime: 'nodejs:default'
-      - name: divisions
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
-      - name: elections
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
-      - name: reps
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
-      - name: voterinfo
-        runtime: 'nodejs:default'
-        parameters: ${<.env}
       - name: resources
-        runtime: 'nodejs:default'
+      - name: divisions
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
+      - name: elections
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
+      - name: reps
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
+      - name: voterinfo
+        environment: $(GOOGLE_CIVIC_API_TOKEN)
