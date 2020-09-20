@@ -18,8 +18,7 @@ function Updates({updates}) {
         <h2>{format(currentDate, 'd MMM')}</h2>
       </div>
       {updates
-        .slice(-UPDATES_COUNT)
-        .reverse()
+        .slice(0, UPDATES_COUNT)
         .map(function (activity, index) {
           activity.title = activity.title.replace(/\n/g, '<br/>');
           const activityDate = new Date(activity.created);
