@@ -9,7 +9,7 @@ async function main(args) {
         .get(`https://www.googleapis.com/${path}`)
         .get(path)
         .then(res => ({ body: res.data }))
-        .catch(error => ({ body: error }))
+        .catch(error => ({ body: error.message }))
 }
 
 exports.main = main

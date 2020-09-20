@@ -6,7 +6,7 @@ async function main(args) {
     return axios
         .get(path)
         .then(res => ({ body: res.data }))
-        .catch(error => ({ body: error }))
+        .catch(error => ({ body: error.message }))
 }
 
 exports.main = main
