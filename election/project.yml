@@ -6,24 +6,15 @@ packages:
     actions:
       - name: news
       - name: timeseries
-        runtime: 'nodejs:default'
       - name: counties
-        runtime: 'nodejs:default'
       - name: exitpolls
-        runtime: 'nodejs:default'        
       - name: state_counties
-        runtime: 'nodejs:default'
       - name: resources
-        runtime: 'nodejs:default'
       - name: divisions
-        runtime: 'nodejs:default'
         environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: elections
-        runtime: 'nodejs:default'
         environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: reps
-        runtime: 'nodejs:default'
         environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: voterinfo
-        runtime: 'nodejs:default'
         environment: $(GOOGLE_CIVIC_API_TOKEN)
