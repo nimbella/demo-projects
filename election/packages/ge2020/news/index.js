@@ -1,20 +1,26 @@
-const feed = require('rss-to-json')
+const GoogleNewsRss = require("google-news-rss");
+const googleNews = new GoogleNewsRss();
 
 function main(args) {
-    return feed
-        .load('https://news.google.com/rss/search?q=us+election&hl=en-US&gl=US&ceid=US:en')
-        .then(rss => {
-            sorted = rss.items.sort(sortByProperty('created'))
-            return { body: sorted }
+    return googleNews
+        .search("us election", 50, "en", {
+            scoring: "n",
         })
+        .then((resp) => {
+            resp.forEach(obj => obj.created = new Date(obj.pubDate).getTime())
+            sorted = resp.sort(sortByLatest("created")); // scoring not working
+            return {
+                body: sorted,
+            };
+        });
 }
 
-function sortByProperty(property) {
+function sortByLatest(property) {
     return function (a, b) {
-        if (a[property] > b[property]) return 1
-        else if (a[property] < b[property]) return -1
-        else return 0
-    }
+        if (a[property] > b[property]) return -1;
+        else if (a[property] < b[property]) return 1;
+        else return 0;
+    };
 }
 
-exports.main = main
+exports.main = main;
