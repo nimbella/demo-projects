@@ -64,7 +64,7 @@ function Trends() {
       </Helmet>
       <div className="jumbotron">
           <h1>Electoral News and Trends</h1>
-          <h2>state county wide statistics since 1976</h2>
+          <h2>state and county statistics since 1976</h2>
         </div>  
       <div className="Home">
         <div className={classnames('home-left', {expanded: expandTable})}>
