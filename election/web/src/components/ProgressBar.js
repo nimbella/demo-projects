@@ -44,8 +44,7 @@ const DemFiller = (props) => {
 
 const BlankFiller = (props) => {
   return (
-    <div className="blank-filler" style={{width: `${props.blankPercentage}%`}}>
-      {props.blankVotes >= 10 ? props.blankVotes : ''}
+    <div className="blank-filler" style={{width: `${props.blankPercentage}%`}}>      
     </div>
   );
 };
