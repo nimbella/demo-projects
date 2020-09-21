@@ -38,7 +38,7 @@ function Navbar({ pages, darkMode }) {
     <animated.div className="Navbar" style={spring}>
       {/*<div className="navbar-left"></div>*/}
       <div className="navbar-middle">
-        <Link to="/election/" onClick={setExpand.bind(this, false)}>
+        <Link to="/" onClick={setExpand.bind(this, false)}>
           General Election 2020 <span> USA </span>
         </Link>
       </div>
