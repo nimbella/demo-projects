@@ -173,7 +173,7 @@ function Row({
           }
         )}
         onMouseEnter={highlightState}
-        onClick={_setShowCounty}
+        // onClick={_setShowCounty}
         ref={rowElement}
       >
         <div className="cell">

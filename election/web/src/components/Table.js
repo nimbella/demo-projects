@@ -331,7 +331,7 @@ function Table({
                   <Row
                     key={countyKey}
                     data={counties[countyKey]}
-                    countyme={counties[countyKey].countyName}
+                    countyName={counties[countyKey].countyName}
                     {...{
                       isPerMillion,
                       regionHighlighted,

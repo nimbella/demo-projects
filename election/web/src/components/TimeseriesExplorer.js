@@ -254,6 +254,19 @@ function TimeseriesExplorer({
         </div>
       )}
 
+      <div className="pills">
+      {Object.values(TIMESERIES_LOOKBACKS).map((option) => (
+        <button
+          key={option}
+          type="button"
+          className={classnames({selected: lookback === option})}
+          onClick={() => setLookback(option)}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+    
       {isVisible && (
         <Suspense fallback={<TimeseriesLoader />}>
           <Timeseries
@@ -266,18 +279,7 @@ function TimeseriesExplorer({
 
       {!isVisible && <div style={{height: '50rem'}} />}
 
-      <div className="pills">
-        {Object.values(TIMESERIES_LOOKBACKS).map((option) => (
-          <button
-            key={option}
-            type="button"
-            className={classnames({selected: lookback === option})}
-            onClick={() => setLookback(option)}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
+    
     </div>
   );
 }

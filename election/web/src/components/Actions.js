@@ -23,7 +23,7 @@ const Actions = ({setYear, years}) => {
 
   useEffect(() => {
     if (updates && updates.length> 0) {
-      const lastTimestamp = updates.slice().reverse()[0].created;
+      const lastTimestamp = updates.slice()[0].created;
       if (lastTimestamp !== lastViewedLog) {
         setNewUpdate(true);
         setLastViewedLog(lastTimestamp);

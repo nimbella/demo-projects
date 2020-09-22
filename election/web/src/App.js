@@ -41,13 +41,13 @@ const App = () => {
       showInNavbar: true,
       icon: 'Percent'
     },
-    {
-      pageLink: '/voter',
-      view: VoterInfo,
-      displayName: 'Voter Info',
-      showInNavbar: true,
-        icon: 'Info'
-    },
+    // {
+    //   pageLink: '/voter',
+    //   view: VoterInfo,
+    //   displayName: 'Voter Info',
+    //   showInNavbar: true,
+    //     icon: 'Info'
+    // },
     {
       pageLink: '/sourcecode',
       view: Build,
