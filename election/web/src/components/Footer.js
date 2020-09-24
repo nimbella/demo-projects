@@ -14,7 +14,7 @@ function Footer() {
         </a>
       </div>
 
-      <h5>{'easy access to the electoral information'}</h5>
+      <h5>{'Nimbella election starter project and APIs for easy access to electoral information.'}</h5>
 
       <div className="links">
         <a
