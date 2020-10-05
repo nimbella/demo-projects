@@ -1,5 +1,5 @@
-export const API_ROOT_URL = 'https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020';
-// export const API_ROOT_URL = '/api/ge2020';
+// export const API_ROOT_URL = 'https://apigcp.nimbella.io/api/v1/web/raichand-8kehpaun1bf/ge2020';
+export const API_ROOT_URL = '/api/ge2020';
 
 export const LOCALE_SHORTHANDS = {
   english: 'en-US',
