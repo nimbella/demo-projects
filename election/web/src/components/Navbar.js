@@ -28,15 +28,8 @@ function Navbar({ pages, darkMode }) {
     config: { mass: 1, tension: 210, friction: 26 },
   });
 
-  const handleMouseEnter = useCallback(() => {
-    if (windowSize.width > 769) {
-      setExpand(true);
-    }
-  }, [windowSize.width]);
-
   return (
     <animated.div className="Navbar" style={spring}>
-      {/*<div className="navbar-left"></div>*/}
       <div className="navbar-middle">
         <Link to="/" onClick={setExpand.bind(this, false)}>
           General Election 2020 <span> USA </span>
@@ -45,7 +38,6 @@ function Navbar({ pages, darkMode }) {
 
       <div
         className="navbar-right"
-        // onMouseEnter={handleMouseEnter}
         {...(windowSize.width < 769 && {
           onClick: setExpand.bind(this, !expand),
         })}

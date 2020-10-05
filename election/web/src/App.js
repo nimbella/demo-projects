@@ -3,7 +3,9 @@ import API from './components/API';
 import ExitPolls from './components/ExitPolls';
 import Map from './components/Home';
 import Navbar from './components/Navbar';
-import VoterInfo from './components/VoterInfo';
+import Voter from './components/Voters';
+import Representatives from './components/Representatives';
+import Elections from './components/Elections';
 import React, { lazy, Suspense } from 'react';
 import ReactNotification from 'react-notifications-component';
 import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
@@ -12,6 +14,8 @@ import 'react-notifications-component/dist/theme.css';
 
 const Home = lazy(() => import('./components/Trends'));
 const Resources = lazy(() => import('./components/Resources'));
+const Divisions = lazy(() => import('./components/Divisions'));
+const Contest = lazy(() => import('./components/Contest'));
 const Build = lazy(() => import('./components/Build'));
 const State = lazy(() => import('./components/State'));
 
@@ -33,21 +37,42 @@ const App = () => {
       displayName: 'News & Trends',
       showInNavbar: true,
       icon: 'TrendingUp'
-    },   
+    },
     {
       pageLink: '/exitpolls',
       view: ExitPolls,
       displayName: 'Exit Polls',
       showInNavbar: true,
-      icon: 'Percent'
+      icon: 'PieChart'
     },
-    // {
-    //   pageLink: '/voter',
-    //   view: VoterInfo,
-    //   displayName: 'Voter Info',
-    //   showInNavbar: true,
-    //     icon: 'Info'
-    // },
+    {
+      pageLink: '/voter',
+      view: Voter,
+      displayName: 'Voter Info',
+      showInNavbar: true,
+      icon: 'Info'
+    },
+    {
+      pageLink: '/representatives',
+      view: Representatives,
+      displayName: 'Representatives',
+      showInNavbar: true,
+      icon: 'Users'
+    },
+    {
+      pageLink: '/elections',
+      view: Elections,
+      displayName: 'Elections',
+      showInNavbar: true,
+      icon: 'UserCheck'
+    },
+    {
+      pageLink: '/divisions',
+      view: Divisions,
+      displayName: 'Divisions',
+      showInNavbar: true,
+      icon: 'Map'
+    },
     {
       pageLink: '/sourcecode',
       view: Build,
@@ -61,7 +86,14 @@ const App = () => {
       displayName: 'API',
       showInNavbar: true,
       icon: 'Database'
-    },    
+    },
+    {
+      pageLink: '/contest',
+      view: Contest,
+      displayName: 'Contest',
+      showInNavbar: true,
+      icon: 'Award'
+    },
     {
       pageLink: '/resource',
       view: Resources,
@@ -74,7 +106,6 @@ const App = () => {
       view: State,
       displayName: 'State',
       showInNavbar: false,
-      icon: 'SunMoon'
     },
   ];
 

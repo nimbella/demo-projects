@@ -1,0 +1,53 @@
+{
+    "elections": [
+      {
+        "id": "2000",
+        "name": "VIP Test Election",
+        "electionDay": "2021-06-06",
+        "ocdDivisionId": "ocd-division/country:us"
+      },
+      {
+        "id": "4955",
+        "name": "West Virginia Presidential and State Primary Election",
+        "electionDay": "2020-06-09",
+        "ocdDivisionId": "ocd-division/country:us/state:wv"
+      },
+      {
+        "id": "4958",
+        "name": "Georgia Presidential and State Primary Election",
+        "electionDay": "2020-06-09",
+        "ocdDivisionId": "ocd-division/country:us/state:ga"
+      },
+      {
+        "id": "4969",
+        "name": "North Dakota State Primary Election",
+        "electionDay": "2020-06-09",
+        "ocdDivisionId": "ocd-division/country:us/state:nd"
+      },
+      {
+        "id": "4970",
+        "name": "Nevada State Primary Election",
+        "electionDay": "2020-06-09",
+        "ocdDivisionId": "ocd-division/country:us/state:nv"
+      },
+      {
+        "id": "4971",
+        "name": "South Carolina State Primary Election",
+        "electionDay": "2020-06-09",
+        "ocdDivisionId": "ocd-division/country:us/state:sc"
+      },
+      {
+        "id": "4977",
+        "name": "Colorado State Primary Election",
+        "electionDay": "2020-06-30",
+        "ocdDivisionId": "ocd-division/country:us/state:co"
+      },
+      {
+        "id": "4990",
+        "name": "Louisiana Presidential and Municipal Primary Election",
+        "electionDay": "2020-07-11",
+        "ocdDivisionId": "ocd-division/country:us/state:la"
+      }
+    ],
+    "kind": "civicinfo#electionsQueryResponse"
+  }

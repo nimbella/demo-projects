@@ -1,7 +1,5 @@
 import Footer from './Footer';
-
 import Links from '../data/resources';
-
 import React, {useEffect} from 'react';
 import {Helmet} from 'react-helmet';
 
@@ -39,7 +37,7 @@ function Resources() {
               className="faq fadeInUp"
               style={{animationDelay: `${0.5 + index * 0.1}s`}}
             >
-              <a className="text" href={resource.link}>
+              <a className="text" rel="noopener noreferrer" target="_blank" href={resource.link}>
                 {resource.text}
               </a>
               <br />

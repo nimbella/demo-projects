@@ -3186,6 +3186,42 @@ footer {
   }
 }
 
+
+.Reps {
+  min-height: 30rem;
+  margin-left: 20rem;
+  width: calc(100% - 20rem);
+  padding: 2rem;
+  box-sizing: border-box;
+
+  & > * {
+    align-self: center;
+    margin-bottom: 1.5rem;
+    width: 33%;
+    float: left;
+  }
+  .link {
+    color: $gray-dark;
+    margin: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .text {
+    color: $blue;
+    line-height: 1.5rem;
+  }
+
+  a {
+    background: $blue-light;
+    color: $blue;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .pills {
   display: flex;
   flex-direction: row;
@@ -3776,7 +3812,7 @@ footer {
   .timeline,
   .table-top,
   .Home,
-  .Map,
+  .ElectoralMap,
   .State {
     display: flex;
     flex-direction: column;
@@ -4451,7 +4487,7 @@ footer {
 }
 
 // Map
-.Map {
+.ElectoralMap {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -4659,7 +4695,7 @@ a {
 
   .jumbotron,
   .Home,
-  .Map,
+  .ElectoralMap,
   .Polls,
   .Api {
     margin-left: 0;

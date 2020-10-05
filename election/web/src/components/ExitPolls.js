@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-key */
 import Footer from './Footer';
 import { API_ROOT_URL } from '../constants';
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+import {fetcher} from '../utils/commonFunctions';
+import useSWR from 'swr';
+import React, { useRef, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -29,16 +31,13 @@ function ExitPolls() {
     darkMode
   );
 
-  const [rowData, setRowData] = useState([]);
-  useEffect(() => {
-    grid.current.api.showLoadingOverlay()
-    fetch(`${API_ROOT_URL}/exitpolls`)
-      .then(result => result.json())
-      .then(rowData => {
-        setRowData(rowData);
-        grid.current.api.hideOverlay()
-      })
-  }, []);
+  const {data: rowData} = useSWR(
+    `${API_ROOT_URL}/exitpolls`,
+    fetcher,
+    {
+      revalidateOnFocus: true,
+    }
+  );
 
   return (
     <React.Fragment>

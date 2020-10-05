@@ -725,7 +725,7 @@ class Home extends Component {
             </select>
           </div>
         </div>
-        <div className="Map">
+        <div className="ElectoralMap">
           <ProgressBar
             demPercentage={this.state.demPercentage}
             blankPercentage={this.state.blankPercentage}
