@@ -6,7 +6,7 @@ function Footer() {
     <footer>
       <div className="link">
         <a
-          href="https://github.com/nimbella/demo-projects/election"
+          href="https://github.com/nimbella/demo-projects/tree/master/election"
           target="_blank"
           rel="noopener noreferrer"
         >
