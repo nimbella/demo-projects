@@ -14,8 +14,8 @@ function Contest() {
         />
       </Helmet>
       <div className="jumbotron">
-        <h1>Democracy is an active sport, let’s play our part.</h1>
-        <h2>Don't let the year 2020 be a drag. Extend these election-related APIs/app and build your own election app to inspire your friends, family <span role="img">👪</span>, and everyone you know to win <span role="img">🏆</span> $2020.</h2>
+        <h1>Don't let the year 2020 be a drag</h1>
+        <p>Extend these election-related APIs/app and build your own election app to inspire your friends, family <span role="img">👪</span>, and everyone you know to win <span role="img">🏆</span> $2020.</p>
        <a href="https://nimbella.com/election2020" rel="noopener noreferrer"  target="_blank">
         <img alt="Election2020ContestBanner" src={banner} />
         </a>
