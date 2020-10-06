@@ -71,7 +71,7 @@ function Representatives() {
               InputProps={{
                 endAdornment: (
                   <InputAdornment>
-                    <SearchIcon onClick={repsSearch} />
+                    <SearchIcon fontSize="large" onClick={repsSearch} />
                   </InputAdornment>
                 )
               }}
@@ -86,7 +86,7 @@ function Representatives() {
                 className="faq fadeInUp"
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
-                <img width="20%" alt="photo" src={rep.photoUrl}></img><br />
+                <img width="20%" src={rep.photoUrl}></img><br />
                 <span>{rep.name} </span><br />
                 <span className="link">{rep.party}</span><br />
                 {rep.phones && rep.phones.map(p => {
