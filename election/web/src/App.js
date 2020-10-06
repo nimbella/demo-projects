@@ -3,7 +3,7 @@ import API from './components/API';
 import ExitPolls from './components/ExitPolls';
 import Map from './components/Home';
 import Navbar from './components/Navbar';
-import Voter from './components/Voters';
+import Voter from './components/Voter';
 import Representatives from './components/Representatives';
 import Elections from './components/Elections';
 import React, { lazy, Suspense } from 'react';
