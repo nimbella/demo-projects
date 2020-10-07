@@ -1,14 +1,11 @@
 const fs = require('fs');
 
-let contents;
+const contents = fs.readFileSync(__dirname + '/resources.json', 'UTF-8');
+const body = JSON.parse(contents);
 
 function main(args) {
 
-	if (!contents) {
-		contents = fs.readFileSync(__dirname + '/resources.json', 'UTF-8');
-	}
-
-	return {body:JSON.parse(contents)};
+    return { body };
 
 }
 
