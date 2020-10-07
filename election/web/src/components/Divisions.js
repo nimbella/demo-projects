@@ -55,7 +55,7 @@ function Divisions() {
             InputProps={{
               endAdornment: (
                 <InputAdornment>
-                  <SearchIcon onClick={divisionSearch} />
+                  <SearchIcon fontSize="large" onClick={divisionSearch} />
                 </InputAdornment>
               )
             }}
