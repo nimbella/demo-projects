@@ -1,0 +1,6 @@
+packages:
+  - name: default
+    actions:
+      - name: qr-java 
+        runtime: java:default
+        main: qr.Generate#main
