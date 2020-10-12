@@ -126,12 +126,6 @@ function Row({
     stateCode,
   ]);
 
-  const _setShowCounty = useCallback(() => {
-    if (data.counties) {
-      setShowCounties(!showCounties);
-    }
-  }, [showCounties, data]);
-
   let countyNameStr = countyName;
   if (countyName === UNKNOWN_COUNTY_KEY) {
     countyNameStr = `${UNKNOWN_COUNTY_KEY} [${STATE_NAMES[data.stateCode]}]`;
