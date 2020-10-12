@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info:
+  title: Nimbella Election API
+  description: >-
+    Provides election news, polling places, early vote locations, contest data,
+    exit polls data, county wise historical voting data, election officials, and
+    government representatives for U.S. residential addresses.
+
+
+    Once you deploy the project in your namespace you will have your baseUrl as https://<your_namespace>-apigcp.nimbella.io/api/ge2020. 
+    However you can still use https://electiondemo-apigcp.nimbella.io/api/ge2020 as baseUrl to try out responses.
+
+    
+     Contact Support:
+     
+     Name: Nimbella
+
+     Email: info@nimbella.com
+
+     Github: https://github.com/nimbella/demo-projects/tree/master/election
+  version: 1.0.0
+servers:
+  - url: '/api/ge2020/'
+tags:
+  - name: Representatives
+paths:
+  /reps:
+    get:
+      tags:
+        - Representatives
+      summary: Representative Info By Address
+      description: >-
+        Looks up political geography and representative information for a single
+        address.
+      parameters:
+        - name: address
+          in: query
+          schema:
+            type: string
+          description: >-
+            (Required) The address to look up. May only be specified if the
+            field ocdId is not given in the URL.
+          example: <string>
+        - name: includeOffices
+          in: query
+          schema:
+            type: boolean
+          description: >-
+            Whether to return information about offices and officials. If false,
+            only the top-level district information will be returned.
+          example: 'true'
+        - name: levels
+          in: query
+          schema:
+            type: string
+          description: >-
+            A list of office levels to filter by. Only offices that serve at
+            least one of these levels will be returned. Divisions that don't
+            contain a matching office will not be returned.
+          example: '[<string>]'
+        - name: roles
+          in: query
+          schema:
+            type: string
+          description: >-
+            A list of office roles to filter by. Only offices fulfilling one of
+            these roles will be returned. Divisions that don't contain a
+            matching office will not be returned.
+          example: '[<string>]'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  '/reps/:ocdId':
+    get:
+      tags:
+        - Representatives
+      summary: Representative Info By Division
+      description: Looks up representative information for a single geographic division.
+      parameters:
+        - name: levels
+          in: query
+          schema:
+            type: string
+          description: >-
+            A list of office levels to filter by. Only offices that serve at
+            least one of these levels will be returned. Divisions that don't
+            contain a matching office will not be returned.
+          example: '[<string>]'
+        - name: recursive
+          in: query
+          schema:
+            type: string
+          description: >
+            If true, information about all divisions contained in the division
+            requested will be included as well. For example, if querying
+            ocd-division/country:us/district:dc, this would also return all DC's
+            wards and ANCs.
+          example: <boolean>
+        - name: roles
+          in: query
+          schema:
+            type: string
+          description: >
+            A list of office roles to filter by. Only offices fulfilling one of
+            these roles will be returned. Divisions that don't contain a
+            matching office will not be returned.
+          example: '[<string>]'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /divisions:
+    get:
+      tags:
+        - General
+      summary: Divisions Search
+      description: Searches for political divisions by their natural name or OCD ID.
+      parameters:
+        - name: query
+          in: query
+          schema:
+            type: string
+          description: >-
+            The search query. Queries can cover any parts of a OCD ID or a human
+            readable division name. All words given in the query are treated as
+            required patterns. In addition to that, most query operators of the
+            Apache Lucene library are supported. See
+            http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /counties:
+    get:
+      tags:
+        - General
+      summary: County State Wise Results
+      description: >-
+        County and State wise voting stats for a particular election year,
+        defaults to 2016.
+      parameters:
+        - name: year
+          in: query
+          schema:
+            type: string
+          description: The year to get data for.
+          example: <string>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /timeseries:
+    get:
+      tags:
+        - General
+      summary: Timeseries
+      description: 'Party wise voting stats since 1979, segregated by county and state.'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /elections:
+    get:
+      tags:
+        - General
+      summary: Elections
+      description: List of available elections to query.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /resources:
+    get:
+      tags:
+        - General
+      summary: Resources
+      description: 'Elections related APIs, Datasets and Websites.'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /exitpolls:
+    get:
+      tags:
+        - General
+      summary: Exit Polls
+      description: Exit polls data from various sources.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /news:
+    get:
+      tags:
+        - General
+      summary: News
+      description: >-
+        Presidential Election related news with title, description and source,
+        sorted in timely fashion.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /voterinfo:
+    get:
+      tags:
+        - General
+      summary: Voter Info
+      description: >-
+        Looks up information relevant to a voter based on the voter's registered
+        address.
+      parameters:
+        - name: address
+          in: query
+          schema:
+            type: string
+          description: (Required) The registered address of the voter to look up.
+          example: <string>
+        - name: electionId
+          in: query
+          schema:
+            type: integer
+          description: >-
+            The unique ID of the election to look up. A list of election IDs can
+            be obtained at
+            https://www.googleapis.com/civicinfo/{version}/elections
+          example: '0'
+        - name: officialOnly
+          in: query
+          schema:
+            type: boolean
+          description: >-
+            If set to true, only data from official state sources will be
+            returned.
+          example: 'false'
+        - name: returnAllAvailableData
+          in: query
+          schema:
+            type: boolean
+          description: >-
+            If set to true, the query will return the success code and include
+            any partial information when it is unable to determine a matching
+            address or unable to determine the election for electionId=0
+            queries.
+          example: 'false'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
