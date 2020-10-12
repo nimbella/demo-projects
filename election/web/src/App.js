@@ -1,22 +1,22 @@
 import './App.scss';
-import API from './components/API';
-import ExitPolls from './components/ExitPolls';
-import Map from './components/Home';
+import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Voter from './components/Voter';
-import Representatives from './components/Representatives';
-import Elections from './components/Elections';
 import React, { lazy, Suspense } from 'react';
 import ReactNotification from 'react-notifications-component';
 import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
 import 'react-notifications-component/dist/theme.css';
 
-const Home = lazy(() => import('./components/Trends'));
-const Resources = lazy(() => import('./components/Resources'));
+const Trends = lazy(() => import('./components/Trends'));
+const ExitPolls = lazy(() => import('./components/ExitPolls'));
+const Voter = lazy(() => import('./components/Voter'));
+const Representatives = lazy(() => import('./components/Representatives'));
+const Elections = lazy(() => import('./components/Elections'));
 const Divisions = lazy(() => import('./components/Divisions'));
-const Contest = lazy(() => import('./components/Contest'));
 const Build = lazy(() => import('./components/Build'));
+const API = lazy(() => import('./components/API'));
+const Contest = lazy(() => import('./components/Contest'));
+const Resources = lazy(() => import('./components/Resources'));
 const State = lazy(() => import('./components/State'));
 
 const App = () => {
@@ -26,14 +26,14 @@ const App = () => {
   const pages = [
     {
       pageLink: '/',
-      view: Map,
+      view: Home,
       displayName: 'Home',
       showInNavbar: true,
       icon: 'Home'
     },
     {
       pageLink: '/trends',
-      view: Home,
+      view: Trends,
       displayName: 'News & Trends',
       showInNavbar: true,
       icon: 'TrendingUp'
