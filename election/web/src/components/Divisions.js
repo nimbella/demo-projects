@@ -9,25 +9,46 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-
+import Loader from '../utils/loader';
+import NoResult from '../utils/noResult';
 
 function Divisions() {
   const [divisionData, setDivisionData] = useState();
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState();
+  const [loading, setLoading] = useState(false);
+  const [noResult, setNoResult] = useState(false);
   const darkMode = useDarkMode(false);
 
   const divisionSearch = () => {
-    axios.get(`${API_ROOT_URL}/divisions?query=${address}`)
-      .then(response => {
-        setDivisionData(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    if (address)
+      setLoading(true, axios.get(`${API_ROOT_URL}/divisions?query=${address}`)
+        .then(response => {
+          setDivisionData(response.data);
+          if (!response.data || !response.data.results) setNoResult(true)
+        })
+        .catch(error => {
+          console.log(error);
+        }).finally(_ => {
+          setLoading(false);
+        }))
   }
   const handleInputChange = event => {
     const { value } = event.target;
     setAddress(value);
+  };
+  const handleTextFieldKeyDown = event => {
+    switch (event.key) {
+      case 'Enter':
+        divisionSearch();
+        event.preventDefault();
+        break
+      case 'Escape':
+        event.target.value = '';
+        setNoResult(false)
+        setAddress('');
+        break
+      default: break
+    }
   };
   const theme = createMuiTheme({
     palette: {
@@ -52,6 +73,7 @@ function Divisions() {
           <TextField
             placeholder="e.g. us, ny, spencerport"
             onChange={handleInputChange}
+            onKeyDown={handleTextFieldKeyDown}
             InputProps={{
               endAdornment: (
                 <InputAdornment>
@@ -61,20 +83,23 @@ function Divisions() {
             }}
           />
         </ThemeProvider>
+        <NoResult show={noResult} />
+        <Loader show={loading} />
       </div>
       <div className="Resources">
-        {divisionData && divisionData.results && divisionData.results.map((element, index) => {
-          return (
-            <div
-              key={index}
-              className="faq fadeInUp"
-              style={{ animationDelay: `${0.5 + index * 0.1}s` }}
-            >
-              <span>{element.name} </span><br />
-              <span className="link">{element.ocdId}</span>
-            </div>
-          );
-        })}
+        {
+          divisionData && divisionData.results && divisionData.results.map((element, index) => {
+            return (
+              <div
+                key={index}
+                className="faq fadeInUp"
+                style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+              >
+                <span>{element.name} </span><br />
+                <span className="link">{element.ocdId}</span>
+              </div>
+            );
+          })}
       </div>
       <Footer />
     </React.Fragment>
