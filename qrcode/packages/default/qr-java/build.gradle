@@ -1,0 +1,32 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+    compile.extendsFrom provided
+}
+
+dependencies {
+    provided 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.zxing:core:3.3.0'
+    compile 'com.google.zxing:javase:3.3.0'
+}
+
+jar {
+    dependsOn configurations.runtime
+
+    from {
+        (configurations.runtime - configurations.provided).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
