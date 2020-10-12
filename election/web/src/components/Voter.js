@@ -50,6 +50,7 @@ function Voter() {
     setLoading(true, axios.get(`${API_ROOT_URL}/voterinfo?address=${address}`)
       .then(response => {
         setVoterData(response.data);
+        setNoResult(false);
         if (!response.data || !response.data.state) setNoResult(true)
       })
       .catch(error => {
