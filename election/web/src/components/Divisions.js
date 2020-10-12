@@ -24,6 +24,7 @@ function Divisions() {
       setLoading(true, axios.get(`${API_ROOT_URL}/divisions?query=${address}`)
         .then(response => {
           setDivisionData(response.data);
+          setNoResult(false);
           if (!response.data || !response.data.results) setNoResult(true)
         })
         .catch(error => {
