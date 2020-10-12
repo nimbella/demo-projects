@@ -114,6 +114,7 @@ nim project deploy demo-projects/election
 You may save your `GOOGLE_CIVIC_API_TOKEN` to a file called `.env`. See the template in [`.env-template`] as an example.
 This file should be located at the root of your election project.
 
+If you are in a hurry and don't want to grab a [Google Civic Information API Key](https://developers.google.com/civic-information) yet, you can still deploy and use this app. Simply prepend the `API_ROOT_URL` value with `https://electiondemo-apigcp.nimbella.io` in `constants.js`.
 
 ### How to share your project?
 
