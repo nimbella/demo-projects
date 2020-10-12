@@ -25,9 +25,9 @@ function Build() {
       </div>
       <div className="Build">
         <h2>
-          The Github project for this React application is <a href="https://github.com/nimbella/demo-projects/tree/master/election">here</a>:
+          The Github project for this React application is <a href="https://github.com/nimbella/demo-projects/tree/master/election" target="_blank" rel="noopener noreferrer">here</a>:
       </h2>
-        <p>This project is built with a React front-end for the user interface. The front-end is backed by the <a href="api">Nimbella Election API</a>. As an example, let's show you how to share exit poll data in your application.</p>
+        <p>This project is built with a React front-end for the user interface. The front-end is backed by the <a href="#/api">Nimbella Election API</a>. As an example, let's show you how to share exit poll data in your application.</p>
         <p>It's as simple as 1, 2, 3 &amp; deploy.</p>
         <ol>
           <li>
@@ -101,9 +101,9 @@ useEffect(() => {
           <li>Your API calls run as needed, with no servers for you to run.</li>
         </ul>
 
-        <p>You will need a <a href="https://developers.google.com/civic-information">Google Civic Information API key</a> for several of the endpoints.</p>
+        <p>You will need a <a href="https://developers.google.com/civic-information" target="_blank" rel="noopener noreferrer">Google Civic Information API key</a> for several of the endpoints.</p>
         <ul>
-          <li>You may create an API key from the <a href="https://console.cloud.google.com/">Google cloud console</a> by navigating to
+          <li>You may create an API key from the <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">Google cloud console</a> by navigating to
             <SyntaxHighlighter language="javascript" style={darkMode.value ? darcula : prism}> APIs &amp; Services &gt; Credentials &gt; Create credentials &gt; API key</SyntaxHighlighter>
           </li>
           <li>You should restrict the key before using it by clicking <b>Restrict Key</b> and selecting Google Civic Information API.</li>
@@ -111,7 +111,7 @@ useEffect(() => {
 
         <p>The project is deployed to the Nimbella cloud with one command: <b>nim project deploy</b>. Here is how.</p>
         <ol>
-          <li> Install the <a href="https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim">Nimbella command line tool called <code>nim</code></a></li>
+          <li> Install the <a href="https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim" target="_blank" rel="noopener noreferrer">Nimbella command line tool called <code>nim</code></a></li>
           <li> Run <b>nim login</b> to sign up (or login if you have an existing account). We strongly recommend signing up with a GitHub id.</li>
           <li>Deploy this project directly from GitHub if you signed up with a GitHub id.</li>
         </ol>
@@ -125,6 +125,7 @@ export GOOGLE_CIVIC_API_TOKEN=<your_google_api_key>
 nim project deploy demo-projects/election`}
         </SyntaxHighlighter>
         <p>You may save your <b>GOOGLE_CIVIC_API_TOKEN</b> to a file called <b>.env</b>. See the template in [<b>.env-template</b>] as an example. This file should be located at the root of your election project.</p>
+        <p>If you are in a hurry and don't want to grab a <a href="https://developers.google.com/civic-information" target="_blank" rel="noopener noreferrer">Google Civic Information API Key</a> yet, you can still deploy and use this app. Simply prepend the <b>API_ROOT_URL</b> value with <b>https://electiondemo-apigcp.nimbella.io</b> in <b>constants.js</b>.</p>
         <h2>How to share your project?</h2>
         <p>The output of <b>nim project deploy</b> will include a URL to where your application is running in the Nimbella cloud. You may also find this URL by running <b>nim auth current --web</b>.</p>
         <p>An example output of the project deployment follows.</p>
