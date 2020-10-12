@@ -18,6 +18,7 @@ function Elections() {
     setLoading(true, axios.get(`${API_ROOT_URL}/elections`)
       .then(response => {
         setElectionData(response.data);
+        setNoResult(false);
         if (!response.data || !response.data.elections) setNoResult(true)
       })
       .catch(error => {
