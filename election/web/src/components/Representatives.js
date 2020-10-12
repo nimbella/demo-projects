@@ -25,6 +25,7 @@ function Representatives() {
       setLoading(true, axios.get(`${API_ROOT_URL}/reps?address=${address}`)
         .then(response => {
           setRepsData(response.data);
+          setNoResult(false);
           if (!response.data || !response.data.officials) setNoResult(true)
         })
         .catch(error => {
@@ -115,7 +116,7 @@ function Representatives() {
                 className="faq fadeInUp"
                 style={{ animationDelay: `${0.5 + index * 0.1}s` }}
               >
-                <img width="20%" src={rep.photoUrl}></img><br />
+                <img width="20%" src={rep.photoUrl} alt=""></img><br />
                 <span>{rep.name} </span><br />
                 <span className="link">{rep.party}</span><br />
                 {rep.phones && rep.phones.map((p, index) => {
