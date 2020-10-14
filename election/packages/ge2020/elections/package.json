@@ -1,11 +1,8 @@
 {
-  "name": "news",
+  "name": "elections",
   "version": "1.0.0",
-  "description": "Election Related News",
+  "description": "Upcoming elections across USA",
   "main": "index.js",
-  "dependencies": {
-    "google-news-rss": "^0.4.1"
-  },
   "devDependencies": {
     "jest": "^26.5.3"
   },
@@ -14,6 +11,8 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["html"]
+    "coverageReporters": [
+      "html"
+    ]
   }
 }

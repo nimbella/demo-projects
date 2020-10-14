@@ -23,4 +23,4 @@ function sortByLatest(property) {
     };
 }
 
-exports.main = main;
+module.exports = {main, sortByLatest}
