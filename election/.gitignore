@@ -1,3 +1,4 @@
 .env
 .nimbella
+coverage
 web/.built
