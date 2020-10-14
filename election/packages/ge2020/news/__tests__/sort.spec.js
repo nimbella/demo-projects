@@ -12,7 +12,7 @@ describe('sort function', () => {
       { id: 3, created: 1602569513559 },
       { id: 2, created: 1602569511570 },
       { id: 1, created: 1602569508015 },
-    ];
+    ];;
 
     expect(input.sort(sortByLatest('created'))).toEqual(output);
   });
@@ -28,7 +28,7 @@ describe('sort function', () => {
       { id: 3, created: 1602569513559 },
       { id: 2, created: 1602569511570 },
       { id: 1, created: 1602569513559 },
-    ];
+    ];;
 
     expect(input.sort(sortByLatest('id'))).toEqual(output);
   });
