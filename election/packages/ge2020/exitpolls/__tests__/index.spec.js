@@ -1,4 +1,4 @@
-const main = require('../index');
+const { main } = require('../index');
 const fs = require('fs');
 
 jest.mock('fs')
