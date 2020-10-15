@@ -3,10 +3,15 @@ const GoogleNewsRss = require("google-news-rss");
 
 jest.genMockFromModule('google-news-rss');
 jest.mock('google-news-rss');
+const googleNews = {
+  search: jest.fn()
+};
+
+GoogleNewsRss.mockImplementation(() => googleNews);
 
 describe('main function', () => {
   test('it should return news articles by topic', async () => {
-    const googleNews = new GoogleNewsRss();
+    // arrange
     const response = [
       {
         "description": "2020 election news: Live updates",
@@ -36,18 +41,24 @@ describe('main function', () => {
       },
     ];
 
-    // googleNews.search.mockImplementationOnce(("us election", 50, "en", {scoring: "n"}) =>
-    //   Promise.resolve({ data: response }),
-    // );
-    googleNews.search.mockResolvedValue(response);
+    googleNews.search.mockImplementationOnce(
+      (terms, num, language, extraParams) =>
+        Promise.resolve(response)
+    );
 
     // act
     const data = await main()
 
     // assert
     expect(data).toStrictEqual({ body: response })
+    expect(data.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          created: 1602696240000
+        })
+      ])
+    )
     expect(googleNews.search).toHaveBeenCalledTimes(1)
 
   });
-
 });

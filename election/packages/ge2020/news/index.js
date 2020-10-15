@@ -1,18 +1,16 @@
 const GoogleNewsRss = require("google-news-rss")
-const googleNews = new GoogleNewsRss()
 
 function main(args) {
-    return googleNews
-        .search("us election", 50, "en", {
-            scoring: "n",
-        })
-        .then((resp) => {
-            resp.forEach(obj => obj.created = new Date(obj.pubDate).getTime())
-            sorted = resp.sort(sortByLatest("created")); // scoring not working
-            return {
-                body: sorted,
-            }
-        });
+    const googleNews = new GoogleNewsRss()
+    return googleNews.search("us election", 50, "en", {
+        scoring: "n",
+    }).then((resp) => {
+        resp.forEach(obj => obj.created = new Date(obj.pubDate).getTime())
+        sorted = resp.sort(sortByLatest("created")); // scoring not working
+        return {
+            body: sorted,
+        }
+    });
 }
 
 function sortByLatest(property) {
