@@ -1,5 +1,5 @@
 const axios = require("../__mocks__/axios")
-const main = require('../index')
+const { main } = require('../index')
 
 it("fetches election data", async () => {
   // arrange

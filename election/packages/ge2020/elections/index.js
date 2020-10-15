@@ -8,4 +8,4 @@ async function main(args) {
         .catch(error => ({ body: error.message }))
 }
 
-module.exports = main
+module.exports = { main }

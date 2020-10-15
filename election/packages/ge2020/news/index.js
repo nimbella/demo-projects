@@ -1,5 +1,5 @@
-const GoogleNewsRss = require("google-news-rss");
-const googleNews = new GoogleNewsRss();
+const GoogleNewsRss = require("google-news-rss")
+const googleNews = new GoogleNewsRss()
 
 function main(args) {
     return googleNews
@@ -11,16 +11,16 @@ function main(args) {
             sorted = resp.sort(sortByLatest("created")); // scoring not working
             return {
                 body: sorted,
-            };
+            }
         });
 }
 
 function sortByLatest(property) {
     return function (a, b) {
-        if (a[property] > b[property]) return -1;
-        else if (a[property] < b[property]) return 1;
-        else return 0;
+        if (a[property] > b[property]) return -1
+        else if (a[property] < b[property]) return 1
+        else return 0
     };
 }
 
-module.exports = {main, sortByLatest}
+module.exports = { main, sortByLatest }
