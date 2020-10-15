@@ -4,3 +4,5 @@ packages:
       - name: qr-java 
         runtime: java:default
         main: qr.Generate#main
+      - name: qr 
+        runtime: tessjs:10
