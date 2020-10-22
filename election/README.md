@@ -81,11 +81,6 @@ to the cloud. The benefits of this approach are:
 - The front-end is served from a globally Content Delivery Network (CDN).
 - Your API calls run as needed, with no servers for you to run.
 
-You will need a [Google Civic Information API Key](https://developers.google.com/civic-information) for several of the endpoints.
-- You may create an API key from the [Google cloud console](https://console.cloud.google.com/) by navigating to
-`APIs & Services > Credentials > Create credentials > API key`.
-- You should restrict the key before using it by clicking `Restrict Key` and selecting Google Civic Information API.
-
 The project is deployed to the Nimbella cloud with one command: `nim project deploy`. Here is how.
 
 1. Install the [Nimbella command line tool called `nim`](https://nimbella.io/downloads/nim/nim.html#install-the-nimbella-command-line-tool-nim).
@@ -96,6 +91,16 @@ The project is deployed to the Nimbella cloud with one command: `nim project dep
 GOOGLE_CIVIC_API_TOKEN=<your_google_api_key> \
   nim project deploy github:nimbella/demo-projects/election
 ```
+
+If you are in a hurry and don't want to grab a [Google Civic Information API Key](https://developers.google.com/civic-information) yet, you can still deploy and use this app.
+Simply clone this repo locally, prepend the `API_ROOT_URL` value with `https://electiondemo-apigcp.nimbella.io` in `constants.js` and deploy using `nim project deploy demo-projects/election`. That's it, you can skip below steps.
+
+
+You will need a [Google Civic Information API Key](https://developers.google.com/civic-information) for several of the endpoints.
+- You may create an API key from the [Google cloud console](https://console.cloud.google.com/) by navigating to
+`APIs & Services > Credentials > Create credentials > API key`.
+- You should restrict the key before using it by clicking `Restrict Key` and selecting Google Civic Information API.
+
 
 If you did not sign up with a GitHub id, clone the project locally first, then deploy. This is because the GitHub rate limits are
 too low to deploy without cloning unless you're authenticated with GitHub.
@@ -109,7 +114,6 @@ nim project deploy demo-projects/election
 You may save your `GOOGLE_CIVIC_API_TOKEN` to a file called `.env`. See the template in [`.env-template`] as an example.
 This file should be located at the root of your election project.
 
-If you are in a hurry and don't want to grab a [Google Civic Information API Key](https://developers.google.com/civic-information) yet, you can still deploy and use this app. Simply prepend the `API_ROOT_URL` value with `https://electiondemo-apigcp.nimbella.io` in `constants.js`.
 
 ### How to share your project?
 
