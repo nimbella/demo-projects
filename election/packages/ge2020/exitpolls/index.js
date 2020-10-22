@@ -1,11 +1,8 @@
-const fs = require('fs')
+const fs = require('fs');
 
-let contents
+const contents = fs.readFileSync(__dirname + '/exitpolls.json', 'UTF-8');
 function main(args) {
-	if (!contents) {
-		contents = fs.readFileSync(__dirname + '/exitpolls.json', 'UTF-8')
-	}
-	return { body: JSON.parse(contents) }
+    return { body };
 }
 
 module.exports = { main }
