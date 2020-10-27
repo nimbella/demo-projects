@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e 
 
-# set to 'mave' to use maven
+# set to 'maven' to use maven
 # set to 'gradle' to use gradle
 BUILD="maven"
 
