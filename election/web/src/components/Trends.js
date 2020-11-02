@@ -10,7 +10,6 @@ import {useLocation} from 'react-router-dom';
 import {useLocalStorage, useSessionStorage, useWindowSize} from 'react-use';
 
 const TimeseriesExplorer = lazy(() => import('./TimeseriesExplorer'));
-const MapExplorer = lazy(() => import('./MapExplorer'));
 const Actions = lazy(() => import('./Actions'));
 const Table = lazy(() => import('./Table'));
 const Minigraphs = lazy(() => import('./Minigraphs'));

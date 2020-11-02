@@ -6,7 +6,6 @@ import axios from "axios";
 import { API_ROOT_URL } from '../constants';
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import SearchIcon from "@material-ui/icons/Search";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import * as Icon from 'react-feather';
@@ -15,11 +14,14 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
+import SearchIcon from "@material-ui/icons/Search";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PhoneOutlinedIcon from '@material-ui/icons/PhoneOutlined';
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
 import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
 import EventAvailableOutlinedIcon from '@material-ui/icons/EventAvailableOutlined';
+import Loader from '../utils/loader';
+import NoResult from '../utils/noResult';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,21 +41,44 @@ function Voter() {
   const classes = useStyles();
   const [voterData, setVoterData] = useState({});
   const [address, setAddress] = useState();
+  const [loading, setLoading] = useState(false);
+  const [noResult, setNoResult] = useState(false);
   const darkMode = useDarkMode(false);
 
   const voterInfo = () => {
-    axios.get(`${API_ROOT_URL}/voterinfo?address=${address}`)
+    if (address)
+    setLoading(true, axios.get(`${API_ROOT_URL}/voterinfo?address=${address}`)
       .then(response => {
         setVoterData(response.data);
+        setNoResult(false);
+        if (!response.data || !response.data.state) setNoResult(true)
       })
       .catch(error => {
         console.log(error);
-      });
+      }).finally(_ => {
+        setLoading(false);
+      }));
   }
   const handleInputChange = event => {
     const { value } = event.target;
     setAddress(value);
   };
+
+  const handleTextFieldKeyDown = event => {
+    switch (event.key) {
+      case 'Enter':
+        voterInfo();
+        event.preventDefault();
+        break
+      case 'Escape':
+        event.target.value = '';
+        setNoResult(false)
+        setAddress('');
+        break
+      default: break
+    }
+  };
+
   const theme = createMuiTheme({
     palette: {
       type: darkMode.value ? 'dark' : 'light',
@@ -103,6 +128,7 @@ function Voter() {
             <TextField
               placeholder="1234 Example Ave"
               onChange={handleInputChange}
+              onKeyDown={handleTextFieldKeyDown}
               InputProps={{
                 endAdornment: (
                   <InputAdornment>
@@ -112,11 +138,13 @@ function Voter() {
               }}
             />
           </ThemeProvider>
+          <NoResult show={noResult} />
+          <Loader show={loading} />
         </div>
         <br /><br />
         <div className={classes.root}>
           <ThemeProvider theme={theme}>
-            <Accordion defaultExpanded='true'>
+            <Accordion defaultExpanded={true}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"

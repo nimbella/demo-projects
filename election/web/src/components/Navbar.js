@@ -47,7 +47,7 @@ function Navbar({ pages, darkMode }) {
         {windowSize.width > 769 && (
           <React.Fragment>
             {pages.map((page, key) => (
-                <React.Fragment>
+                <React.Fragment key={key}>
                   {(pages.length - 1) > key && <Link to={page.pageLink}>
                     <span {...navLinkProps(page.pageLink, page.animationDelayForNavbar)}>
                       {React.createElement(Icon[page.icon], {...activeNavIcon(page.pageLink)})}&nbsp;&nbsp;
@@ -116,12 +116,12 @@ function Expand({ pages, setExpand, darkMode, windowSize }) {
 export default Navbar;
 
 const navLinkProps = (path, animationDelay) => ({
-  className: `${window.location.pathname === path ? 'focused' : ''}`,
+  className: `${window.location.hash === `#${path}` ? 'focused' : ''}`,
 });
 
 const activeNavIcon = (path) => ({
   style: {
-    stroke: window.location.pathname === path ? '#4c75f2' : '',
+    stroke: window.location.hash ===  `#${path}` ? '#4c75f2' : '',
   },
 });
 

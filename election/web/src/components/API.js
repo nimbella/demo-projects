@@ -1,25 +1,15 @@
 import Footer from './Footer';
 
-import definition from '../data/Nimbella Election API.yaml';
+import { RedocStandalone } from 'redoc';
 import { useTimeout } from '../hooks/useTimeout';
 import useScript from '../hooks/useScript';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Lincoln from 'react-lincoln';
 import useDarkMode from 'use-dark-mode';
 
 function API() {
   const darkMode = useDarkMode(false);
-  useTimeout(
-    () => {
-      const apiDiv = document.querySelectorAll('div.Api div,nav');
-      darkMode.value
-        ? apiDiv.forEach((e) => e.classList.add('dark-mode'))
-        : apiDiv.forEach((e) => e.classList.remove('dark-mode'));
-    },
-    1 * 500,
-    darkMode
-  );
+
   useScript(null, `(function (p, o, s, t, m, a, n) {
     !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); })
     !o.getElementById(s + t) && o.getElementsByTagName("head")[0].appendChild((
@@ -47,8 +37,9 @@ function API() {
         <div className="postman-run-button" data-postman-action="collection/import" data-postman-var="b4d25e3121fd8d8998aa">
         </div>
       </div>
-      <div className="Api">
-        <Lincoln definition={definition} {...{ darkMode }} />
+
+      <div className={ `Api ${darkMode.value? 'dark-mode':''}` }> 
+        <RedocStandalone specUrl="/Nimbella Election API.yaml" />
       </div>
       <Footer />
     </React.Fragment>

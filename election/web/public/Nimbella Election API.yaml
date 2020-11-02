@@ -7,11 +7,20 @@ info:
     government representatives for U.S. residential addresses.
 
 
-    Contact Support:
+    Once you deploy the project in your namespace you will have your baseUrl as https://<your_namespace>-apigcp.nimbella.io/api/ge2020. 
+    However you can still use https://electiondemo-apigcp.nimbella.io/api/ge2020 as baseUrl to try out responses.
+
+    
+     Contact Support:
+     
      Name: Nimbella
+
+     Email: info@nimbella.com
+
+     Github: https://github.com/nimbella/demo-projects/tree/master/election
   version: 1.0.0
 servers:
-  - url: '{{baseUrl}}'
+  - url: '/api/ge2020/'
 tags:
   - name: Representatives
 paths:
@@ -132,7 +141,7 @@ paths:
         - General
       summary: County State Wise Results
       description: >-
-        County and State wise voting stats for a particualr election year,
+        County and State wise voting stats for a particular election year,
         defaults to 2016.
       parameters:
         - name: year

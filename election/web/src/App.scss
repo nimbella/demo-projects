@@ -3186,7 +3186,6 @@ footer {
   }
 }
 
-
 .Reps {
   min-height: 30rem;
   margin-left: 20rem;
@@ -4508,7 +4507,6 @@ footer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  // justify-content: center;
   margin-left: 15rem;
   margin-right: 6rem;
 }
@@ -4609,48 +4607,21 @@ path:hover {
   cursor: pointer;
 }
 
-// API
 .Api {
-  margin-left: 12rem;
-  .page-0-143 {
-    width: 99%;
-  }
-  .main-0-144 {
-    overflow-y: auto;
-    height: calc(100vh - 5rem);
-    width: 75% !important;
-    font-size: 1em;
-    * {
-      font-size: 1rem !important;
-    }
-    h1 {
-      font-size: 1.8em !important;
-      font-weight: 600;
-    }
-    h2 {
-      font-size: 1.4em !important;
-      font-weight: 600;
-    }
-    h3 {
-      font-size: 1.2em !important;
-      font-weight: 600;
-    }
-    h4 {
-      font-weight: 600;
-    }
-    .method-0-140 {
-      margin-bottom: 0;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid $gray-dark;
-    }
+  margin-left: 14rem;
+  .sc-dkQUut {
+    display: none;
   }
 }
-
-html {
-  font-size: 100% !important;
-}
-a {
-  font-size: 100% !important;
+.Api.dark-mode {
+  * {
+    color: white;
+    background-color: inherit;
+  }
+  ul li :hover {
+    background-color: $gray-dark;
+    color: white;
+  }
 }
 
 .jumbotron select {
@@ -4664,23 +4635,6 @@ a {
   appearance: none;
 }
 
-#_vit.vit-modal {
-  width: 90% !important;
-  margin-left: 33% !important;
-  height: 250px !important;
-  border: none !important;
-}
-#_vit #address-view #user-image {
-  display: none !important;
-}
-#_vit #select-language {
-  display: none !important;
-}
-#_vit #address-view .title,
-.footer,
-#app-info {
-  display: none !important;
-}
 .Voter {
   min-height: 600px;
 }
@@ -4692,7 +4646,6 @@ a {
       margin-left: 1rem;
     }
   }
-
   .jumbotron,
   .Home,
   .ElectoralMap,
@@ -4703,14 +4656,10 @@ a {
     padding: 1rem;
     box-sizing: border-box;
   }
-  .Api {
-    .main-0-144 {
-      margin: 0;
-      width: 100% !important;
-      height: auto;
-    }
-    .navigationIcon-0-45 {
-      color: #4c555a;
-    }
-  }
+}
+.loader {
+  margin-top: 1em;
+}
+.noresult {
+  margin-top: 1em;
 }

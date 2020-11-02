@@ -1,9 +1,10 @@
 import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const LoadingSpinner = () => (
-  <div>
-    <i className="fa fa-spinner fa-spin" /> Loading...
-  </div>
-);
-
-export default LoadingSpinner;
+export default function Loader(props) {
+  return (
+    props.show ? <div className={props.class||'loader'}>
+      <CircularProgress />
+    </div> : ''
+  );
+}
