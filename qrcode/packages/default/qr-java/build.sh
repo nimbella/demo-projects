@@ -11,7 +11,7 @@ if [ $BUILD == "maven" ]; then
     echo target/qr-1.0.0-jar-with-dependencies.jar > .include
 else
     if [ $BUILD == "gradle" ]; then
-        gradlew jar
+        gradle jar
         echo build/libs/qr-java-1.0.jar > .include
     else
         echo unknown builder
