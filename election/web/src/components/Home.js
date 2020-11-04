@@ -348,7 +348,6 @@ class Home extends Component {
   updateDisplayFromHistorical = async (event, value) => {
     const year = event ? event.target.value : value;
     const historicalResult = await this.getData(year);
-    console.log(historicalResult);
     const updatedStates = Object.assign({}, this.state.states);
     const blueStates = {};
     const redStates = {};
