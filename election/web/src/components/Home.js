@@ -2,13 +2,13 @@ import Footer from './Footer';
 import ProgressBar from './ProgressBar';
 import USAMap from './USAMap';
 import SplitElectoralVotes from './SplitElectoralVotes';
-
+import { API_ROOT_URL } from '../constants';
 import HistoricalMaps from '../data/historical-maps';
-import { notify } from '../utils/commonFunctions';
-
-import React, { Component, lazy, Suspense } from 'react';
+import { notify, fetcher } from '../utils/commonFunctions';
+import * as Icon from 'react-feather';
+import React, { Component, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
-const Timer = lazy(() => import('./Timer'));
+const latestYear = '2020'
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +21,7 @@ class Home extends Component {
       repVotes: 0,
       blueStates: {},
       redStates: {},
+      showRefresh: false,
       states: {
         AL: {
           color: '',
@@ -337,15 +338,20 @@ class Home extends Component {
     );
   };
 
-  updateDisplayFromHistorical = (event) => {
-    const year = event.target.value;
-    const historicalResult = HistoricalMaps[year];
+  getData = async (year) => {
+    if (year === latestYear) {
+      return await fetcher(`${API_ROOT_URL}/results`)
+    }
+    else return HistoricalMaps[year]
+  };
 
+  updateDisplayFromHistorical = async (event, value) => {
+    const year = event ? event.target.value : value;
+    const historicalResult = await this.getData(year);
+    console.log(historicalResult);
     const updatedStates = Object.assign({}, this.state.states);
-
     const blueStates = {};
     const redStates = {};
-
     /* change display colors for each state based on historical object
     also update blueState and redState objects in the process  */
     // eslint-disable-next-line guard-for-in
@@ -366,10 +372,10 @@ class Home extends Component {
         states: updatedStates,
         blueStates: blueStates,
         redStates: redStates,
+        showRefresh: year === latestYear,
       },
       () => {
         this.updateSplitElectoralStatesDisplay();
-
         this.updateVoteCount(blueVoteArray, redVoteArray);
       }
     );
@@ -697,6 +703,7 @@ class Home extends Component {
   };
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.updateDisplayFromHistorical(undefined, latestYear)
   }
   render() {
     return (
@@ -709,9 +716,8 @@ class Home extends Component {
           />
         </Helmet>
         <div className="jumbotron">
-        <Timer />
-          <h2>Electoral College Map</h2>
-          <h3>270 Votes are Necessary to Win</h3>
+          <h1>Electoral College Map</h1>
+          <h2>270 Votes are Necessary to Win</h2>
           <div className="dropdown">
             <h5>Select a Starting View:</h5>
             <select
@@ -719,10 +725,11 @@ class Home extends Component {
               defaultValue={0}
               onChange={this.updateDisplayFromHistorical}
             >
-              <option value="2000">2020 Live</option>
+              <option value="2020">2020 Live</option>
               <option value="2012">2012 Actual</option>
               <option value="2016">2016 Actual</option>
-            </select>
+            </select> &nbsp;&nbsp;
+            {this.state.showRefresh && <Icon.RefreshCcw onClick={() => this.updateDisplayFromHistorical(undefined, latestYear)}> </Icon.RefreshCcw>}
           </div>
         </div>
         <div className="ElectoralMap">
