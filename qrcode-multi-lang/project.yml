@@ -1,8 +1,10 @@
+actionWrapPackage: default
+
 packages:
   - name: default
     actions:
       - name: qr-java 
         runtime: java:default
         main: qr.Generate#main
-      - name: qr 
+      - name: qr-js
         runtime: nodejs:default
