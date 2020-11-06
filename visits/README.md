@@ -23,7 +23,7 @@ Actions are located under the [`packages`](./packages/visits) directory and dete
 
 - The code for the `counter` action in [`counter.php`](./packages/visits/counter.php) uses a Nimbella provided key-value store accessible through a [Redis SDK](https://redis.io). Nimbella provides a unique key-value instance for each user account. The `counter` action checks for a cookie first, and if none is found, it increments the count by one and writes to the cookie.
 
-- The `info` action in [`info.php`](./packages/visits/info.php) checks for a file in a Nimbella provided data bucket and returns its contents, which are the date since the project was deployed. If it can't find the file, it creates one and adds the current date.
+- The `info` action in [`info.php`](./packages/visits/info.php) checks for a record in a Nimbella provided key-value store and returns its contents, which are the date since the project was deployed. If it can't find the record, it creates one and adds the current date.
 
 #### Static web content
 
