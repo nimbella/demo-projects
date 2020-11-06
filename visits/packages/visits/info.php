@@ -9,30 +9,25 @@
 
 use Nimbella\Nimbella;
 
-define('FILENAME', 'visits-since.txt');
-$bucket = (new Nimbella())->storage();
-$file   = $bucket->object(FILENAME);
+define('SINCE', 'visits-since');
+$redis = (new Nimbella())->redis();
 $since  = false; // locally cache the up date
 
 function main() : array {
-  global $since, $bucket, $file;
+  global $redis, $since;
 
   if ($since) {
     // date is locally cached, use it
     return [ 'body' => $since ];
-  } else if ($file->exists()) {
-    // fetch the date from the object store
-    // and cache it for future use
-    $since = $file->downloadAsString();
-    return [ 'body' => $since ];
   } else {
-    // date file doesn't exist, create it
+    // since date doesn't exist, create it
     // and 'now' becomes the since date
-    echo 'creating info file';
+    echo 'creating info record';
     $since = date('m/d/Y');
-    $bucket->upload($since, [
-      'name' => FILENAME
-    ]);
+    if ($redis->setNx(SINCE, $since) == FALSE) {
+      // record alread exists, use it
+      $since = $redis->get(SINCE);
+    }
     return [ 'body' => $since ];
   }
 }
