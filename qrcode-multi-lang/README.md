@@ -45,3 +45,7 @@ If you have the [Nimbella command line tool called `nim`](https://nimbella.io/do
    `nim project deploy /path/to/qrcode`
 
 The output of this command will include a link to where the application is running in the cloud for your account.
+
+### Notes on Alternate Implementation
+
+The QR Code generator is implemented in Node.js and in Java. The Java implementation is located in [`qr-java`](./packages/default/qr-java). Maven is used to build the JAR.
