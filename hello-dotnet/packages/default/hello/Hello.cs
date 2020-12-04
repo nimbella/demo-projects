@@ -29,7 +29,8 @@ namespace Apache.OpenWhisk.Example.Dotnet
                 name = args["name"].ToString();
             }
             JObject message = new JObject();
-            message.Add("greeting", new JValue($"Hello, {name}!"));
+            message.Add("statusCode", new JValue(200));
+            message.Add("body", new JValue($"Hello, {name}!"));
             return (message);
         }
     }
