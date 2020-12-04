@@ -1,0 +1,5 @@
+Apache.OpenWhisk.Example.Dotnet/
+*.pdb
+*.dll
+*.json
+
