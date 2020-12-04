@@ -1,0 +1,6 @@
+packages:
+  - name: default
+    actions:
+      - name: hello
+        main: "Apache.OpenWhisk.Example.Dotnet::Apache.OpenWhisk.Example.Dotnet.Hello::Main"
+        runtime: "dotnet:3.1"
