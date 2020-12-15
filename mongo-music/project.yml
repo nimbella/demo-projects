@@ -1,0 +1,15 @@
+packages:
+  - name: mongo-music
+    clean: true
+    parameters: $(
+      MONGO_CONNECTION_STRING
+      DATABASE_NAME
+      COLLECTION_NAME
+    )
+    actions:
+      - name: GetAlbum
+        main: "MongoMusic.API::MongoMusic.API.GetAlbum::Main"
+        runtime: "dotnet:3.1"
+      - name: CreateAlbum
+        main: "MongoMusic.API::MongoMusic.API.CreateAlbum::Main"
+        runtime: "dotnet:3.1"
