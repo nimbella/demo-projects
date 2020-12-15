@@ -1,6 +1,7 @@
 *.pdb
 *.dll
 *.json
+*.zip
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

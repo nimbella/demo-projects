@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
 using MongoMusic.API.Models;
 
-namespace MongoMusic.API.Functions
+namespace MongoMusic.API
 {
     public class CreateAlbum
     {
@@ -19,31 +19,38 @@ namespace MongoMusic.API.Functions
             }
         }
 
-        public JObject Main(JObject args) {
+        public JObject Main(JObject args)
+        {
+            // Console.WriteLine("Main entered");
             JObject returnValue = new JObject();
-
-            var album = new Album
-            {
-                AlbumName = args["AlbumName"].ToString(),
-                Artist = args["Artist"].ToString(),
-                Price = args["Price"].ToObject<Double>(),
-                ReleaseDate = args["ReleaseDate"].ToObject<DateTime>(),
-                Genre = args["Genre"].ToString()
-            };
 
             try
             {
                 init();
+                // Console.WriteLine("Initialized");
+                var album = new Album
+                {
+                    AlbumName = args["AlbumName"].ToString(),
+                    Artist = args["Artist"].ToString(),
+                    Price = args["Price"].ToObject<Double>(),
+                    ReleaseDate = args["ReleaseDate"].ToObject<DateTime>(),
+                    Genre = args["Genre"].ToString()
+                };
+
+                // Console.WriteLine("Album instance created");
                 _albums.InsertOne(album);
+                // Console.WriteLine("Inserted");
                 returnValue.Add("statusCode", new JValue(200));
-                returnValue.Add("body", new JValue($"Ok"));
+                returnValue.Add("body", new JValue("Ok"));
             }
             catch (Exception ex)
             {
+                // Console.WriteLine("Exception caught");
                 returnValue.Add("statusCode", new JValue(500));
-                returnValue.Add("body", new JValue(ex)); // maybe
+                returnValue.Add("body", new JValue(ex.Message));
             }
 
+            // Console.WriteLine("Returning");
             return returnValue;
         }
     }

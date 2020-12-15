@@ -1,11 +1,1 @@
-MongoMusic.API.deps.json
-MongoMusic.API.pdb
-MongoMusic.API.dll
-DnsClient.dll
-MongoDB.Bson.dll
-MongoDB.Driver.Core.dll
-MongoDB.Driver.dll
-MongoDB.Libmongocrypt.dll
-MongoMusic.API.dll
-Newtonsoft.Json.dll
-SharpCompress.dll
+code.zip

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using MongoDB.Driver;
 using MongoMusic.API.Models;
 
-namespace MongoMusic.API.Functions
+namespace MongoMusic.API
 {
     public class GetAlbum
     {
@@ -21,18 +21,21 @@ namespace MongoMusic.API.Functions
 
         public JObject Main(JObject args)
         {
-            string id = args["id"].ToString();
+            // Console.WriteLine("Main entered");
             JObject returnValue = new JObject();
 
             try
             {
                 init();
+                // Console.WriteLine("Initialized");
+                string id = args["id"].ToString();
                 var result =_albums.Find(album => album.Id == id).FirstOrDefault();
+                // Console.WriteLine("Album found");
 
                 if (result == null)
                 {
                     returnValue.Add("statusCode", new JValue(404));
-                    returnValue.Add("body", new JValue($"Not found"));
+                    returnValue.Add("body", new JValue("Not found"));
                 }
                 else
                 {
@@ -42,10 +45,12 @@ namespace MongoMusic.API.Functions
             }
             catch (Exception ex)
             {
-                    returnValue.Add("statusCode", new JValue(500));
-                    returnValue.Add("body", new JValue(ex)); // maybe
+                // Console.WriteLine("Exception caught");
+                returnValue.Add("statusCode", new JValue(500));
+                returnValue.Add("body", new JValue(ex.Message));
             }
 
+            // Console.WriteLine("Returning");
             return returnValue;
         }
     }
