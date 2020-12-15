@@ -1,3 +1,4 @@
+git clean -fdX
 cd MongoMusic.API
 dotnet publish -c Release -o out
 cd out
