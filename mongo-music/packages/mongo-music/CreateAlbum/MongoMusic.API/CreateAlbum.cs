@@ -33,9 +33,10 @@ namespace MongoMusic.API.Functions
 
             try
             {
+                init();
                 _albums.InsertOne(album);
                 returnValue.Add("statusCode", new JValue(200));
-                returnValue.Add("body", new JValue($"Ok")); // maybe
+                returnValue.Add("body", new JValue($"Ok"));
             }
             catch (Exception ex)
             {

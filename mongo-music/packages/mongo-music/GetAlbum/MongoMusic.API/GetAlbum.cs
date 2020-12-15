@@ -7,8 +7,8 @@ namespace MongoMusic.API.Functions
 {
     public class GetAlbum
     {
-        private MongoClient _mongoClient = null;
-        private IMongoCollection<Album> _albums = null;
+        private static MongoClient _mongoClient = null;
+        private static IMongoCollection<Album> _albums = null;
 
         public void init() {
             if (_mongoClient == null) 
