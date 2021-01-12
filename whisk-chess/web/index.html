@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/jquery"></script>
+        <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+        <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+        <script src="https://unpkg.com/chess.js@0.11.0/chess.js"></script>
+        <base href="https://unpkg.com/chessboardjs@0.0.1/www/">
+        <link rel="icon" type="image/png" href="https://unpkg.com/chessboardjs@0.0.1/www/img/favicon.ico">
+    </head>
+    <body>
+        <h2 id="status"></h2>
+        <div id="myBoard" style="width: 400px"></div>
+        <input id="fen" type="text" size="60" maxlength="100">
+        <br><button id="update">Change Position</button><br>
+        <br>
+        <b>Engine Time</b>:
+        <select id="time">
+          <option value="100" >0.1 second (Dumb)</option>
+          <option value="500">0.5 second (Easy)</option>
+          <option value="1000" selected>1 second (Normal)</option>
+          <option value="2500">2.5 seconds (Hard)</option>
+        </select><br>
+        <div id="pgn"></div>
+<div><a href="https://github.com/openwhisk-blog/whisk-chess">Source Code.</a></div>
+<script>
+var chessURL = location.href + "api/default/chess"
+
+var board = null
+var game = new Chess()
+var $status = $('#status')
+var $fen = $('#fen')
+var $pgn = $('#pgn')
+var $update = $('#update')
+
+function onDragStart (source, piece, position, orientation) {
+  // do not pick up pieces if the game is over
+  if (game.game_over()) return false
+
+  // only pick up pieces for the side to move
+  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+    return false
+  }
+}
+
+function engineMove() {
+    var data = { 
+      "fen": game.fen(),
+      "time": $("#time").val()
+    }
+    console.log(data)
+    $.ajax({
+      type: "POST",
+      url: chessURL,
+      data: JSON.stringify(data),
+      contentType: "application/json; charset=utf-8",
+      success: function(data) {
+          if("move" in data) {
+            game.move(data.move, { sloppy: true })
+            board.position(game.fen())
+          } else {
+            alert("Error! Bad move from the engine!")
+            console.log(data)
+            return
+          }
+          updateStatus()
+      },
+      failure: function(err) {
+          console.log(err)
+          alert("Unexpected error! Check logs.")
+      }
+  })
+}
+
+function onDrop (source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  })
+
+  // illegal move
+  if (move === null) return 'snapback'
+  updateStatus()
+  if(game.game_over()) {
+      return
+  }
+  engineMove()
+}
+
+// update the board position after the piece snap
+// for castling, en passant, pawn promotion
+function onSnapEnd () {
+  board.position(game.fen())
+}
+
+function updateStatus () {
+  var status = ''
+
+  var moveColor = 'White'
+  if (game.turn() === 'b') {
+    moveColor = 'Black'
+  }
+
+  // checkmate?
+  if (game.in_checkmate()) {
+    status = 'Game over, ' + moveColor + ' is in checkmate.'
+  }
+
+  // draw?
+  else if (game.in_draw()) {
+    status = 'Game over, drawn position'
+  }
+
+  // game still on
+  else {
+    status = moveColor + ' to move'
+
+    // check?
+    if (game.in_check()) {
+      status += ', ' + moveColor + ' is in check'
+    }
+  }
+
+  $status.html(status)
+  $fen.val(game.fen())
+  $pgn.html(game.pgn())
+}
+
+$update.click(function() {
+  var fen = $fen.val()
+  if(! game.load(fen) ) {
+    alert("Invalid FEN")
+    game.load(board.position())
+    return
+  }
+  board.position(fen)
+  updateStatus()
+  if(game.turn() == 'b') {
+    engineMove()
+  }
+})
+
+var config = {
+  draggable: true,
+  position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd
+}
+board = Chessboard('myBoard', config)
+updateStatus()
+</script>
+    </body>
+</html>

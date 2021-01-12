@@ -1,0 +1,11 @@
+[[plugins]]
+package = "netlify-plugin-nimbella"
+
+[build]
+  base = "."
+  publish = "web"
+  command = "#"
+
+[nimbella]
+  # Base path that you want to use to access functions. Example https://your-site.com/api/default/greet
+  path = "/api/"
