@@ -38,9 +38,9 @@ fs.createReadStream(path.resolve(__dirname, '..', 'raw-data', '1976-2020-preside
             candidates = {}
             changers.state = row.state_po
         }
-        total[row.party_simplified || 'others'] = row.candidatevotes
+        total[(row.party_simplified || 'others').toLowerCase()] = row.candidatevotes
         meta['total'] = row.totalvotes
-        candidates[row.party_simplified || 'others'] = row.candidate
+        candidates[(row.party_simplified || 'others').toLowerCase()] = row.candidate
 
     }
 

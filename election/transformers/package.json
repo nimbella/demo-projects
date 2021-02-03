@@ -2,7 +2,7 @@
   "name": "transformers",
   "version": "1.0.0",
   "description": "",
-  "main": "counties.js",
+  "main": "total.js",
   "dependencies": {
   },
   "devDependencies": {

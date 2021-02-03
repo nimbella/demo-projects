@@ -125,5 +125,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://devchand-hfo8lwtg1e5-apigcp.nimbella.io"
 }

@@ -1,0 +1,148 @@
+{
+    "years": {
+        "1976": {
+            "democrat": 40680446,
+            "total": {
+                "democrat": 40680446,
+                "libertarian": 95626,
+                "other": 84991,
+                "republican": 38870893
+            },
+            "libertarian": 95626,
+            "other": 84991,
+            "republican": 38870893
+        },
+        "1980": {
+            "democrat": 35431521,
+            "total": {
+                "democrat": 35431521,
+                "libertarian": 862887,
+                "other": 358670,
+                "republican": 43531939
+            },
+            "libertarian": 862887,
+            "other": 358670,
+            "republican": 43531939
+        },
+        "1984": {
+            "democrat": 37396443,
+            "total": {
+                "democrat": 37396443,
+                "libertarian": 224847,
+                "other": 77749,
+                "republican": 54033588
+            },
+            "libertarian": 224847,
+            "other": 77749,
+            "republican": 54033588
+        },
+        "1988": {
+            "democrat": 41649566,
+            "total": {
+                "democrat": 41649566,
+                "libertarian": 407682,
+                "other": 107100,
+                "republican": 48535773
+            },
+            "libertarian": 407682,
+            "other": 107100,
+            "republican": 48535773
+        },
+        "1992": {
+            "democrat": 44788587,
+            "total": {
+                "democrat": 44788587,
+                "libertarian": 280004,
+                "other": 1009538,
+                "republican": 38719566
+            },
+            "libertarian": 280004,
+            "other": 1009538,
+            "republican": 38719566
+        },
+        "1996": {
+            "democrat": 47217417,
+            "total": {
+                "democrat": 47217417,
+                "libertarian": 463612,
+                "other": 762012,
+                "republican": 38898309
+            },
+            "libertarian": 463612,
+            "other": 762012,
+            "republican": 38898309
+        },
+        "2000": {
+            "democrat": 50770099,
+            "total": {
+                "democrat": 50770099,
+                "libertarian": 378962,
+                "other": 212904,
+                "republican": 50163425
+            },
+            "libertarian": 378962,
+            "other": 212904,
+            "republican": 50163425
+        },
+        "2004": {
+            "democrat": 57489292,
+            "total": {
+                "democrat": 57489292,
+                "libertarian": 368137,
+                "other": 117418,
+                "republican": 61705082
+            },
+            "libertarian": 368137,
+            "other": 117418,
+            "republican": 61705082
+        },
+        "2008": {
+            "democrat": 69255978,
+            "total": {
+                "democrat": 69255978,
+                "libertarian": 508862,
+                "other": 133065,
+                "republican": 59448877
+            },
+            "libertarian": 508862,
+            "other": 133065,
+            "republican": 59448877
+        },
+        "2012": {
+            "democrat": 65682731,
+            "total": {
+                "democrat": 65682731,
+                "libertarian": 1211074,
+                "other": 156635,
+                "republican": 60499155
+            },
+            "libertarian": 1211074,
+            "other": 156635,
+            "republican": 60499155
+        },
+        "2016": {
+            "democrat": 62782220,
+            "total": {
+                "democrat": 62782220,
+                "libertarian": 4111883,
+                "other": 399349,
+                "republican": 61575082
+            },
+            "libertarian": 4111883,
+            "other": 399349,
+            "republican": 61575082
+        },
+        "2020": {
+            "democrat": 81195417,
+            "total": {
+                "democrat": 81195417,
+                "libertarian": 1791587,
+                "other": 217363,
+                "republican": 74022587
+            },
+            "libertarian": 1791587,
+            "other": 217363,
+            "republican": 74022587
+        }
+    }
+}
