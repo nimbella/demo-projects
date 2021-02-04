@@ -135,6 +135,7 @@ Deployed actions:
   - ge2020/state_counties
   - ge2020/timeseries
   - ge2020/voterinfo
+  - ge2020/results  
 ```
 
 ## API Internals

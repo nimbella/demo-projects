@@ -1,7 +1,6 @@
 import Footer from './Footer';
 
 import { RedocStandalone } from 'redoc';
-import { useTimeout } from '../hooks/useTimeout';
 import useScript from '../hooks/useScript';
 import React from 'react';
 import { Helmet } from 'react-helmet';
