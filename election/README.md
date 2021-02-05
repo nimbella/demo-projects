@@ -135,6 +135,38 @@ Deployed actions:
   - ge2020/state_counties
   - ge2020/timeseries
   - ge2020/voterinfo
+  - ge2020/results  
 ```
+
+## API Internals
+
+This app has following APIs and their data sources:
+
+|S. No.|API|Data Source|Data Source Type|
+|----|----|----|----|
+|1.|[counties](/election/packages/ge2020/counties) | [counties.json](/election/transformed-data/counties.json) yearwise | Static
+|2.|[divisions](/election/packages/ge2020/divisions) |  [Google Civic Information API](https://developers.google.com/civic-information/docs/v2/divisions/search)| Dynamic
+|3.|[elections](/election/packages/ge2020/elections) |  [Google Civic Information API](https://developers.google.com/civic-information/docs/v2/elections/electionQuery)| Dynamic
+|4.|[exitpolls](/election/packages/ge2020/counties) | [exitpolls.json](/election/transformed-data/exitpolls.json)| Static
+|5.|[news](/election/packages/ge2020/news) | [Google News Feed (rss)](https://news.google.com/rss)| Dynamic
+|6.|[reps](/election/packages/ge2020/reps) |  [Google Civic Information API](https://developers.google.com/civic-information/docs/v2/representatives)| Dynamic
+|7.|[resources](/election/packages/ge2020/resources) | [resources.json](/election/transformed-data/resources.json)| Static
+|8.|[results](/election/packages/ge2020/results) | [Infura Ethereum API](https://infura.io/)| Dynamic
+|9.|[state_counties](/election/packages/ge2020/state_counties) | [state_county_wise.json](/election/transformed-data/state_county_wise.json)| Static
+|10.|[timeseries](/election/packages/ge2020/timeseries) | [timeseries.json](/election/transformed-data/timeseries.json) | Static
+|11.|[voterinfo](/election/packages/ge2020/voterinfo) |  [Google Civic Information API](https://developers.google.com/civic-information/docs/v2/elections/voterInfoQuery)| Dynamic
+
+
+> Do Not Forget What You Have Learned Of Our Past, Rodimus. From Its Lessons The Future Is Forged.
+
+The static data is housed in [transformed-data](/election/transformed-data) folder -- [transformers](/election/transformers/) folder contains functions which transform raw data culled from various sources into API consumable format.
+
+e.g. Function [timeseries](/election/transformers/timeseries.js) transforms [1976-2020-president](/election/raw-data/1976-2020-president.csv) from [harvard.edu](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/42MVDX) into [timeseries.json](/election/transformed-data/timeseries.json)
+
+Other Static Data:
+
+![Timeline](/election/web/src/img/Timeline.png)
+
+Timeline data has been taken from [wikipedia](https://en.wikipedia.org/wiki/United_States_presidential_election#Electoral_College)
 
 ---

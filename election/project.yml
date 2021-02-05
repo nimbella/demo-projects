@@ -11,10 +11,7 @@ packages:
       - name: state_counties
       - name: resources
       - name: divisions
-        environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: elections
-        environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: reps
-        environment: $(GOOGLE_CIVIC_API_TOKEN)
       - name: voterinfo
-        environment: $(GOOGLE_CIVIC_API_TOKEN)
+      - name: results

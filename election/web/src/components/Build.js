@@ -136,7 +136,7 @@ nim project deploy demo-projects/election`}
         <p>An example output of the project deployment follows.</p>
         <SyntaxHighlighter language="javascript" style={darkMode.value ? darcula : prism}>
           {`Deployed 106 web content items to
-          https://<your-account>-apigcp.nimbella.io
+          https://<your-namespace>-apigcp.nimbella.io
           Deployed actions:
           - ge2020/counties
           - ge2020/divisions
@@ -147,7 +147,8 @@ nim project deploy demo-projects/election`}
           - ge2020/resources
           - ge2020/state_counties
           - ge2020/timeseries
-          - ge2020/voterinfo`}
+          - ge2020/voterinfo
+          - ge2020/results`}
         </SyntaxHighlighter>
       </div>
       <Footer />

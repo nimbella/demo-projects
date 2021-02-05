@@ -1,79 +1,80 @@
-export const API_ROOT_URL = '/api/ge2020';
+export const API_ROOT_URL = "/api/ge2020";
+// export const API_ROOT_URL = 'https://devchand-hfo8lwtg1e5-apigcp.nimbella.io/api/ge2020';
 
 export const LOCALE_SHORTHANDS = {
-  english: 'en-US',
+  english: "en-US",
 };
 
 export const STATISTIC_DEFINITIONS = {
   republican: {
-    displayName: 'republican',
-    color: '#ff073a',
-    format: 'int',
-    options: {key: 'republican'},
+    displayName: "republican",
+    color: "#ff073a",
+    format: "int",
+    options: { key: "republican" },
   },
   democrat: {
-    displayName: 'democrat',
-    color: '#007bff',
-    format: 'int',
-    options: {key: 'democrat'},
+    displayName: "democrat",
+    color: "#007bff",
+    format: "int",
+    options: { key: "democrat" },
     hideDelta: true,
   },
   libertarian: {
-    displayName: 'libertarian',
-    color: '#6c757d',
-    format: 'int',
-    options: {key: 'libertarian'},
+    displayName: "libertarian",
+    color: "#6c757d",
+    format: "int",
+    options: { key: "libertarian" },
   },
   green: {
-    displayName: 'green',
-    color: '#28a745',
-    format: 'int',
-    options: {key: 'green'},
+    displayName: "green",
+    color: "#28a745",
+    format: "int",
+    options: { key: "green" },
   },
   constitution: {
-    displayName: 'constitution',
-    color: '#4b1eaa',
-    format: 'int',
-    options: {key: 'constitution party'},
+    displayName: "constitution",
+    color: "#4b1eaa",
+    format: "int",
+    options: { key: "constitution party" },
   },
   other: {
-    displayName: 'others',
-    format: 'int',
-    options: {key: 'others'},
+    displayName: "others",
+    format: "int",
+    options: { key: "others" },
   },
   total: {
-    displayName: 'total',
-    format: 'short',
-    options: {key: 'total'},
+    displayName: "total",
+    format: "short",
+    options: { key: "total" },
     hideDelta: true,
   },
 };
 
 const definitions = Object.keys(STATISTIC_DEFINITIONS).reduce(
   (acc, statistic) => {
-    const {options, ...config} = STATISTIC_DEFINITIONS[statistic];
+    const { options, ...config } = STATISTIC_DEFINITIONS[statistic];
     acc.options[statistic] = options;
     acc.configs[statistic] = config;
     return acc;
   },
-  {options: {}, configs: {}}
+  { options: {}, configs: {} }
 );
 
 export const STATISTIC_CONFIGS = definitions.configs;
 export const STATISTIC_OPTIONS = definitions.options;
 
 export const PER_MILLION_OPTIONS = {
-  normalizeByKey: 'total',
+  normalizeByKey: "total",
   multiplyFactor: 1e6,
 };
 
-export const NAN_STATISTICS = ['constitution', 'total'];
+export const NAN_STATISTICS = ["constitution", "total"];
 
 export const PRIMARY_STATISTICS = [
-  'republican',
-  'democrat',
-  'libertarian',
-  'green',
+  "republican",
+  "democrat",
+  "libertarian",
+  "green",
 ];
 
 export const TABLE_STATISTICS = [...PRIMARY_STATISTICS];
@@ -92,25 +93,25 @@ export const MINIGRAPH_LOOKBACK_DAYS = 10;
 
 export const TESTED_LOOKBACK_DAYS = 7;
 
-export const UNASSIGNED_STATE_CODE = 'UN';
+export const UNASSIGNED_STATE_CODE = "UN";
 
-export const UNKNOWN_COUNTY_KEY = 'Unknown';
+export const UNKNOWN_COUNTY_KEY = "Unknown";
 
 export const ISO_DATE_REGEX = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/g;
 
-export const INDIA_ISO_SUFFIX = 'T00:00:00+05:30';
+export const INDIA_ISO_SUFFIX = "T00:00:00+05:30";
 
-export const SPRING_CONFIG_NUMBERS = {clamp: true, precision: 1};
+export const SPRING_CONFIG_NUMBERS = { clamp: true, precision: 1 };
 
 export const TIMESERIES_CHART_TYPES = {
-  total: 'Cumulative',
-  delta: 'Separate',
+  total: "Cumulative",
+  delta: "Separate",
 };
 
 export const TIMESERIES_LOOKBACKS = {
-  BEGINNING: 'Beginning',
-  NINETY: '1990',
-  TWOK: '2000',
+  BEGINNING: "Beginning",
+  NINETY: "1990",
+  TWOK: "2000",
 };
 
 export const MAP_VIZS = {
@@ -129,7 +130,7 @@ export const MAP_TYPES = {
 };
 
 export const MAPS_DIR =
-  process.env.NODE_ENV === 'production' ? '/mini_maps' : '/projected_maps';
+  process.env.NODE_ENV === "production" ? "/mini_maps" : "/projected_maps";
 
 export const MAP_META = {
   AL: {
@@ -373,74 +374,74 @@ export const MAP_META = {
 export const MAP_LEGEND_HEIGHT = 50;
 
 export const STATE_NAMES = {
-  AL: 'Alabama',
-  AK: 'Alaska',
-  AS: 'American Samoa',
-  AZ: 'Arizona',
-  AR: 'Arkansas',
-  CA: 'California',
-  CO: 'Colorado',
-  CT: 'Connecticut',
-  DE: 'Delaware',
-  DC: 'District Of Columbia',
-  FM: 'Federated States Of Micronesia',
-  FL: 'Florida',
-  GA: 'Georgia',
-  GU: 'Guam',
-  HI: 'Hawaii',
-  ID: 'Idaho',
-  IL: 'Illinois',
-  IN: 'Indiana',
-  IA: 'Iowa',
-  KS: 'Kansas',
-  KY: 'Kentucky',
-  LA: 'Louisiana',
-  ME: 'Maine',
-  MH: 'Marshall Islands',
-  MD: 'Maryland',
-  MA: 'Massachusetts',
-  MI: 'Michigan',
-  MN: 'Minnesota',
-  MS: 'Mississippi',
-  MO: 'Missouri',
-  MT: 'Montana',
-  NE: 'Nebraska',
-  NV: 'Nevada',
-  NH: 'New Hampshire',
-  NJ: 'New Jersey',
-  NM: 'New Mexico',
-  NY: 'New York',
-  NC: 'North Carolina',
-  ND: 'North Dakota',
-  MP: 'Northern Mariana Islands',
-  OH: 'Ohio',
-  OK: 'Oklahoma',
-  OR: 'Oregon',
-  PW: 'Palau',
-  PA: 'Pennsylvania',
-  PR: 'Puerto Rico',
-  RI: 'Rhode Island',
-  SC: 'South Carolina',
-  SD: 'South Dakota',
-  TN: 'Tennessee',
-  TX: 'Texas',
-  UT: 'Utah',
-  VT: 'Vermont',
-  VI: 'Virgin Islands',
-  VA: 'Virginia',
-  WA: 'Washington',
-  WV: 'West Virginia',
-  WI: 'Wisconsin',
-  WY: 'Wyoming',
-  TT: 'USA',
-  [UNASSIGNED_STATE_CODE]: 'Unassigned',
+  AL: "Alabama",
+  AK: "Alaska",
+  AS: "American Samoa",
+  AZ: "Arizona",
+  AR: "Arkansas",
+  CA: "California",
+  CO: "Colorado",
+  CT: "Connecticut",
+  DE: "Delaware",
+  DC: "District Of Columbia",
+  FM: "Federated States Of Micronesia",
+  FL: "Florida",
+  GA: "Georgia",
+  GU: "Guam",
+  HI: "Hawaii",
+  ID: "Idaho",
+  IL: "Illinois",
+  IN: "Indiana",
+  IA: "Iowa",
+  KS: "Kansas",
+  KY: "Kentucky",
+  LA: "Louisiana",
+  ME: "Maine",
+  MH: "Marshall Islands",
+  MD: "Maryland",
+  MA: "Massachusetts",
+  MI: "Michigan",
+  MN: "Minnesota",
+  MS: "Mississippi",
+  MO: "Missouri",
+  MT: "Montana",
+  NE: "Nebraska",
+  NV: "Nevada",
+  NH: "New Hampshire",
+  NJ: "New Jersey",
+  NM: "New Mexico",
+  NY: "New York",
+  NC: "North Carolina",
+  ND: "North Dakota",
+  MP: "Northern Mariana Islands",
+  OH: "Ohio",
+  OK: "Oklahoma",
+  OR: "Oregon",
+  PW: "Palau",
+  PA: "Pennsylvania",
+  PR: "Puerto Rico",
+  RI: "Rhode Island",
+  SC: "South Carolina",
+  SD: "South Dakota",
+  TN: "Tennessee",
+  TX: "Texas",
+  UT: "Utah",
+  VT: "Vermont",
+  VI: "Virgin Islands",
+  VA: "Virginia",
+  WA: "Washington",
+  WV: "West Virginia",
+  WI: "Wisconsin",
+  WY: "Wyoming",
+  TT: "USA",
+  [UNASSIGNED_STATE_CODE]: "Unassigned",
 };
 
 const stateCodes = [];
 const stateCodesMap = {};
 Object.keys(STATE_NAMES).map((key, index) => {
   stateCodesMap[STATE_NAMES[key]] = key;
-  stateCodes.push({code: key, name: STATE_NAMES[key]});
+  stateCodes.push({ code: key, name: STATE_NAMES[key] });
   return null;
 });
 export const STATE_CODES = stateCodesMap;

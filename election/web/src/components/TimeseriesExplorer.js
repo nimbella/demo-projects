@@ -1,20 +1,20 @@
-import TimeseriesLoader from './loaders/Timeseries';
+import TimeseriesLoader from "./loaders/Timeseries";
 
 import {
   TIMESERIES_CHART_TYPES,
   TIMESERIES_LOOKBACKS,
   STATE_NAMES,
-} from '../constants';
-import useIsVisible from '../hooks/useIsVisible';
-import {getLastElectionYear} from '../utils/commonFunctions';
+} from "../constants";
+import useIsVisible from "../hooks/useIsVisible";
+import { getLastElectionYear } from "../utils/commonFunctions";
 
-import {PinIcon, ReplyIcon} from '@primer/octicons-v2-react';
-import classnames from 'classnames';
-import equal from 'fast-deep-equal';
-import React, {useCallback, useMemo, useRef, lazy, Suspense} from 'react';
-import {useLocalStorage, useSessionStorage} from 'react-use';
+import { PinIcon, ReplyIcon } from "@primer/octicons-v2-react";
+import classnames from "classnames";
+import equal from "fast-deep-equal";
+import React, { useCallback, useMemo, useRef, lazy, Suspense } from "react";
+import { useLocalStorage, useSessionStorage } from "react-use";
 
-const Timeseries = lazy(() => import('./Timeseries'));
+const Timeseries = lazy(() => import("./Timeseries"));
 
 function TimeseriesExplorer({
   stateCode,
@@ -27,14 +27,14 @@ function TimeseriesExplorer({
   expandTable,
 }) {
   const [lookback, setLookback] = useSessionStorage(
-    'timeseriesLookback',
-    TIMESERIES_LOOKBACKS.MONTH
+    "timeseriesLookback",
+    TIMESERIES_LOOKBACKS.BEGINNING
   );
-  const [chartType, setChartType] = useLocalStorage('chartType', 'total');
-  const [isUniform, setIsUniform] = useLocalStorage('isUniform', true);
-  const [isLog, setIsLog] = useLocalStorage('isLog', false);
+  const [chartType, setChartType] = useLocalStorage("chartType", "total");
+  const [isUniform, setIsUniform] = useLocalStorage("isUniform", true);
+  const [isLog, setIsLog] = useLocalStorage("isLog", false);
   const explorerElement = useRef();
-  const isVisible = useIsVisible(explorerElement, {once: true});
+  const isVisible = useIsVisible(explorerElement, { once: true });
 
   const selectedRegion = useMemo(() => {
     if (timeseries?.[regionHighlighted.stateCode]?.counties) {
@@ -138,7 +138,7 @@ function TimeseriesExplorer({
   }, [selectedTimeseries, timelineDate, lookback]);
 
   const handleChange = useCallback(
-    ({target}) => {
+    ({ target }) => {
       setRegionHighlighted(JSON.parse(target.value));
     },
     [setRegionHighlighted]
@@ -154,34 +154,34 @@ function TimeseriesExplorer({
   return (
     <div
       className={classnames(
-        'TimeseriesExplorer fadeInUp',
+        "TimeseriesExplorer fadeInUp",
         {
-          stickied: anchor === 'timeseries',
+          stickied: anchor === "timeseries",
         },
-        {expanded: expandTable}
+        { expanded: expandTable }
       )}
-      style={{display: anchor === 'mapexplorer' ? 'none' : ''}}
+      style={{ display: anchor === "mapexplorer" ? "none" : "" }}
       ref={explorerElement}
     >
       <div className="timeseries-header">
         <div
-          className={classnames('anchor', {
-            stickied: anchor === 'timeseries',
+          className={classnames("anchor", {
+            stickied: anchor === "timeseries",
           })}
           onClick={
             setAnchor &&
-            setAnchor.bind(this, anchor === 'timeseries' ? null : 'timeseries')
+            setAnchor.bind(this, anchor === "timeseries" ? null : "timeseries")
           }
         >
           <PinIcon />
         </div>
 
-        <h1>{'Voting Trends'}</h1>
+        <h1>{"Voting Trends"}</h1>
         <div className="tabs">
           {Object.entries(TIMESERIES_CHART_TYPES).map(
             ([ctype, value], index) => (
               <div
-                className={`tab ${chartType === ctype ? 'focused' : ''}`}
+                className={`tab ${chartType === ctype ? "focused" : ""}`}
                 key={ctype}
                 onClick={setChartType.bind(this, ctype)}
               >
@@ -192,30 +192,30 @@ function TimeseriesExplorer({
         </div>
 
         <div className="scale-modes">
-          <label className="main">{'Scale Modes'}</label>
+          <label className="main">{"Scale Modes"}</label>
           <div className="timeseries-mode">
-            <label htmlFor="timeseries-mode">{'Uniform'}</label>
+            <label htmlFor="timeseries-mode">{"Uniform"}</label>
             <input
               id="timeseries-mode"
               type="checkbox"
               className="switch"
               checked={isUniform}
-              aria-label={'Checked by default to scale uniformly.'}
+              aria-label={"Checked by default to scale uniformly."}
               onChange={setIsUniform.bind(this, !isUniform)}
             />
           </div>
           <div
             className={`timeseries-logmode ${
-              chartType !== 'total' ? 'disabled' : ''
+              chartType !== "total" ? "disabled" : ""
             }`}
           >
-            <label htmlFor="timeseries-logmode">{'Logarithmic'}</label>
+            <label htmlFor="timeseries-logmode">{"Logarithmic"}</label>
             <input
               id="timeseries-logmode"
               type="checkbox"
-              checked={chartType === 'total' && isLog}
+              checked={chartType === "total" && isLog}
               className="switch"
-              disabled={chartType !== 'total'}
+              disabled={chartType !== "total"}
               onChange={setIsLog.bind(this, !isLog)}
             />
           </div>
@@ -255,31 +255,29 @@ function TimeseriesExplorer({
       )}
 
       <div className="pills">
-      {Object.values(TIMESERIES_LOOKBACKS).map((option) => (
-        <button
-          key={option}
-          type="button"
-          className={classnames({selected: lookback === option})}
-          onClick={() => setLookback(option)}
-        >
-          {option}
-        </button>
-      ))}
-    </div>
-    
+        {Object.values(TIMESERIES_LOOKBACKS).map((option) => (
+          <button
+            key={option}
+            type="button"
+            className={classnames({ selected: lookback === option })}
+            onClick={() => setLookback(option)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+
       {isVisible && (
         <Suspense fallback={<TimeseriesLoader />}>
           <Timeseries
             timeseries={selectedTimeseries}
             regionHighlighted={selectedRegion}
-            {...{years, chartType, isUniform, isLog}}
+            {...{ years, chartType, isUniform, isLog }}
           />
         </Suspense>
       )}
 
-      {!isVisible && <div style={{height: '50rem'}} />}
-
-    
+      {!isVisible && <div style={{ height: "50rem" }} />}
     </div>
   );
 }

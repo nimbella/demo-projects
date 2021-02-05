@@ -8,3 +8,4 @@ __deployer__.zip
 .settings
 .idea
 demo-projects.iml
+pnpm-lock.yaml

@@ -10,7 +10,7 @@ let candidates = {}
 
 let changers = { counter: 0 }
 
-fs.createReadStream(path.resolve(__dirname, 'data', '1976-2016-president.csv'))
+fs.createReadStream(path.resolve(__dirname, '..', 'raw-data', '1976-2020-president.csv'))
     .pipe(csv.parse({ headers: true }))
     .on('error', error => console.error(error))
     .on('data', row => {
@@ -38,15 +38,15 @@ fs.createReadStream(path.resolve(__dirname, 'data', '1976-2016-president.csv'))
             candidates = {}
             changers.state = row.state_po
         }
-        total[row.party || 'others'] = row.candidatevotes
+        total[(row.party_simplified || 'others').toLowerCase()] = row.candidatevotes
         meta['total'] = row.totalvotes
-        candidates[row.party || 'others'] = row.candidate
+        candidates[(row.party_simplified || 'others').toLowerCase()] = row.candidate
 
     }
 
     )
     .on('end', rowCount => {
         console.log(JSON.stringify(data, null, 4))
-        fs.writeFileSync('test.json', JSON.stringify(data, null, 4))
+        fs.writeFileSync('timeseries.json', JSON.stringify(data, null, 4))
         console.log(`Parsed ${rowCount} rows`)
     });

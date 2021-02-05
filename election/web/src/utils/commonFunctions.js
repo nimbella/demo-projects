@@ -5,19 +5,19 @@ import {
   NAN_STATISTICS,
   PER_MILLION_OPTIONS,
   STATISTIC_OPTIONS,
-} from '../constants';
+} from "../constants";
 
-import {format, formatDistance} from 'date-fns';
-import {utcToZonedTime} from 'date-fns-tz';
-import {store} from 'react-notifications-component';
+import { format, formatDistance } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
+import { store } from "react-notifications-component";
 
 let locale = null;
-const numberFormatter = new Intl.NumberFormat('en-US', {
+const numberFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 1,
 });
 
 const getLocale = () => {
-  import('date-fns/locale/').then((localePackage) => {
+  import("date-fns/locale/").then((localePackage) => {
     locale = localePackage[LOCALE_SHORTHANDS[window.localStorage.i18nextLng]];
   });
 };
@@ -27,10 +27,10 @@ export const notify = (title, message, type) => {
     title,
     message,
     type,
-    insert: 'top',
-    container: 'top-right',
-    animationIn: ['animate__animated', 'animate__fadeIn'],
-    animationOut: ['animate__animated', 'animate__fadeOut'],
+    insert: "top",
+    container: "top-right",
+    animationIn: ["animate__animated", "animate__fadeIn"],
+    animationOut: ["animate__animated", "animate__fadeOut"],
     dismiss: {
       duration: 5000,
       onScreen: true,
@@ -39,13 +39,13 @@ export const notify = (title, message, type) => {
 };
 
 export const isDevelopmentOrTest = () => {
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+  if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test")
     return true;
   return false;
 };
 
 export const getUSADate = () => {
-  return utcToZonedTime(new Date(), 'America/New_York');
+  return utcToZonedTime(new Date(), "America/New_York");
 };
 
 export const formatLastUpdated = (unformattedDate) => {
@@ -57,11 +57,11 @@ export const formatLastUpdated = (unformattedDate) => {
 
 export const parseUSADate = (isoDate) => {
   if (!isoDate) return getUSADate();
-  return utcToZonedTime(new Date(isoDate), 'America/New_York');
+  return utcToZonedTime(new Date(isoDate), "America/New_York");
 };
 
 export const getLastElectionYear = () => {
-  return 2016;
+  return 2020;
 };
 
 export const getFirstElectionYear = () => {
@@ -69,13 +69,13 @@ export const getFirstElectionYear = () => {
 };
 
 export const formatDate = (unformattedDate, formatString) => {
-  if (!unformattedDate) return '';
+  if (!unformattedDate) return "";
   if (
-    typeof unformattedDate === 'string' &&
+    typeof unformattedDate === "string" &&
     unformattedDate.match(ISO_DATE_REGEX)
   )
     unformattedDate += INDIA_ISO_SUFFIX;
-  const date = utcToZonedTime(new Date(unformattedDate), 'America/New_york');
+  const date = utcToZonedTime(new Date(unformattedDate), "America/New_york");
   return format(date, formatString, {
     locale: locale,
   });
@@ -84,9 +84,9 @@ export const formatDate = (unformattedDate, formatString) => {
 export const abbreviateNumber = (number) => {
   if (Math.abs(number) < 1e3) return numberFormatter.format(number);
   let newValue = number;
-  const suffixes = ['', 'k', 'm', 'b', 't'];
-  const suffixNum = Math.floor(('' + number).length / 3);
-  let shortValue = '';
+  const suffixes = ["", "k", "m", "b", "t"];
+  const suffixNum = Math.floor(("" + number).length / 3);
+  let shortValue = "";
   for (let precision = 2; precision >= 1; precision--) {
     shortValue = parseFloat(
       (suffixNum !== 0
@@ -94,7 +94,7 @@ export const abbreviateNumber = (number) => {
         : number
       ).toPrecision(precision)
     );
-    const dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
+    const dotLessShortValue = (shortValue + "").replace(/[^a-zA-Z 0-9]+/g, "");
     if (dotLessShortValue.length <= 2) {
       break;
     }
@@ -108,17 +108,17 @@ export const formatNumber = (value, option, statistic) => {
   if (statistic && value === 0 && NAN_STATISTICS.includes(statistic))
     value = NaN;
 
-  if (isNaN(value)) return '-';
-  else if (option === 'short') {
+  if (isNaN(value)) return "-";
+  else if (option === "short") {
     return abbreviateNumber(value);
-  } else if (option === 'int') {
+  } else if (option === "int") {
     value = Math.floor(value);
   }
-  return numberFormatter.format(value) + (option === '%' ? '%' : '');
+  return numberFormatter.format(value) + (option === "%" ? "%" : "");
 };
 
 export const capitalize = (s) => {
-  if (typeof s !== 'string') return '';
+  if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
@@ -129,7 +129,7 @@ export const toTitleCase = (str) => {
 };
 
 export const getStatistic = (data, type, statistic, perMillion = false) => {
-  const {key, normalizeByKey: normalizeBy, multiplyFactor} = {
+  const { key, normalizeByKey: normalizeBy, multiplyFactor } = {
     ...STATISTIC_OPTIONS[statistic],
     ...(perMillion &&
       !STATISTIC_OPTIONS[statistic]?.normalizeByKey &&
@@ -137,25 +137,25 @@ export const getStatistic = (data, type, statistic, perMillion = false) => {
   };
 
   let count;
-  if (key === 'total') {
-    count = type === 'total' ? data?.meta?.total : 0;
+  if (key === "total") {
+    count = type === "total" ? data?.meta?.total : 0;
   } else {
     count = data?.[type]?.[key];
   }
 
   if (normalizeBy) {
-    if (type === 'total') {
-      const normStatistic = getStatistic(data, 'total', normalizeBy);
+    if (type === "total") {
+      const normStatistic = getStatistic(data, "total", normalizeBy);
       count /= normStatistic;
     } else {
       const currStatisticDelta = count;
-      const currStatistic = getStatistic(data, 'total', key);
+      const currStatistic = getStatistic(data, "total", key);
       const prevStatistic = currStatistic - currStatisticDelta;
 
-      const normStatisticDelta = getStatistic(data, 'delta', {
+      const normStatisticDelta = getStatistic(data, "delta", {
         key: normalizeBy,
       });
-      const normStatistic = getStatistic(data, 'total', normalizeBy);
+      const normStatistic = getStatistic(data, "total", normalizeBy);
       const prevNormStatistic = normStatistic - normStatisticDelta;
 
       count = currStatistic / normStatistic - prevStatistic / prevNormStatistic;
@@ -171,9 +171,9 @@ export const getTableStatistic = (
   isPerMillion,
   lastUpdatedTT
 ) => {
-  const total = getStatistic(data, 'total', statistic, isPerMillion);
-  const delta = getStatistic(data, 'delta', statistic, isPerMillion);
-  return {total, delta};
+  const total = getStatistic(data, "total", statistic, isPerMillion);
+  const delta = getStatistic(data, "delta", statistic, isPerMillion);
+  return { total, delta };
 };
 
 export const fetcher = (url) => {
