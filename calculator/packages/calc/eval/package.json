@@ -1,7 +1,7 @@
 {
   "name": "calc",
   "version": "1.0.0",
-  "description": "Serverless caculator demo",
+  "description": "Serverless calculator demo",
   "main": "eval.js",
   "dependencies": {
     "expression-eval": "^2.0.0"
