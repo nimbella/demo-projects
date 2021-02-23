@@ -1,0 +1,103 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+# calculator  
+  - directory: "/calculator/packages/calc/eval"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# chat
+  - directory: "/chat/web"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# election  
+  - directory: "/election/packages/ge2020/results"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+  - directory: "/election/packages/ge2020/news"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+  - directory: "/election/web"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# mongo-music
+  - directory: "/mongo-music/packages/mongo-music/CreateAlbum/MongoMusic.API"
+    package-ecosystem: "nuget"
+    schedule:
+      interval: "weekly"
+  - directory: "/mongo-music/packages/mongo-music/GetAlbum/MongoMusic.API"
+    package-ecosystem: "nuget"
+    schedule:
+      interval: "weekly"      
+# ocr 
+  - directory: "/ocr/packages/ocr/acceptImage"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+  - directory: "ocr/packages/ocr/imageToText"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+  - directory: "/ocr/web"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# printer
+  - directory: "/printer/packages/printer/create"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+  - directory: "/printer/packages/printer/get"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"  
+  - directory: "/printer/packages/printer/list"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"               
+  - directory: "/printer/packages/printer/update"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"        
+  - directory: "/printer/web"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# qrcode
+  - directory: "/qrcode/packages/default/qr"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# qrcode-multi-lang
+  - directory: "/qrcode-multi-lang/packages/default/qr"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly" 
+  - directory: "/qrcode-multi-lang/packages/default/qr-java"
+    package-ecosystem: "gradle"
+    schedule:
+      interval: "weekly"
+# trade
+  - directory: "/trade/web"
+    package-ecosystem: "npm"
+    schedule:
+      interval: "weekly"
+# visits
+  - directory: "/visits/packages/visits"
+    package-ecosystem: "composer"
+    schedule:
+      interval: "weekly"
+
+# github actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
