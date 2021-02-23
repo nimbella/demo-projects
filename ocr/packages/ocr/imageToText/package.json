@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "tesseract.js": "^1.0.19"
+    "tesseract.js": "^2.1.4"
   }
 }
