@@ -4,7 +4,7 @@
   "description": "Serverless caculator demo",
   "main": "eval.js",
   "dependencies": {
-    "expression-eval": "^2.0.0"
+    "expression-eval": "^4.0.0"
   },
   "devDependencies": {}
 }
