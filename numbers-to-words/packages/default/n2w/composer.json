@@ -1,0 +1,5 @@
+{
+    "require": {
+        "nineteenfeet/nf-number-to-word": "1.1.1"
+    }
+}
