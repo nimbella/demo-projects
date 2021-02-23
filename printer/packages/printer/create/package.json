@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./src/create.js",
   "dependencies": {
-    "uuid": "^3.3.3"
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "test": "jest"
