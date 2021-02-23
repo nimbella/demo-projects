@@ -9,7 +9,7 @@
     "@primer/octicons-v2-react": "0.0.0-53e900d",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
-    "ag-grid-community": "^24.0.0",
+    "ag-grid-community": "^25.1.0",
     "ag-grid-react": "^24.0.0",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
