@@ -95,6 +95,16 @@ updates:
     package-ecosystem: "composer"
     schedule:
       interval: "weekly"
+# jokes
+  - directory: "/jokes/packages/default/joke"
+    package-ecosystem: "pip"
+    schedule:
+      interval: "weekly"
+# numbers-to-words
+  - directory: "/numbers-to-words/packages/default/n2w"
+    package-ecosystem: "composer"
+    schedule:
+      interval: "weekly"
 
 # github actions
   - package-ecosystem: "github-actions"
