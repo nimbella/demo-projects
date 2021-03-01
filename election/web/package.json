@@ -105,7 +105,7 @@
     "http-server": "^0.12.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "node-sass": "^4.14.1",
+    "node-sass": "^5.0.0",
     "prettier": "^2.0.5",
     "rollup": "^2.18.1",
     "rollup-plugin-copy": "^3.3.0",
