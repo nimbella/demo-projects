@@ -47,7 +47,7 @@
     "react-syntax-highlighter": "^13.5.3",
     "react-table": "^7.5.0",
     "react-use": "^15.3.0",
-    "react-use-gesture": "^7.0.15",
+    "react-use-gesture": "^9.0.4",
     "redoc": "^2.0.0-rc.40",
     "styled-components": "^5.2.0",
     "swr": "^0.2.3",
