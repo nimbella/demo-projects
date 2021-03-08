@@ -46,7 +46,7 @@
     "react-swipeable": "^5.5.1",
     "react-syntax-highlighter": "^13.5.3",
     "react-table": "^7.5.0",
-    "react-use": "^15.3.0",
+    "react-use": "^17.1.1",
     "react-use-gesture": "^7.0.15",
     "redoc": "^2.0.0-rc.40",
     "styled-components": "^5.2.0",
