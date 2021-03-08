@@ -34,7 +34,7 @@
     "lodash": "^4.17.15",
     "luxon": "^1.25.0",
     "mobx": "^6.1.4",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-content-loader": "^5.1.0",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
