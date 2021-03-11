@@ -4,8 +4,9 @@
   "description": "Serverless calculator demo",
   "main": "eval.js",
   "dependencies": {
-    "@nimbella/sdk": "^1.2.7",
     "expression-eval": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nimbella/sdk": "^1.2.7"
+  }
 }
