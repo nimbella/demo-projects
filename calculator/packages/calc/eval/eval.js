@@ -1,5 +1,5 @@
 const expeval = require('expression-eval')
-const nim = require('nim')
+const nim = require('@nimbella/sdk')
 const key = 'counter'
 
 function main(args) {
