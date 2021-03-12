@@ -1,4 +1,4 @@
-import MapLegend from './MapLegend';
+import MapLegend from "./MapLegend";
 
 import {
   D3_TRANSITION_DURATION,
@@ -10,19 +10,19 @@ import {
   STATE_NAMES,
   STATISTIC_CONFIGS,
   UNKNOWN_COUNTY_KEY,
-} from '../constants';
+} from "../constants";
 import {
   formatNumber,
   getStatistic,
   toTitleCase,
-} from '../utils/commonFunctions';
+} from "../utils/commonFunctions";
 
-import {AlertIcon} from '@primer/octicons-v2-react';
-import classnames from 'classnames';
-import {max} from 'd3-array';
-import {json} from 'd3-fetch';
-import {geoIdentity, geoPath} from 'd3-geo';
-import {scaleSqrt, scaleSequential} from 'd3-scale';
+import { AlertIcon } from "@primer/octicons-v2-react";
+import classnames from "classnames";
+import { max } from "d3-array";
+import { json } from "d3-fetch";
+import { geoIdentity, geoPath } from "d3-geo";
+import { scaleSqrt, scaleSequential } from "d3-scale";
 // eslint-disable-next-line
 // import worker from 'workerize-loader!../workers/mapVisualizer';
 import {
@@ -32,27 +32,27 @@ import {
   interpolateGreys,
   interpolatePurples,
   interpolateOranges,
-} from 'd3-scale-chromatic';
-import {select, event} from 'd3-selection';
-import {transition} from 'd3-transition';
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
-import {useHistory} from 'react-router-dom';
-import useSWR from 'swr';
-import * as topojson from 'topojson';
+} from "d3-scale-chromatic";
+import { select } from "d3-selection";
+import { transition } from "d3-transition";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import useSWR from "swr";
+import * as topojson from "topojson";
 
 const [width, height] = [432, 488];
 
 const colorInterpolator = (statistic) => {
   switch (statistic) {
-    case 'republican':
+    case "republican":
       return (t) => interpolateReds(t * 0.85);
-    case 'democrat':
+    case "democrat":
       return (t) => interpolateBlues(t * 0.85);
-    case 'green':
+    case "green":
       return (t) => interpolateGreens(t * 0.85);
-    case 'libertarian':
+    case "libertarian":
       return (t) => interpolateGreys(t * 0.85);
-    case 'constitution':
+    case "constitution":
       return (t) => interpolatePurples(t * 0.85);
     default:
       return (t) => interpolateOranges(t * 0.85);
@@ -60,7 +60,7 @@ const colorInterpolator = (statistic) => {
 };
 
 const getTotalStatistic = (data, statistic) => {
-  return getStatistic(data, 'total', statistic);
+  return getStatistic(data, "total", statistic);
 };
 
 function MapVisualizer({
@@ -79,18 +79,18 @@ function MapVisualizer({
   const mapMeta = MAP_META[mapCode];
   const history = useHistory();
 
-  const {data: geoData} = useSWR(
+  const { data: geoData } = useSWR(
     mapMeta.geoDataFile,
     async (file) => {
       return await json(file);
     },
-    {suspense: false, revalidateOnFocus: false}
+    { suspense: false, revalidateOnFocus: false }
   );
 
   const statisticMax = useMemo(() => {
     const stateCodes = Object.keys(data).filter(
       (stateCode) =>
-        stateCode !== 'TT' && Object.keys(MAP_META).includes(stateCode)
+        stateCode !== "TT" && Object.keys(MAP_META).includes(stateCode)
     );
 
     return mapView === MAP_VIEWS.STATES
@@ -137,7 +137,7 @@ function MapVisualizer({
       let n;
       if (county) n = getTotalStatistic(countyData, statistic);
       else n = getTotalStatistic(stateData, statistic);
-      const color = n === 0 ? '#ffffff00' : mapScale(n);
+      const color = n === 0 ? "#ffffff00" : mapScale(n);
       return color;
     },
     [data, mapScale, statistic]
@@ -167,14 +167,14 @@ function MapVisualizer({
       const county = feature.properties.county;
       const state = feature.properties.st_nm;
       const obj = Object.assign({}, feature);
-      obj.id = `${mapCode}-${state}${county ? '-' + county : ''}`;
+      obj.id = `${mapCode}-${state}${county ? "-" + county : ""}`;
       return obj;
     });
   }, [geoData, mapCode, mapView, mapViz, mapMeta]);
 
   const populateTexts = useCallback(
     (regionSelection) => {
-      regionSelection.select('title').text((d) => {
+      regionSelection.select("title").text((d) => {
         if (mapViz === MAP_VIZS.CHOROPLETH) {
           const state = d.properties.st_nm;
           const stateCode = STATE_CODES[state];
@@ -187,7 +187,7 @@ function MapVisualizer({
           else n = getTotalStatistic(stateData, statistic);
           return (
             formatNumber(100 * (n / (statisticTotal || 0.001))) +
-            '% from ' +
+            "% from " +
             toTitleCase(county ? county : state)
           );
         }
@@ -202,7 +202,7 @@ function MapVisualizer({
   useEffect(() => {
     const svg = select(svgRef.current);
 
-    svg.attr('pointer-events', 'auto').on('click', () => {
+    svg.attr("pointer-events", "auto").on("click", () => {
       onceTouchedRegion.current = null;
       setRegionHighlighted({
         stateCode: mapCode,
@@ -218,42 +218,42 @@ function MapVisualizer({
     const T = transition().duration(D3_TRANSITION_DURATION);
 
     const regionSelection = svg
-      .select('.regions')
-      .selectAll('path')
+      .select(".regions")
+      .selectAll("path")
       .data(mapViz !== MAP_VIZS.BUBBLES ? features : [], (d) => d.id)
       .join(
         (enter) =>
           enter
-            .append('path')
-            .attr('d', path)
-            .attr('stroke-width', 1.8)
-            .attr('stroke-opacity', 0)
-            .style('cursor', 'pointer')
-            .on('mouseenter', (d) => {
+            .append("path")
+            .attr("d", path)
+            .attr("stroke-width", 1.8)
+            .attr("stroke-opacity", 0)
+            .style("cursor", "pointer")
+            .on("mouseenter", (d) => {
               setRegionHighlighted({
                 stateCode: STATE_CODES[d.properties.st_nm],
                 countyName: d.properties.county,
               });
             })
-            .attr('fill', '#fff0')
-            .attr('stroke', '#fff0')
+            .attr("fill", "#fff0")
+            .attr("stroke", "#fff0")
             .call((enter) => {
-              enter.append('title');
+              enter.append("title");
             }),
         (update) => update,
         (exit) =>
           exit
             .transition(T)
-            .attr('stroke', '#fff0')
-            .attr('fill', '#fff0')
+            .attr("stroke", "#fff0")
+            .attr("fill", "#fff0")
             .remove()
       )
-      .attr('pointer-events', 'all')
-      .on('touchstart', (d) => {
+      .attr("pointer-events", "all")
+      .on("touchstart", (d) => {
         if (onceTouchedRegion.current === d) onceTouchedRegion.current = null;
         else onceTouchedRegion.current = d;
       })
-      .on('click', (d) => {
+      .on("click", (event, d) => {
         event.stopPropagation();
         const stateCode = STATE_CODES[d.properties.st_nm];
         if (
@@ -263,18 +263,18 @@ function MapVisualizer({
         )
           return;
         // Disable pointer events till the new map is rendered
-        svg.attr('pointer-events', 'none');
-        svg.select('.regions').selectAll('path').attr('pointer-events', 'none');
+        svg.attr("pointer-events", "none");
+        svg.select(".regions").selectAll("path").attr("pointer-events", "none");
         // Switch map
         history.push(
-          `/state/${stateCode}${window.innerWidth < 769 ? '#MapExplorer' : ''}`
+          `/state/${stateCode}${window.innerWidth < 769 ? "#MapExplorer" : ""}`
         );
       })
       .call((sel) => {
         sel
           .transition(T)
-          .attr('fill', fillColor)
-          .attr('stroke', strokeColor.bind(this, ''));
+          .attr("fill", fillColor)
+          .attr("stroke", strokeColor.bind(this, ""));
       });
 
     window.requestIdleCallback(() => {
@@ -330,24 +330,24 @@ function MapVisualizer({
     }
 
     svg
-      .select('.circles')
-      .selectAll('circle')
+      .select(".circles")
+      .selectAll("circle")
       .data(circlesData, (feature) => feature.id)
       .join(
         (enter) =>
           enter
-            .append('circle')
+            .append("circle")
             .attr(
-              'transform',
+              "transform",
               (feature) => `translate(${path.centroid(feature)})`
             )
-            .attr('fill-opacity', 0.25)
-            .style('cursor', 'pointer')
-            .attr('pointer-events', 'all'),
+            .attr("fill-opacity", 0.25)
+            .style("cursor", "pointer")
+            .attr("pointer-events", "all"),
         (update) => update,
-        (exit) => exit.call((exit) => exit.transition(T).attr('r', 0).remove())
+        (exit) => exit.call((exit) => exit.transition(T).attr("r", 0).remove())
       )
-      .on('mouseenter', (feature) => {
+      .on("mouseenter", (feature) => {
         setRegionHighlighted({
           stateCode: STATE_CODES[feature.properties.st_nm],
           countyName:
@@ -356,25 +356,25 @@ function MapVisualizer({
               : feature.properties.county || UNKNOWN_COUNTY_KEY,
         });
       })
-      .on('touchstart', (feature) => {
+      .on("touchstart", (feature) => {
         if (onceTouchedRegion.current === feature)
           onceTouchedRegion.current = null;
         else onceTouchedRegion.current = feature;
       })
-      .on('click', (feature) => {
+      .on("click", (event, feature) => {
         event.stopPropagation();
         if (onceTouchedRegion.current || mapMeta.mapType === MAP_TYPES.STATE)
           return;
         history.push(
           `/state/${STATE_CODES[feature.properties.st_nm]}${
-            window.innerWidth < 769 ? '#MapExplorer' : ''
+            window.innerWidth < 769 ? "#MapExplorer" : ""
           }`
         );
       })
       .transition(T)
-      .attr('fill', STATISTIC_CONFIGS[statistic].color + '70')
-      .attr('stroke', STATISTIC_CONFIGS[statistic].color + '70')
-      .attr('r', (feature) => mapScale(feature.value));
+      .attr("fill", STATISTIC_CONFIGS[statistic].color + "70")
+      .attr("stroke", STATISTIC_CONFIGS[statistic].color + "70")
+      .attr("r", (feature) => mapScale(feature.value));
   }, [
     mapMeta.mapType,
     mapViz,
@@ -412,37 +412,37 @@ function MapVisualizer({
     }
 
     svg
-      .select('.state-borders')
-      .attr('fill', 'none')
-      .attr('stroke-width', 1.5)
-      .selectAll('path')
+      .select(".state-borders")
+      .attr("fill", "none")
+      .attr("stroke-width", 1.5)
+      .selectAll("path")
       .data(meshStates, (d) => d.id)
       .join(
-        (enter) => enter.append('path').attr('d', path).attr('stroke', '#fff0'),
+        (enter) => enter.append("path").attr("d", path).attr("stroke", "#fff0"),
         (update) => update,
-        (exit) => exit.transition(T).attr('stroke', '#fff0').remove()
+        (exit) => exit.transition(T).attr("stroke", "#fff0").remove()
       )
       .transition(T)
-      .attr('stroke', strokeColor.bind(this, '40'));
+      .attr("stroke", strokeColor.bind(this, "40"));
 
     svg
-      .select('.county-borders')
-      .attr('fill', 'none')
-      .attr('stroke-width', 1.5)
-      .selectAll('path')
+      .select(".county-borders")
+      .attr("fill", "none")
+      .attr("stroke-width", 1.5)
+      .selectAll("path")
       .data(meshCounties, (d) => d.id)
       .join(
         (enter) =>
           enter
-            .append('path')
-            .attr('d', path)
-            .attr('d', path)
-            .attr('stroke', '#fff0'),
+            .append("path")
+            .attr("d", path)
+            .attr("d", path)
+            .attr("stroke", "#fff0"),
         (update) => update,
-        (exit) => exit.transition(T).attr('stroke', '#fff0').remove()
+        (exit) => exit.transition(T).attr("stroke", "#fff0").remove()
       )
       .transition(T)
-      .attr('stroke', strokeColor.bind(this, '40'));
+      .attr("stroke", strokeColor.bind(this, "40"));
   }, [
     geoData,
     mapMeta,
@@ -464,9 +464,9 @@ function MapVisualizer({
 
     if (mapViz === MAP_VIZS.BUBBLES) {
       svg
-        .select('.circles')
-        .selectAll('circle')
-        .attr('fill-opacity', (d) => {
+        .select(".circles")
+        .selectAll("circle")
+        .attr("fill-opacity", (d) => {
           const highlighted =
             stateName === d.properties.st_nm &&
             ((!county && stateCode !== mapCode) ||
@@ -477,8 +477,8 @@ function MapVisualizer({
         });
     } else {
       svg
-        .select('.regions')
-        .selectAll('path')
+        .select(".regions")
+        .selectAll("path")
         .each(function (d) {
           const highlighted =
             stateName === d.properties.st_nm &&
@@ -486,7 +486,7 @@ function MapVisualizer({
               county === d.properties?.county ||
               mapView === MAP_VIEWS.STATES);
           if (highlighted) this.parentNode.appendChild(this);
-          select(this).attr('stroke-opacity', highlighted ? 1 : 0);
+          select(this).attr("stroke-opacity", highlighted ? 1 : 0);
         });
     }
   }, [
@@ -519,18 +519,16 @@ function MapVisualizer({
             data[mapCode]?.counties?.[UNKNOWN_COUNTY_KEY],
             statistic
           ) && (
-            <div className={classnames('disclaimer', `is-${statistic}`)}>
+            <div className={classnames("disclaimer", `is-${statistic}`)}>
               <AlertIcon />
-              <span>
-                {'County-wise data not available in state bulletin'}
-              </span>
+              <span>{"County-wise data not available in state bulletin"}</span>
             </div>
           )}
       </div>
 
-      {mapScale && <MapLegend {...{data, mapViz, mapScale, statistic}} />}
+      {mapScale && <MapLegend {...{ data, mapViz, mapScale, statistic }} />}
 
-      <svg style={{position: 'absolute', height: 0}}>
+      <svg style={{ position: "absolute", height: 0 }}>
         <defs>
           <filter id="balance-color" colorInterpolationFilters="sRGB">
             <feColorMatrix

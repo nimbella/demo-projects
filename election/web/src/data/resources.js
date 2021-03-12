@@ -1,3 +1,3 @@
-import Links from './resources.json';
+import Links from "./resources.json";
 
 export default Links;

@@ -2,26 +2,36 @@ import {
   D3_TRANSITION_DURATION,
   STATISTIC_CONFIGS,
   TIMESERIES_STATISTICS,
-} from '../constants';
-import {useResizeObserver} from '../hooks/useResizeObserver';
-import {capitalize, formatNumber, getStatistic} from '../utils/commonFunctions';
+} from "../constants";
+import { useResizeObserver } from "../hooks/useResizeObserver";
+import {
+  capitalize,
+  formatNumber,
+  getStatistic,
+} from "../utils/commonFunctions";
 
-import classnames from 'classnames';
-import {min, max, bisector} from 'd3-array';
-import {axisBottom, axisRight} from 'd3-axis';
-import {interpolatePath} from 'd3-interpolate-path';
-import { scaleLinear, scaleLog } from 'd3-scale';
-import {select, mouse} from 'd3-selection';
-import {line, curveMonotoneX} from 'd3-shape';
+import classnames from "classnames";
+import { min, max, bisector } from "d3-array";
+import { axisBottom, axisRight } from "d3-axis";
+import { interpolatePath } from "d3-interpolate-path";
+import { scaleLinear, scaleLog } from "d3-scale";
+import { select, pointer } from "d3-selection";
+import { line, curveMonotoneX } from "d3-shape";
 // eslint-disable-next-line
-import {transition} from 'd3-transition';
-import equal from 'fast-deep-equal';
-import React, {useCallback, useEffect, useRef, useMemo, useState} from 'react';
+import { transition } from "d3-transition";
+import equal from "fast-deep-equal";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useMemo,
+  useState,
+} from "react";
 
 // Chart margins
-const margin = {top: 15, right: 35, bottom: 25, left: 25};
+const margin = { top: 15, right: 35, bottom: 25, left: 25 };
 
-function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
+function Timeseries({ timeseries, years, chartType, isUniform, isLog }) {
   const refs = useRef([]);
 
   const wrapperRef = useRef();
@@ -36,7 +46,7 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
   const getBarWidth = useCallback(() => {
     const T = years.length;
     // Dimensions
-    const {width} = dimensions || wrapperRef.current.getBoundingClientRect();
+    const { width } = dimensions || wrapperRef.current.getBoundingClientRect();
     // Chart extremes
     const chartRight = width - margin.right;
     // Bar widths
@@ -47,7 +57,7 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
   useEffect(() => {
     const T = years.length;
     // Dimensions
-    const {width, height} =
+    const { width, height } =
       dimensions || wrapperRef.current.getBoundingClientRect();
     // Chart extremes
     const chartRight = width - margin.right;
@@ -67,39 +77,39 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
     const numTicksX = width < 480 ? 4 : 7;
 
     const xAxis = (g) =>
-      g.attr('class', 'x-axis').call(
+      g.attr("class", "x-axis").call(
         axisBottom(xScale)
           .ticks(numTicksX)
           .tickFormat((year) => year)
       );
 
     const xAxis2 = (g, yScale) => {
-      g.attr('class', 'x-axis2')
+      g.attr("class", "x-axis2")
         .call(axisBottom(xScale).tickValues([]).tickSize(0))
-        .select('.domain')
-        .style('transform', `translateY(${yScale(0)}px)`);
+        .select(".domain")
+        .style("transform", `translateY(${yScale(0)}px)`);
 
-      if (yScale(0) !== chartBottom) g.select('.domain').attr('opacity', 0.4);
-      else g.select('.domain').attr('opacity', 0);
+      if (yScale(0) !== chartBottom) g.select(".domain").attr("opacity", 0.4);
+      else g.select(".domain").attr("opacity", 0);
     };
 
     const yAxis = (g, yScale) =>
-      g.attr('class', 'y-axis').call(
+      g.attr("class", "y-axis").call(
         axisRight(yScale)
           .ticks(4)
-          .tickFormat((num) => formatNumber(num, 'short'))
+          .tickFormat((num) => formatNumber(num, "short"))
           .tickPadding(4)
       );
 
     const uniformScaleMin = min(years, (year) =>
-      getStatistic(timeseries[year], chartType, 'democrat')
+      getStatistic(timeseries[year], chartType, "democrat")
     );
 
     const uniformScaleMax = max(years, (year) =>
       Math.max(
-        getStatistic(timeseries[year], chartType, 'republican'),
-        getStatistic(timeseries[year], chartType, 'green'),
-        getStatistic(timeseries[year], chartType, 'libertarian')
+        getStatistic(timeseries[year], chartType, "republican"),
+        getStatistic(timeseries[year], chartType, "green"),
+        getStatistic(timeseries[year], chartType, "libertarian")
       )
     );
 
@@ -119,11 +129,11 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
       .range([chartBottom, margin.top]);
 
     const generateYScale = (statistic) => {
-      if (isUniform && chartType === 'total' && isLog) return yScaleUniformLog;
+      if (isUniform && chartType === "total" && isLog) return yScaleUniformLog;
 
       if (isUniform) return yScaleUniformLinear;
 
-      if (chartType === 'total' && isLog)
+      if (chartType === "total" && isLog)
         return scaleLog()
           .clamp(true)
           .domain([
@@ -167,7 +177,7 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
     };
 
     function mousemove() {
-      const xm = mouse(this)[0];
+      const xm = pointer(this)[0];
       const year = xScale.invert(xm);
       if (!isNaN(year)) {
         const bisectDate = bisector((year) => year).left;
@@ -195,45 +205,45 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
 
       /* X axis */
       svg
-        .select('.x-axis')
-        .style('transform', `translateY(${chartBottom}px)`)
+        .select(".x-axis")
+        .style("transform", `translateY(${chartBottom}px)`)
         .transition(t)
         .call(xAxis);
 
-      svg.select('.x-axis2').transition(t).call(xAxis2, yScale);
+      svg.select(".x-axis2").transition(t).call(xAxis2, yScale);
 
       /* Y axis */
       svg
-        .select('.y-axis')
-        .style('transform', `translateX(${chartRight}px)`)
+        .select(".y-axis")
+        .style("transform", `translateX(${chartRight}px)`)
         .transition(t)
         .call(yAxis, yScale);
 
       /* Path dots */
       svg
-        .selectAll('circle')
+        .selectAll("circle")
         .data(years, (year) => year)
         .join((enter) =>
           enter
-            .append('circle')
-            .attr('fill', color)
-            .attr('stroke', color)
-            .attr('cy', chartBottom)
-            .attr('cx', (year) => xScale(year))
-            .attr('r', barWidth / 2)
+            .append("circle")
+            .attr("fill", color)
+            .attr("stroke", color)
+            .attr("cy", chartBottom)
+            .attr("cx", (year) => xScale(year))
+            .attr("r", barWidth / 2)
         )
         .transition(t)
-        .attr('cx', (year) => xScale(year))
-        .attr('cy', (year) =>
+        .attr("cx", (year) => xScale(year))
+        .attr("cy", (year) =>
           yScale(getStatistic(timeseries[year], chartType, statistic))
         );
 
-      if (chartType === 'total') {
+      if (chartType === "total") {
         svg
-          .selectAll('.stem')
+          .selectAll(".stem")
           .transition(t)
-          .attr('y1', yScale(0))
-          .attr('y2', yScale(0))
+          .attr("y1", yScale(0))
+          .attr("y2", yScale(0))
           .remove();
 
         const linePath = line()
@@ -246,69 +256,69 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
         let pathLength;
 
         svg
-          .selectAll('.trend')
+          .selectAll(".trend")
           .data(T ? [years] : [])
           .join(
             (enter) =>
               enter
-                .append('path')
-                .attr('class', 'trend')
-                .attr('fill', 'none')
-                .attr('stroke', color + '50')
-                .attr('stroke-width', 4)
-                .attr('d', linePath)
-                .attr('stroke-dasharray', function () {
+                .append("path")
+                .attr("class", "trend")
+                .attr("fill", "none")
+                .attr("stroke", color + "50")
+                .attr("stroke-width", 4)
+                .attr("d", linePath)
+                .attr("stroke-dasharray", function () {
                   return (pathLength = this.getTotalLength());
                 })
                 .call((enter) =>
                   enter
-                    .attr('stroke-dashoffset', pathLength)
+                    .attr("stroke-dashoffset", pathLength)
                     .transition(t)
-                    .attr('stroke-dashoffset', 0)
+                    .attr("stroke-dashoffset", 0)
                 ),
             (update) =>
               update
-                .attr('stroke-dasharray', null)
+                .attr("stroke-dasharray", null)
                 .transition(t)
-                .attrTween('d', function (year) {
-                  const previous = select(this).attr('d');
+                .attrTween("d", function (year) {
+                  const previous = select(this).attr("d");
                   const current = linePath(year);
                   return interpolatePath(previous, current);
                 })
           );
       } else {
         /* ELECTION  TRENDS */
-        svg.selectAll('.trend').remove();
+        svg.selectAll(".trend").remove();
 
         svg
-          .selectAll('.stem')
+          .selectAll(".stem")
           .data(years, (year) => year)
           .join((enter) =>
             enter
-              .append('line')
-              .attr('class', 'stem')
-              .attr('stroke-width', barWidth)
-              .attr('x1', (year) => xScale(year))
-              .attr('y1', chartBottom)
-              .attr('x2', (year) => xScale(year))
-              .attr('y2', chartBottom)
+              .append("line")
+              .attr("class", "stem")
+              .attr("stroke-width", barWidth)
+              .attr("x1", (year) => xScale(year))
+              .attr("y1", chartBottom)
+              .attr("x2", (year) => xScale(year))
+              .attr("y2", chartBottom)
           )
           .transition(t)
-          .attr('stroke-width', barWidth)
-          .attr('x1', (year) => xScale(year))
-          .attr('y1', yScale(0))
-          .attr('x2', (year) => xScale(year))
-          .attr('y2', (year) =>
+          .attr("stroke-width", barWidth)
+          .attr("x1", (year) => xScale(year))
+          .attr("y1", yScale(0))
+          .attr("x2", (year) => xScale(year))
+          .attr("y2", (year) =>
             yScale(getStatistic(timeseries[year], chartType, statistic))
           );
       }
 
-      svg.selectAll('*').attr('pointer-events', 'none');
+      svg.selectAll("*").attr("pointer-events", "none");
       svg
-        .on('mousemove', mousemove)
-        .on('touchmove', mousemove)
-        .on('mouseout', mouseout)
-        .on('touchend', mouseout);
+        .on("mousemove", mousemove)
+        .on("touchmove", mousemove)
+        .on("mouseout", mouseout)
+        .on("touchend", mouseout);
     });
   }, [chartType, dimensions, getBarWidth, isUniform, isLog, timeseries, years]);
 
@@ -317,8 +327,8 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
     refs.current.forEach((ref) => {
       const svg = select(ref);
       svg
-        .selectAll('circle')
-        .attr('r', (year) =>
+        .selectAll("circle")
+        .attr("r", (year) =>
           year === highlightedDate ? barWidth : barWidth / 2
         );
     });
@@ -366,12 +376,12 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
           return (
             <div
               key={statistic}
-              className={classnames('svg-parent fadeInUp', `is-${statistic}`)}
+              className={classnames("svg-parent fadeInUp", `is-${statistic}`)}
               ref={wrapperRef}
               style={trail[index]}
             >
               {highlightedDate && (
-                <div className={classnames('stats', `is-${statistic}`)}>
+                <div className={classnames("stats", `is-${statistic}`)}>
                   <h5 className="title">
                     {capitalize(statisticConfig.displayName)}
                   </h5>
@@ -384,17 +394,17 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
                           chartType,
                           statistic
                         ),
-                        statisticConfig.format !== 'short'
+                        statisticConfig.format !== "short"
                           ? statisticConfig.format
-                          : 'int',
+                          : "int",
                         statistic
                       )}
                     </h2>
-                    <h6>{`${delta > 0 ? '+' : ''}${formatNumber(
+                    <h6>{`${delta > 0 ? "+" : ""}${formatNumber(
                       delta,
-                      statisticConfig.format !== 'short'
+                      statisticConfig.format !== "short"
                         ? statisticConfig.format
-                        : 'int',
+                        : "int",
                       statistic
                     )}`}</h6>
                   </div>

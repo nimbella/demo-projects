@@ -1,7 +1,7 @@
-import Level from '../../components/Level';
+import Level from "../../components/Level";
 
-import {render} from '@testing-library/react';
-import React from 'react';
+import { render } from "@testing-library/react";
+import React from "react";
 
 const data = {
   delta: {
@@ -14,8 +14,8 @@ const data = {
   },
   meta: {
     constitution: {
-      last_updated: '2020-09-06',
-      source: 'https://docs.cdn.yougov.com/8nwf5tw7g2/econTabReport.pdf',
+      last_updated: "2020-09-06",
+      source: "https://docs.cdn.yougov.com/8nwf5tw7g2/econTabReport.pdf",
     },
   },
   total: {
@@ -27,10 +27,10 @@ const data = {
   },
 };
 
-test('Level renders total state data', () => {
-  const {container} = render(<Level {...{data}} />);
+test("Level renders total state data", () => {
+  const { container } = render(<Level {...{ data }} />);
 
   expect(container).toHaveTextContent(
-    'Republican+153883Democrat 872Green+25Libertarian+13'
+    "Republican+153883Democrat 872Green+25Libertarian+13"
   );
 });

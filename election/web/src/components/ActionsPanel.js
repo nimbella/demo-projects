@@ -1,9 +1,9 @@
-import {format} from 'date-fns';
-import React, {useMemo, useCallback, lazy, Suspense} from 'react';
-import * as Icon from 'react-feather';
-import {useSpring, animated} from 'react-spring';
+import { format } from "date-fns";
+import React, { useMemo, useCallback, lazy, Suspense } from "react";
+import * as Icon from "react-feather";
+import { useSpring, animated } from "react-spring";
 
-const Timeline = lazy(() => import('./Timeline'));
+const Timeline = lazy(() => import("./Timeline"));
 
 const ActionsPanel = ({
   lastViewedLog,
@@ -62,10 +62,10 @@ const ActionsPanel = ({
     []
   );
 
-  const {transform, opacity} = useSpring({
+  const { transform, opacity } = useSpring({
     opacity: isTimelineMode ? 1 : 0,
     transform: `perspective(600px) rotateX(${isTimelineMode ? 180 : 0}deg)`,
-    config: {mass: 5, tension: 500, friction: 80},
+    config: { mass: 5, tension: 500, friction: 80 },
   });
 
   const trail = useMemo(() => {
@@ -81,7 +81,7 @@ const ActionsPanel = ({
   }, []);
 
   const getTimeFromMilliseconds = (lastViewedLog) => {
-    return format(new Date(lastViewedLog || 0), 'dd MMM, p');
+    return format(new Date(lastViewedLog || 0), "dd MMM, p");
   };
 
   const handleClick = useCallback(() => {
@@ -96,7 +96,7 @@ const ActionsPanel = ({
         style={{
           opacity: opacity.interpolate((o) => 1 - o),
           transform,
-          pointerEvents: isTimelineMode ? 'none' : '',
+          pointerEvents: isTimelineMode ? "none" : "",
         }}
       >
         <h5 className="fadeInUp" style={trail[0]}>{`${getTimeFromMilliseconds(
@@ -122,12 +122,12 @@ const ActionsPanel = ({
         style={{
           opacity,
           transform: transform.interpolate((t) => `${t} rotateX(180deg)`),
-          pointerEvents: !isTimelineMode ? 'none' : '',
+          pointerEvents: !isTimelineMode ? "none" : "",
         }}
       >
         {isTimelineMode && (
           <Suspense fallback={<div />}>
-            <Timeline {...{setIsTimelineMode, setYear, years}} />
+            <Timeline {...{ setIsTimelineMode, setYear, years }} />
           </Suspense>
         )}
       </animated.div>

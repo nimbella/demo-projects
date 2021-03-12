@@ -1,15 +1,15 @@
-import DeltaBarGraph from './DeltaBarGraph';
-import Footer from './Footer';
-import Level from './Level';
-import MapSwitcher from './MapSwitcher';
-import StateHeader from './StateHeader';
-import StateMeta from './StateMeta';
+import DeltaBarGraph from "./DeltaBarGraph";
+import Footer from "./Footer";
+import Level from "./Level";
+import MapSwitcher from "./MapSwitcher";
+import StateHeader from "./StateHeader";
+import StateMeta from "./StateMeta";
 
-import {API_ROOT_URL, STATE_NAMES} from '../constants';
-import useIsVisible from '../hooks/useIsVisible';
-import {fetcher, formatNumber, getStatistic} from '../utils/commonFunctions';
+import { API_ROOT_URL, STATE_NAMES } from "../constants";
+import useIsVisible from "../hooks/useIsVisible";
+import { fetcher, formatNumber, getStatistic } from "../utils/commonFunctions";
 
-import classnames from 'classnames';
+import classnames from "classnames";
 import React, {
   useMemo,
   useState,
@@ -17,22 +17,22 @@ import React, {
   lazy,
   Suspense,
   useRef,
-} from 'react';
-import {Helmet} from 'react-helmet';
-import {useParams} from 'react-router-dom';
-import {useSessionStorage} from 'react-use';
-import useSWR from 'swr';
+} from "react";
+import { Helmet } from "react-helmet";
+import { useParams } from "react-router-dom";
+import { useSessionStorage } from "react-use";
+import useSWR from "swr";
 
-const TimeseriesExplorer = lazy(() => import('./TimeseriesExplorer'));
-const MapExplorer = lazy(() => import('./MapExplorer'));
-const Minigraphs = lazy(() => import('./Minigraphs'));
+const TimeseriesExplorer = lazy(() => import("./TimeseriesExplorer"));
+const MapExplorer = lazy(() => import("./MapExplorer"));
+const Minigraphs = lazy(() => import("./Minigraphs"));
 
 function State() {
   const stateCode = useParams().stateCode.toUpperCase();
 
   const [mapStatistic, setMapStatistic] = useSessionStorage(
-    'mapStatistic',
-    'democrat'
+    "mapStatistic",
+    "democrat"
   );
   const [showAllCounties, setShowAllCounties] = useState(false);
   const [regionHighlighted, setRegionHighlighted] = useState({
@@ -50,8 +50,8 @@ function State() {
     }
   }, [regionHighlighted.stateCode, stateCode]);
 
-  const {data: timeseries, error: timeseriesResponseError} = useSWR(
-    `${API_ROOT_URL}/timeseries${stateCode ? `?state=${stateCode}` : ''}`,
+  const { data: timeseries, error: timeseriesResponseError } = useSWR(
+    `${API_ROOT_URL}/timeseries${stateCode ? `?state=${stateCode}` : ""}`,
     fetcher,
     {
       revalidateOnMount: true,
@@ -59,7 +59,7 @@ function State() {
     }
   );
 
-  const {data} = useSWR(`${API_ROOT_URL}/counties`, fetcher, {
+  const { data } = useSWR(`${API_ROOT_URL}/counties`, fetcher, {
     revalidateOnMount: true,
     refreshInterval: 100000,
   });
@@ -72,8 +72,8 @@ function State() {
     const countyA = data[stateCode].counties[countyNameA];
     const countyB = data[stateCode].counties[countyNameB];
     return (
-      getStatistic(countyB, 'total', mapStatistic) -
-      getStatistic(countyA, 'total', mapStatistic)
+      getStatistic(countyB, "total", mapStatistic) -
+      getStatistic(countyA, "total", mapStatistic)
     );
   };
 
@@ -82,7 +82,7 @@ function State() {
     const gridColumnCount = window.innerWidth >= 540 ? 3 : 2;
     const countyCount = data[stateCode]?.counties
       ? Object.keys(data[stateCode].counties).filter(
-          (countyName) => countyName !== 'Unknown'
+          (countyName) => countyName !== "Unknown"
         ).length
       : 0;
     const gridRowCount = Math.ceil(countyCount / gridColumnCount);
@@ -90,7 +90,7 @@ function State() {
   }, [data, stateCode]);
 
   const stateMetaElement = useRef();
-  const isStateMetaVisible = useIsVisible(stateMetaElement, {once: true});
+  const isStateMetaVisible = useIsVisible(stateMetaElement, { once: true });
 
   const trail = useMemo(() => {
     const styles = [];
@@ -122,18 +122,18 @@ function State() {
         <div className="state-left">
           <StateHeader data={data?.[stateCode]} stateCode={stateCode} />
 
-          <div style={{position: 'relative'}}>
-            <MapSwitcher {...{mapStatistic, setMapStatistic}} />
+          <div style={{ position: "relative" }}>
+            <MapSwitcher {...{ mapStatistic, setMapStatistic }} />
             <Level data={data?.[stateCode]} />
             <Minigraphs
               timeseries={timeseries?.[stateCode]?.years}
-              {...{stateCode}}
+              {...{ stateCode }}
               forceRender={!!timeseriesResponseError}
             />
           </div>
 
           {data && (
-            <Suspense fallback={<div style={{minHeight: '50rem'}} />}>
+            <Suspense fallback={<div style={{ minHeight: "50rem" }} />}>
               <MapExplorer
                 {...{
                   stateCode,
@@ -164,19 +164,19 @@ function State() {
           <React.Fragment>
             <div
               className="county-bar"
-              style={!showAllCounties ? {display: 'flex'} : {}}
+              style={!showAllCounties ? { display: "flex" } : {}}
             >
               <div className="county-bar-top">
                 <div className="county-bar-left">
                   <h2
-                    className={classnames(mapStatistic, 'fadeInUp')}
+                    className={classnames(mapStatistic, "fadeInUp")}
                     style={trail[0]}
                   >
                     Top counties
                   </h2>
                   <div
                     className={`counties fadeInUp ${
-                      showAllCounties ? 'is-grid' : ''
+                      showAllCounties ? "is-grid" : ""
                     }`}
                     style={
                       showAllCounties
@@ -188,30 +188,30 @@ function State() {
                     }
                   >
                     {Object.keys(data?.[stateCode]?.counties || {})
-                      .filter((countyName) => countyName !== 'Unknown')
+                      .filter((countyName) => countyName !== "Unknown")
                       .sort((a, b) => handleSort(a, b))
                       .slice(0, showAllCounties ? undefined : 5)
                       .map((countyName) => {
                         const total = getStatistic(
                           data[stateCode].counties[countyName],
-                          'total',
+                          "total",
                           mapStatistic
                         );
                         const delta = getStatistic(
                           data[stateCode].counties[countyName],
-                          'delta',
+                          "delta",
                           mapStatistic
                         );
                         return (
                           <div key={countyName} className="county">
                             <h2>{formatNumber(total)}</h2>
                             <h5>{countyName}</h5>
-                            {mapStatistic !== 'democrat' && (
+                            {mapStatistic !== "democrat" && (
                               <div className="delta">
                                 <h6 className={mapStatistic}>
                                   {delta > 0
-                                    ? '\u2191' + formatNumber(delta)
-                                    : ''}
+                                    ? "\u2191" + formatNumber(delta)
+                                    : ""}
                                 </h6>
                               </div>
                             )}
@@ -223,8 +223,8 @@ function State() {
 
                 <div className="county-bar-right fadeInUp" style={trail[2]}>
                   {timeseries &&
-                    (mapStatistic === 'republican' ||
-                      mapStatistic === 'libertarian') && (
+                    (mapStatistic === "republican" ||
+                      mapStatistic === "libertarian") && (
                       <div className="happy-sign">
                         {Object.keys(timeseries[stateCode]?.years || {})
                           .slice(-lookback)
@@ -232,13 +232,13 @@ function State() {
                             (date) =>
                               getStatistic(
                                 timeseries[stateCode].years[date],
-                                'delta',
+                                "delta",
                                 mapStatistic
                               ) === 0
                           ) && (
                           <div
                             className={`alert ${
-                              mapStatistic === 'republican' ? 'is-green' : ''
+                              mapStatistic === "republican" ? "is-green" : ""
                             }`}
                           ></div>
                         )}
@@ -247,7 +247,7 @@ function State() {
                   <DeltaBarGraph
                     timeseries={timeseries?.[stateCode]?.years}
                     statistic={mapStatistic}
-                    {...{stateCode, lookback}}
+                    {...{ stateCode, lookback }}
                     forceRender={!!timeseriesResponseError}
                   />
                 </div>
@@ -260,10 +260,10 @@ function State() {
                     onClick={toggleShowAllCounties}
                     style={trail[3]}
                   >
-                    <span>{showAllCounties ? `View less` : `View all`}</span>
+                    <span>{showAllCounties ? "View less" : "View all"}</span>
                   </button>
                 ) : (
-                  <div style={{height: '3.75rem', flexBasis: '15%'}} />
+                  <div style={{ height: "3.75rem", flexBasis: "15%" }} />
                 )}
               </div>
             </div>

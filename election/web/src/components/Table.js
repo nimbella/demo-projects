@@ -1,8 +1,8 @@
-import HeaderCell from './HeaderCell';
-import TableLoader from './loaders/Table';
-import TableDeltaHelper from './snippets/TableDeltaHelper';
+import HeaderCell from "./HeaderCell";
+import TableLoader from "./loaders/Table";
+import TableDeltaHelper from "./snippets/TableDeltaHelper";
 
-import {TABLE_FADE_IN, TABLE_FADE_OUT} from '../animations';
+import { TABLE_FADE_IN, TABLE_FADE_OUT } from "../animations";
 import {
   COUNTY_TABLE_COUNT,
   STATE_NAMES,
@@ -10,8 +10,8 @@ import {
   TABLE_STATISTICS,
   TABLE_STATISTICS_EXPANDED,
   UNASSIGNED_STATE_CODE,
-} from '../constants';
-import {getTableStatistic, parseUSADate} from '../utils/commonFunctions';
+} from "../constants";
+import { getTableStatistic, parseUSADate } from "../utils/commonFunctions";
 
 import {
   FilterIcon,
@@ -19,18 +19,18 @@ import {
   InfoIcon,
   OrganizationIcon,
   QuestionIcon,
-} from '@primer/octicons-v2-react';
-import classnames from 'classnames';
-import {max} from 'date-fns';
-import equal from 'fast-deep-equal';
-import produce from 'immer';
-import React, {useCallback, useEffect, useMemo, useState, lazy} from 'react';
-import {useTrail, useTransition, animated, config} from 'react-spring';
-import {useSessionStorage} from 'react-use';
+} from "@primer/octicons-v2-react";
+import classnames from "classnames";
+import { max } from "date-fns";
+import equal from "fast-deep-equal";
+import produce from "immer";
+import React, { useCallback, useEffect, useMemo, useState, lazy } from "react";
+import { useTrail, useTransition, animated, config } from "react-spring";
+import { useSessionStorage } from "react-use";
 // eslint-disable-next-line
-import worker from 'workerize-loader!../workers/getCounties';
+import worker from "workerize-loader!../workers/getCounties";
 
-const Row = lazy(() => import('./Row'));
+const Row = lazy(() => import("./Row"));
 
 function Table({
   data: states,
@@ -40,8 +40,8 @@ function Table({
   expandTable,
   setExpandTable,
 }) {
-  const [sortData, setSortData] = useSessionStorage('sortData', {
-    sortColumn: 'republican',
+  const [sortData, setSortData] = useSessionStorage("sortData", {
+    sortColumn: "republican",
     isAscending: false,
     delta: false,
   });
@@ -66,21 +66,21 @@ function Table({
   );
 
   const trail = useTrail(3, {
-    from: {transform: 'translate3d(0, 10px, 0)', opacity: 0},
-    to: {transform: 'translate3d(0, 0px, 0)', opacity: 1},
+    from: { transform: "translate3d(0, 10px, 0)", opacity: 0 },
+    to: { transform: "translate3d(0, 0px, 0)", opacity: 1 },
     config: config.wobbly,
   });
 
   const [counties, setCounties] = useState();
 
-  const [tableOption, setTableOption] = useState('States');
+  const [tableOption, setTableOption] = useState("States");
   const [isPerMillion] = useState(false);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
 
   const lastUpdatedTT = useMemo(() => {
     const updatedDates = [
-      states['TT']?.meta?.['last_updated'] || timelineDate,
-      states['TT']?.meta?.constitution?.['last_updated'],
+      states["TT"]?.meta?.["last_updated"] || timelineDate,
+      states["TT"]?.meta?.constitution?.["last_updated"],
     ];
     return max(
       updatedDates.filter((date) => date).map((date) => parseUSADate(date))
@@ -89,10 +89,10 @@ function Table({
 
   const sortingFunction = useCallback(
     (regionKeyA, regionKeyB) => {
-      if (sortData.sortColumn !== 'regionName') {
+      if (sortData.sortColumn !== "regionName") {
         const statisticConfig = STATISTIC_CONFIGS[sortData.sortColumn];
         const dataType =
-          sortData.delta && !statisticConfig.hideDelta ? 'delta' : 'total';
+          sortData.delta && !statisticConfig.hideDelta ? "delta" : "total";
 
         const statisticA = getTableStatistic(
           counties?.[regionKeyA] || states[regionKeyA],
@@ -132,15 +132,15 @@ function Table({
 
   const _setTableOption = useCallback(() => {
     setTableOption((prevTableOption) =>
-      prevTableOption === 'States' ? 'Counties' : 'States'
+      prevTableOption === "States" ? "Counties" : "States"
     );
   }, []);
 
   useEffect(() => {
     const workerInstance = worker();
     workerInstance.getCounties(states);
-    workerInstance.addEventListener('message', (message) => {
-      if (message.data.type !== 'RPC') {
+    workerInstance.addEventListener("message", (message) => {
+      if (message.data.type !== "RPC") {
         setCounties(message.data);
         workerInstance.terminate();
       }
@@ -161,8 +161,8 @@ function Table({
     <React.Fragment>
       <div className="table-top">
         <animated.div
-          className={classnames('option-toggle', {
-            'is-highlighted': tableOption === 'Counties',
+          className={classnames("option-toggle", {
+            "is-highlighted": tableOption === "Counties",
           })}
           onClick={_setTableOption}
           style={trail[0]}
@@ -171,8 +171,8 @@ function Table({
         </animated.div>
 
         <animated.div
-          className={classnames('info-toggle', {
-            'is-highlighted': isInfoVisible,
+          className={classnames("info-toggle", {
+            "is-highlighted": isInfoVisible,
           })}
           onClick={setIsInfoVisible.bind(this, !isInfoVisible)}
           style={trail[0]}
@@ -181,8 +181,8 @@ function Table({
         </animated.div>
 
         <animated.div
-          className={classnames('expand-table-toggle', {
-            'is-highlighted': expandTable,
+          className={classnames("expand-table-toggle", {
+            "is-highlighted": expandTable,
           })}
           style={trail[1]}
           onClick={setExpandTable.bind(this, !expandTable)}
@@ -191,7 +191,7 @@ function Table({
         </animated.div>
       </div>
 
-      {transition.map(({item, key, props}) =>
+      {transition.map(({ item, key, props }) =>
         item ? (
           <animated.div key={key} className="table-helper" style={props}>
             <div className="helper-top">
@@ -200,7 +200,7 @@ function Table({
                   <span>
                     <OrganizationIcon size={14} />
                   </span>
-                  <p>{`Toggle between States/Counties`}</p>
+                  <p>{"Toggle between States/Counties"}</p>
                 </div>
                 <div className="info-item sort">
                   <span>
@@ -231,7 +231,7 @@ function Table({
                 <div className="info-item">
                   <p>Units</p>
                 </div>
-                {Object.entries({'1K': 3, '1M': 6, '1B': 9}).map(
+                {Object.entries({ "1K": 3, "1M": 6, "1B": 9 }).map(
                   ([abbr, exp]) => (
                     <div className="info-item" key={abbr}>
                       <h5>{abbr}</h5>
@@ -239,9 +239,9 @@ function Table({
                         10
                         <sup
                           style={{
-                            verticalAlign: 'baseline',
-                            position: 'relative',
-                            top: '-.4em',
+                            verticalAlign: "baseline",
+                            position: "relative",
+                            top: "-.4em",
                           }}
                         >
                           {exp}
@@ -254,8 +254,8 @@ function Table({
             </div>
 
             <h5 className="text">
-              {'Compiled from MIT Election Data'},{' '}
-              <a href="https://electionlab.mit.edu/">{'know more'}!</a>
+              {"Compiled from MIT Election Data"},{" "}
+              <a href="https://electionlab.mit.edu/">{"know more"}!</a>
             </h5>
           </animated.div>
         ) : null
@@ -271,12 +271,12 @@ function Table({
           <div className="row heading">
             <div
               className="cell heading"
-              onClick={handleSortClick.bind(this, 'regionName')}
+              onClick={handleSortClick.bind(this, "regionName")}
             >
-              <div>{tableOption === 'States' ? 'State' : 'County'}</div>
-              {sortData.sortColumn === 'regionName' && (
+              <div>{tableOption === "States" ? "State" : "County"}</div>
+              {sortData.sortColumn === "regionName" && (
                 <div
-                  className={classnames('sort-icon', {
+                  className={classnames("sort-icon", {
                     invert: sortData.isAscending,
                   })}
                 >
@@ -288,17 +288,17 @@ function Table({
             {tableStatistics.map((statistic) => (
               <HeaderCell
                 key={statistic}
-                {...{statistic, sortData, setSortData}}
+                {...{ statistic, sortData, setSortData }}
                 handleSort={handleSortClick.bind(this, statistic)}
               />
             ))}
           </div>
 
-          {tableOption === 'States' &&
+          {tableOption === "States" &&
             Object.keys(states)
               .filter(
                 (stateCode) =>
-                  stateCode !== 'TT' &&
+                  stateCode !== "TT" &&
                   !(stateCode === UNASSIGNED_STATE_CODE && isPerMillion)
               )
               .sort((a, b) => sortingFunction(a, b))
@@ -319,9 +319,9 @@ function Table({
                 );
               })}
 
-          {tableOption === 'Counties' && !counties && <TableLoader />}
+          {tableOption === "Counties" && !counties && <TableLoader />}
 
-          {tableOption === 'Counties' &&
+          {tableOption === "Counties" &&
             counties &&
             Object.keys(counties)
               .sort((a, b) => sortingFunction(a, b))
@@ -344,9 +344,9 @@ function Table({
               })}
 
           <Row
-            key={'TT'}
-            data={states['TT']}
-            stateCode={'TT'}
+            key={"TT"}
+            data={states["TT"]}
+            stateCode={"TT"}
             {...{
               isPerMillion,
               regionHighlighted,
@@ -380,8 +380,8 @@ const isEqual = (prevProps, currProps) => {
     return false;
   } else if (
     !equal(
-      prevProps.data['TT'].total.republican,
-      currProps.data['TT'].total.republican
+      prevProps.data["TT"].total.republican,
+      currProps.data["TT"].total.republican
     )
   ) {
     return false;

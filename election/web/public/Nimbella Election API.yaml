@@ -10,7 +10,7 @@ info:
     Once you deploy the project in your namespace you will have your baseUrl as https://<your_namespace>-apigcp.nimbella.io/api/ge2020. 
     However you can still use https://electiondemo-apigcp.nimbella.io/api/ge2020 as baseUrl to try out responses.
 
-    
+
      Contact Support:
      
      Name: Nimbella
@@ -20,7 +20,7 @@ info:
      Github: https://github.com/nimbella/demo-projects/tree/master/election
   version: 1.0.0
 servers:
-  - url: '/api/ge2020/'
+  - url: "/api/ge2020/"
 tags:
   - name: Representatives
 paths:
@@ -48,7 +48,7 @@ paths:
           description: >-
             Whether to return information about offices and officials. If false,
             only the top-level district information will be returned.
-          example: 'true'
+          example: "true"
         - name: levels
           in: query
           schema:
@@ -57,7 +57,7 @@ paths:
             A list of office levels to filter by. Only offices that serve at
             least one of these levels will be returned. Divisions that don't
             contain a matching office will not be returned.
-          example: '[<string>]'
+          example: "[<string>]"
         - name: roles
           in: query
           schema:
@@ -66,13 +66,13 @@ paths:
             A list of office roles to filter by. Only offices fulfilling one of
             these roles will be returned. Divisions that don't contain a
             matching office will not be returned.
-          example: '[<string>]'
+          example: "[<string>]"
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
-  '/reps/:ocdId':
+  "/reps/:ocdId":
     get:
       tags:
         - Representatives
@@ -87,7 +87,7 @@ paths:
             A list of office levels to filter by. Only offices that serve at
             least one of these levels will be returned. Divisions that don't
             contain a matching office will not be returned.
-          example: '[<string>]'
+          example: "[<string>]"
         - name: recursive
           in: query
           schema:
@@ -106,9 +106,9 @@ paths:
             A list of office roles to filter by. Only offices fulfilling one of
             these roles will be returned. Divisions that don't contain a
             matching office will not be returned.
-          example: '[<string>]'
+          example: "[<string>]"
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -131,7 +131,7 @@ paths:
             http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
           example: <string>
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -151,7 +151,7 @@ paths:
           description: The year to get data for.
           example: <string>
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -160,9 +160,9 @@ paths:
       tags:
         - General
       summary: Timeseries
-      description: 'Party wise voting stats since 1979, segregated by county and state.'
+      description: "Party wise voting stats since 1979, segregated by county and state."
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -173,7 +173,7 @@ paths:
       summary: Elections
       description: List of available elections to query.
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -182,9 +182,9 @@ paths:
       tags:
         - General
       summary: Resources
-      description: 'Elections related APIs, Datasets and Websites.'
+      description: "Elections related APIs, Datasets and Websites."
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -195,7 +195,7 @@ paths:
       summary: Exit Polls
       description: Exit polls data from various sources.
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -208,7 +208,7 @@ paths:
         Presidential Election related news with title, description and source,
         sorted in timely fashion.
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -235,7 +235,7 @@ paths:
             The unique ID of the election to look up. A list of election IDs can
             be obtained at
             https://www.googleapis.com/civicinfo/{version}/elections
-          example: '0'
+          example: "0"
         - name: officialOnly
           in: query
           schema:
@@ -243,7 +243,7 @@ paths:
           description: >-
             If set to true, only data from official state sources will be
             returned.
-          example: 'false'
+          example: "false"
         - name: returnAllAvailableData
           in: query
           schema:
@@ -253,9 +253,9 @@ paths:
             any partial information when it is unable to determine a matching
             address or unable to determine the election for electionId=0
             queries.
-          example: 'false'
+          example: "false"
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}

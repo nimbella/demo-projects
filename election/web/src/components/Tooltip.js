@@ -1,9 +1,9 @@
-import {TOOLTIP_FADE_IN, TOOLTIP_FADE_OUT} from '../animations';
+import { TOOLTIP_FADE_IN, TOOLTIP_FADE_OUT } from "../animations";
 
-import React, {useCallback, useState} from 'react';
-import {useTransition, animated} from 'react-spring';
+import React, { useCallback, useState } from "react";
+import { useTransition, animated } from "react-spring";
 
-const Tooltip = ({data, children}) => {
+const Tooltip = ({ data, children }) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   const transitions = useTransition(isTooltipVisible, null, {
@@ -22,20 +22,20 @@ const Tooltip = ({data, children}) => {
   return (
     <span
       className="Tooltip"
-      style={{position: 'relative'}}
+      style={{ position: "relative" }}
       onMouseEnter={setIsTooltipVisible.bind(this, true)}
       onMouseLeave={setIsTooltipVisible.bind(this, false)}
       onClick={handleClick.bind(this)}
     >
       {children}
 
-      {transitions.map(({item, key, props}) =>
+      {transitions.map(({ item, key, props }) =>
         item ? (
           <animated.div key={key} style={props}>
             <div className="message">
               <p
                 dangerouslySetInnerHTML={{
-                  __html: data.replace(/\n/g, '<br/>'),
+                  __html: data.replace(/\n/g, "<br/>"),
                 }}
               ></p>
             </div>

@@ -14,8 +14,8 @@ for file in ${MAPS_DIR}/*.json; do
     topo2geo counties=- -i "$file" | geoproject "d3.geoMercator().fitSize([${WIDTH}, ${HEIGHT}], d)" | geo2topo counties=- -o "${OUTPUT_DIR}/${fn}"
 done
 
-topomerge states=counties -k 'd.properties.st_nm' "${OUTPUT_DIR}/india.json" -o "${OUTPUT_DIR}/india_merged.json"
+topomerge states=counties -k 'd.properties.st_nm' "${OUTPUT_DIR}/us.json" -o "${OUTPUT_DIR}/us_merged.json"
 
-mv "${OUTPUT_DIR}/india_merged.json" "${OUTPUT_DIR}/india.json"
+mv "${OUTPUT_DIR}/us_merged.json" "${OUTPUT_DIR}/us.json"
 prettier --loglevel silent --write "$OUTPUT_DIR"
 

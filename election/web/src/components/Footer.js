@@ -1,5 +1,5 @@
-import React from 'react';
-import {Twitter, GitHub, Mail, Slack} from 'react-feather';
+import React from "react";
+import { Twitter, GitHub, Mail, Slack } from "react-feather";
 
 function Footer() {
   return (
@@ -10,11 +10,15 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-        election2020
+          election2020
         </a>
       </div>
 
-      <h5>{'Nimbella election starter project and APIs for easy access to electoral information.'}</h5>
+      <h5>
+        {
+          "Nimbella election starter project and APIs for easy access to electoral information."
+        }
+      </h5>
 
       <div className="links">
         <a

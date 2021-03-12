@@ -1,14 +1,14 @@
-import {STATISTIC_CONFIGS} from '../constants';
-import {toTitleCase} from '../utils/commonFunctions';
+import { STATISTIC_CONFIGS } from "../constants";
+import { toTitleCase } from "../utils/commonFunctions";
 
-import {FilterIcon} from '@primer/octicons-v2-react';
-import classnames from 'classnames';
-import equal from 'fast-deep-equal';
-import produce from 'immer';
-import React from 'react';
-import {useLongPress} from 'react-use';
+import { FilterIcon } from "@primer/octicons-v2-react";
+import classnames from "classnames";
+import equal from "fast-deep-equal";
+import produce from "immer";
+import React from "react";
+import { useLongPress } from "react-use";
 
-function StateHeaderCell({handleSort, sortData, setSortData, statistic}) {
+function StateHeaderCell({ handleSort, sortData, setSortData, statistic }) {
   const onLongPress = () => {
     if (sortData.sortColumn === statistic) {
       setSortData(
@@ -18,7 +18,7 @@ function StateHeaderCell({handleSort, sortData, setSortData, statistic}) {
       );
     }
   };
-  const longPressEvent = useLongPress(onLongPress, {isPreventDefault: false});
+  const longPressEvent = useLongPress(onLongPress, { isPreventDefault: false });
 
   return (
     <div
@@ -28,7 +28,7 @@ function StateHeaderCell({handleSort, sortData, setSortData, statistic}) {
     >
       {sortData.sortColumn === statistic && (
         <div
-          className={classnames('sort-icon', {
+          className={classnames("sort-icon", {
             invert: sortData.isAscending,
             [`is-${statistic}`]: sortData.delta,
           })}

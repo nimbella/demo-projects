@@ -9,338 +9,190 @@
   "divisions": {
     "ocd-division/country:us/state:ca/county:los_angeles": {
       "name": "Los Angeles County",
-      "officeIndices": [
-        15,
-        16,
-        17
-      ]
+      "officeIndices": [15, 16, 17]
     },
     "ocd-division/country:us/state:ca/sldu:26": {
       "name": "California State Senate district 26",
-      "officeIndices": [
-        6
-      ]
+      "officeIndices": [6]
     },
     "ocd-division/country:us": {
       "name": "United States",
-      "officeIndices": [
-        0,
-        1
-      ]
+      "officeIndices": [0, 1]
     },
     "ocd-division/country:us/state:ca/county:los_angeles/council_district:3": {
       "name": "Los Angeles CA county supervisor district 3",
-      "officeIndices": [
-        18
-      ]
+      "officeIndices": [18]
     },
     "ocd-division/country:us/state:ca/cd:28": {
       "name": "California's 28th congressional district",
-      "officeIndices": [
-        3
-      ]
+      "officeIndices": [3]
     },
     "ocd-division/country:us/state:ca/sldl:50": {
       "name": "California Assembly district 50",
-      "officeIndices": [
-        7
-      ]
+      "officeIndices": [7]
     },
     "ocd-division/country:us/state:ca/county:los_angeles/school_district:los_angeles_unified": {
       "name": "los angeles unified"
     },
     "ocd-division/country:us/state:ca/place:los_angeles/council_district:13": {
       "name": "Los Angeles CA city council district 13",
-      "officeIndices": [
-        19
-      ]
+      "officeIndices": [19]
     },
     "ocd-division/country:us/state:ca": {
       "name": "California",
-      "officeIndices": [
-        2,
-        4,
-        5,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14
-      ]
+      "officeIndices": [2, 4, 5, 8, 9, 10, 11, 12, 13, 14]
     },
     "ocd-division/country:us/state:ca/place:los_angeles": {
       "name": "Los Angeles city",
-      "officeIndices": [
-        20,
-        21,
-        22
-      ]
+      "officeIndices": [20, 21, 22]
     }
   },
   "offices": [
     {
       "name": "President of the United States",
       "divisionId": "ocd-division/country:us",
-      "levels": [
-        "country"
-      ],
-      "roles": [
-        "headOfState",
-        "headOfGovernment"
-      ],
-      "officialIndices": [
-        0
-      ]
+      "levels": ["country"],
+      "roles": ["headOfState", "headOfGovernment"],
+      "officialIndices": [0]
     },
     {
       "name": "Vice President of the United States",
       "divisionId": "ocd-division/country:us",
-      "levels": [
-        "country"
-      ],
-      "roles": [
-        "deputyHeadOfGovernment"
-      ],
-      "officialIndices": [
-        1
-      ]
+      "levels": ["country"],
+      "roles": ["deputyHeadOfGovernment"],
+      "officialIndices": [1]
     },
     {
       "name": "U.S. Senator",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "country"
-      ],
-      "roles": [
-        "legislatorUpperBody"
-      ],
-      "officialIndices": [
-        2,
-        3
-      ]
+      "levels": ["country"],
+      "roles": ["legislatorUpperBody"],
+      "officialIndices": [2, 3]
     },
     {
       "name": "U.S. Representative",
       "divisionId": "ocd-division/country:us/state:ca/cd:28",
-      "levels": [
-        "country"
-      ],
-      "roles": [
-        "legislatorLowerBody"
-      ],
-      "officialIndices": [
-        4
-      ]
+      "levels": ["country"],
+      "roles": ["legislatorLowerBody"],
+      "officialIndices": [4]
     },
     {
       "name": "Governor of California",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "roles": [
-        "headOfGovernment"
-      ],
-      "officialIndices": [
-        5
-      ]
+      "levels": ["administrativeArea1"],
+      "roles": ["headOfGovernment"],
+      "officialIndices": [5]
     },
     {
       "name": "Lieutenant Governor of California",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "roles": [
-        "deputyHeadOfGovernment"
-      ],
-      "officialIndices": [
-        6
-      ]
+      "levels": ["administrativeArea1"],
+      "roles": ["deputyHeadOfGovernment"],
+      "officialIndices": [6]
     },
     {
       "name": "CA State Senator",
       "divisionId": "ocd-division/country:us/state:ca/sldu:26",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "roles": [
-        "legislatorUpperBody"
-      ],
-      "officialIndices": [
-        7
-      ]
+      "levels": ["administrativeArea1"],
+      "roles": ["legislatorUpperBody"],
+      "officialIndices": [7]
     },
     {
       "name": "CA State Assemblymember",
       "divisionId": "ocd-division/country:us/state:ca/sldl:50",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "roles": [
-        "legislatorLowerBody"
-      ],
-      "officialIndices": [
-        8
-      ]
+      "levels": ["administrativeArea1"],
+      "roles": ["legislatorLowerBody"],
+      "officialIndices": [8]
     },
     {
       "name": "CA State Controller",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        9
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [9]
     },
     {
       "name": "CA Insurance Commissioner",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        10
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [10]
     },
     {
       "name": "CA Secretary of State",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        11
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [11]
     },
     {
       "name": "CA Supreme Court Justice",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [12, 13, 14, 15, 16, 17, 18]
     },
     {
       "name": "CA State Superintendent of Public Instruction",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        19
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [19]
     },
     {
       "name": "CA State Treasurer",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        20
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [20]
     },
     {
       "name": "CA Attorney General",
       "divisionId": "ocd-division/country:us/state:ca",
-      "levels": [
-        "administrativeArea1"
-      ],
-      "officialIndices": [
-        21
-      ]
+      "levels": ["administrativeArea1"],
+      "officialIndices": [21]
     },
     {
       "name": "Los Angeles County District Attorney",
       "divisionId": "ocd-division/country:us/state:ca/county:los_angeles",
-      "levels": [
-        "administrativeArea2"
-      ],
-      "officialIndices": [
-        22
-      ]
+      "levels": ["administrativeArea2"],
+      "officialIndices": [22]
     },
     {
       "name": "Los Angeles County Assessor",
       "divisionId": "ocd-division/country:us/state:ca/county:los_angeles",
-      "levels": [
-        "administrativeArea2"
-      ],
-      "officialIndices": [
-        23
-      ]
+      "levels": ["administrativeArea2"],
+      "officialIndices": [23]
     },
     {
       "name": "Los Angeles County Sheriff",
       "divisionId": "ocd-division/country:us/state:ca/county:los_angeles",
-      "levels": [
-        "administrativeArea2"
-      ],
-      "officialIndices": [
-        24
-      ]
+      "levels": ["administrativeArea2"],
+      "officialIndices": [24]
     },
     {
       "name": "Los Angeles County Supervisor",
       "divisionId": "ocd-division/country:us/state:ca/county:los_angeles/council_district:3",
-      "levels": [
-        "administrativeArea2"
-      ],
-      "officialIndices": [
-        25
-      ]
+      "levels": ["administrativeArea2"],
+      "officialIndices": [25]
     },
     {
       "name": "Los Angeles City Council Member",
       "divisionId": "ocd-division/country:us/state:ca/place:los_angeles/council_district:13",
-      "levels": [
-        "locality"
-      ],
-      "officialIndices": [
-        26
-      ]
+      "levels": ["locality"],
+      "officialIndices": [26]
     },
     {
       "name": "Los Angeles City Attorney",
       "divisionId": "ocd-division/country:us/state:ca/place:los_angeles",
-      "levels": [
-        "locality"
-      ],
-      "officialIndices": [
-        27
-      ]
+      "levels": ["locality"],
+      "officialIndices": [27]
     },
     {
       "name": "Los Angeles City Controller",
       "divisionId": "ocd-division/country:us/state:ca/place:los_angeles",
-      "levels": [
-        "locality"
-      ],
-      "officialIndices": [
-        28
-      ]
+      "levels": ["locality"],
+      "officialIndices": [28]
     },
     {
       "name": "Los Angeles Mayor",
       "divisionId": "ocd-division/country:us/state:ca/place:los_angeles",
-      "levels": [
-        "locality"
-      ],
-      "officialIndices": [
-        29
-      ]
+      "levels": ["locality"],
+      "officialIndices": [29]
     }
   ],
   "officials": [
@@ -355,12 +207,8 @@
         }
       ],
       "party": "Republican Party",
-      "phones": [
-        "(202) 456-1111"
-      ],
-      "urls": [
-        "https://www.whitehouse.gov/"
-      ],
+      "phones": ["(202) 456-1111"],
+      "urls": ["https://www.whitehouse.gov/"],
       "photoUrl": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg",
       "channels": [
         {
@@ -388,12 +236,8 @@
         }
       ],
       "party": "Republican Party",
-      "phones": [
-        "(202) 456-1111"
-      ],
-      "urls": [
-        "https://www.whitehouse.gov/"
-      ],
+      "phones": ["(202) 456-1111"],
+      "urls": ["https://www.whitehouse.gov/"],
       "photoUrl": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/VPE%20Color.jpg",
       "channels": [
         {
@@ -417,12 +261,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(202) 224-3841"
-      ],
-      "urls": [
-        "https://www.feinstein.senate.gov/"
-      ],
+      "phones": ["(202) 224-3841"],
+      "urls": ["https://www.feinstein.senate.gov/"],
       "photoUrl": "http://bioguide.congress.gov/bioguide/photo/F/F000062.jpg",
       "channels": [
         {
@@ -450,12 +290,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(202) 224-3553"
-      ],
-      "urls": [
-        "https://www.harris.senate.gov"
-      ],
+      "phones": ["(202) 224-3553"],
+      "urls": ["https://www.harris.senate.gov"],
       "channels": [
         {
           "type": "Facebook",
@@ -482,12 +318,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(202) 225-4176"
-      ],
-      "urls": [
-        "https://schiff.house.gov/"
-      ],
+      "phones": ["(202) 225-4176"],
+      "urls": ["https://schiff.house.gov/"],
       "photoUrl": "http://bioguide.congress.gov/bioguide/photo/S/S001150.jpg",
       "channels": [
         {
@@ -519,12 +351,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(916) 445-2841"
-      ],
-      "urls": [
-        "https://www.gov.ca.gov/"
-      ],
+      "phones": ["(916) 445-2841"],
+      "urls": ["https://www.gov.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -547,12 +375,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(916) 445-8994"
-      ],
-      "urls": [
-        "https://ltg.ca.gov/"
-      ],
+      "phones": ["(916) 445-8994"],
+      "urls": ["https://ltg.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -585,16 +409,10 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(916) 651-4026"
-      ],
-      "urls": [
-        "https://sd26.senate.ca.gov/"
-      ],
+      "phones": ["(916) 651-4026"],
+      "urls": ["https://sd26.senate.ca.gov/"],
       "photoUrl": "http://senate.ca.gov/sites/senate.ca.gov/files/senator_photos/ben-allen.jpg",
-      "emails": [
-        "senator.allen@sen.ca.gov"
-      ],
+      "emails": ["senator.allen@sen.ca.gov"],
       "channels": [
         {
           "type": "Facebook",
@@ -627,16 +445,10 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(310) 450-0041"
-      ],
-      "urls": [
-        "https://a50.asmdc.org/"
-      ],
+      "phones": ["(310) 450-0041"],
+      "urls": ["https://a50.asmdc.org/"],
       "photoUrl": "http://assembly.ca.gov/sites/assembly.ca.gov/files/memberphotos/AD50-Bloom.jpg",
-      "emails": [
-        "assemblymember.bloom@assembly.ca.gov"
-      ],
+      "emails": ["assemblymember.bloom@assembly.ca.gov"],
       "channels": [
         {
           "type": "Facebook",
@@ -659,12 +471,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(916) 445-2636"
-      ],
-      "urls": [
-        "https://www.sco.ca.gov/"
-      ],
+      "phones": ["(916) 445-2636"],
+      "urls": ["https://www.sco.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -687,12 +495,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(800) 927-4357"
-      ],
-      "urls": [
-        "http://www.insurance.ca.gov/"
-      ],
+      "phones": ["(800) 927-4357"],
+      "urls": ["http://www.insurance.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -715,12 +519,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(916) 653-6814"
-      ],
-      "urls": [
-        "https://www.sos.ca.gov/"
-      ],
+      "phones": ["(916) 653-6814"],
+      "urls": ["https://www.sos.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -743,12 +543,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -767,12 +563,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -791,12 +583,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -815,12 +603,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -839,12 +623,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -863,12 +643,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -887,12 +663,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(415) 865-7000"
-      ],
-      "urls": [
-        "https://www.courts.ca.gov/supremecourt.htm"
-      ],
+      "phones": ["(415) 865-7000"],
+      "urls": ["https://www.courts.ca.gov/supremecourt.htm"],
       "channels": [
         {
           "type": "Twitter",
@@ -911,12 +683,8 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(916) 319-0800"
-      ],
-      "urls": [
-        "https://www.cde.ca.gov/eo/"
-      ],
+      "phones": ["(916) 319-0800"],
+      "urls": ["https://www.cde.ca.gov/eo/"],
       "channels": [
         {
           "type": "Facebook",
@@ -939,12 +707,8 @@
         }
       ],
       "party": "Democratic Party",
-      "phones": [
-        "(916) 653-2995"
-      ],
-      "urls": [
-        "https://www.treasurer.ca.gov/"
-      ],
+      "phones": ["(916) 653-2995"],
+      "urls": ["https://www.treasurer.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -959,12 +723,8 @@
     {
       "name": "Xavier Becerra",
       "party": "Democratic Party",
-      "phones": [
-        "(916) 445-9555"
-      ],
-      "urls": [
-        "https://oag.ca.gov/"
-      ],
+      "phones": ["(916) 445-9555"],
+      "urls": ["https://oag.ca.gov/"],
       "channels": [
         {
           "type": "Facebook",
@@ -987,15 +747,9 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 974-3512"
-      ],
-      "urls": [
-        "http://da.lacounty.gov/"
-      ],
-      "emails": [
-        "webmail@da.lacounty.gov"
-      ]
+      "phones": ["(213) 974-3512"],
+      "urls": ["http://da.lacounty.gov/"],
+      "emails": ["webmail@da.lacounty.gov"]
     },
     {
       "name": "Jeffrey Prang",
@@ -1008,15 +762,9 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 974-3211"
-      ],
-      "urls": [
-        "https://assessor.lacounty.gov/"
-      ],
-      "emails": [
-        "helpdesk@assessor.lacounty.gov"
-      ],
+      "phones": ["(213) 974-3211"],
+      "urls": ["https://assessor.lacounty.gov/"],
+      "emails": ["helpdesk@assessor.lacounty.gov"],
       "channels": [
         {
           "type": "Facebook",
@@ -1039,15 +787,9 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 229-1700"
-      ],
-      "urls": [
-        "http://sheriff.lacounty.gov/wps/portal/lasd"
-      ],
-      "emails": [
-        "info@lasd.org"
-      ],
+      "phones": ["(213) 229-1700"],
+      "urls": ["http://sheriff.lacounty.gov/wps/portal/lasd"],
+      "emails": ["info@lasd.org"],
       "channels": [
         {
           "type": "Facebook",
@@ -1067,15 +809,9 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 974-3333"
-      ],
-      "urls": [
-        "http://www.lacounty.gov/government/supervisors/sheila-kuehl/"
-      ],
-      "emails": [
-        "sheila@bos.lacounty.gov"
-      ],
+      "phones": ["(213) 974-3333"],
+      "urls": ["http://www.lacounty.gov/government/supervisors/sheila-kuehl/"],
+      "emails": ["sheila@bos.lacounty.gov"],
       "channels": [
         {
           "type": "Facebook",
@@ -1098,16 +834,12 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 473-7013"
-      ],
+      "phones": ["(213) 473-7013"],
       "urls": [
         "https://www.lacity.org/government/city-directory/city-directory"
       ],
       "photoUrl": "http://www.cd13.lacity.org/sites/g/files/wph701/f/styles/generic/public/CD13_Photo_Mitch_OFarrell_web_March_2016_1.jpg?itok=gXDxsIGY",
-      "emails": [
-        "councilmember.ofarrell@lacity.org"
-      ],
+      "emails": ["councilmember.ofarrell@lacity.org"],
       "channels": [
         {
           "type": "Facebook",
@@ -1126,9 +858,7 @@
     {
       "name": "Mike Feuer",
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 978-8100"
-      ],
+      "phones": ["(213) 978-8100"],
       "urls": [
         "https://www.lacity.org/government/city-directory/city-directory"
       ],
@@ -1154,15 +884,11 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 978-7200"
-      ],
+      "phones": ["(213) 978-7200"],
       "urls": [
         "https://www.lacity.org/government/city-directory/city-directory"
       ],
-      "emails": [
-        "controller.galperin@lacity.org"
-      ],
+      "emails": ["controller.galperin@lacity.org"],
       "channels": [
         {
           "type": "Facebook",
@@ -1185,16 +911,12 @@
         }
       ],
       "party": "Nonpartisan",
-      "phones": [
-        "(213) 978-0600"
-      ],
+      "phones": ["(213) 978-0600"],
       "urls": [
         "https://www.lacity.org/government/city-directory/city-directory"
       ],
       "photoUrl": "https://www.lamayor.org/sites/g/files/wph446/f/CroppedHeadshot_quality.jpg",
-      "emails": [
-        "mayor.helpdesk@lacity.org"
-      ],
+      "emails": ["mayor.helpdesk@lacity.org"],
       "channels": [
         {
           "type": "Facebook",

@@ -1,29 +1,29 @@
-import {STATISTIC_CONFIGS, D3_TRANSITION_DURATION} from '../constants';
+import { STATISTIC_CONFIGS, D3_TRANSITION_DURATION } from "../constants";
 import {
   formatNumber,
   getLastElectionYear,
   getStatistic,
-} from '../utils/commonFunctions';
+} from "../utils/commonFunctions";
 
-import {min, max} from 'd3-array';
-import {axisBottom} from 'd3-axis';
-import {scaleBand, scaleLinear} from 'd3-scale';
-import {select} from 'd3-selection';
+import { min, max } from "d3-array";
+import { axisBottom } from "d3-axis";
+import { scaleBand, scaleLinear } from "d3-scale";
+import { select } from "d3-selection";
 // eslint-disable-next-line
-import {transition} from 'd3-transition';
-import equal from 'fast-deep-equal';
-import React, {useEffect, useRef} from 'react';
-import {useMeasure} from 'react-use';
+import { transition } from "d3-transition";
+import equal from "fast-deep-equal";
+import React, { useEffect, useRef } from "react";
+import { useMeasure } from "react-use";
 
 const getDeltaStatistic = (data, statistic) => {
-  return getStatistic(data, 'delta', statistic);
+  return getStatistic(data, "delta", statistic);
 };
 
-const margin = {top: 50, right: 0, bottom: 50, left: 0};
+const margin = { top: 50, right: 0, bottom: 50, left: 0 };
 
-function DeltaBarGraph({timeseries, statistic, lookback}) {
+function DeltaBarGraph({ timeseries, statistic, lookback }) {
   const svgRef = useRef();
-  const [wrapperRef, {width, height}] = useMeasure();
+  const [wrapperRef, { width, height }] = useMeasure();
 
   const pastYears = Object.keys(timeseries || {}).filter(
     (year) => year <= getLastElectionYear()
@@ -64,32 +64,32 @@ function DeltaBarGraph({timeseries, statistic, lookback}) {
     const t = svg.transition().duration(D3_TRANSITION_DURATION);
 
     svg
-      .select('.x-axis')
+      .select(".x-axis")
       .transition(t)
-      .style('transform', `translateY(${yScale(0)}px)`)
+      .style("transform", `translateY(${yScale(0)}px)`)
       .call(xAxis)
-      .on('start', () => svg.select('.domain').remove())
-      .selectAll('text')
-      .attr('y', 0)
-      .attr('dy', (year, i) =>
-        getDeltaStatistic(timeseries?.[year], statistic) < 0 ? '-1em' : '1.5em'
+      .on("start", () => svg.select(".domain").remove())
+      .selectAll("text")
+      .attr("y", 0)
+      .attr("dy", (year, i) =>
+        getDeltaStatistic(timeseries?.[year], statistic) < 0 ? "-1em" : "1.5em"
       )
-      .style('text-anchor', 'middle')
-      .attr('fill', STATISTIC_CONFIGS[statistic].color);
+      .style("text-anchor", "middle")
+      .attr("fill", STATISTIC_CONFIGS[statistic].color);
 
     svg
-      .selectAll('.bar')
+      .selectAll(".bar")
       .data(years)
       .join((enter) =>
         enter
-          .append('path')
-          .attr('class', 'bar')
-          .attr('d', (year) =>
+          .append("path")
+          .attr("class", "bar")
+          .attr("d", (year) =>
             roundedBar(xScale(year), yScale(0), xScale.bandwidth(), 0, r)
           )
       )
       .transition(t)
-      .attr('d', (year) =>
+      .attr("d", (year) =>
         roundedBar(
           xScale(year),
           yScale(0),
@@ -98,55 +98,55 @@ function DeltaBarGraph({timeseries, statistic, lookback}) {
           r
         )
       )
-      .attr('fill', (year, i) => {
+      .attr("fill", (year, i) => {
         return i < years.length - 1
-          ? STATISTIC_CONFIGS[statistic].color + '90'
+          ? STATISTIC_CONFIGS[statistic].color + "90"
           : STATISTIC_CONFIGS[statistic].color;
       });
 
     const textSelection = svg
-      .selectAll('.label')
+      .selectAll(".label")
       .data(years)
-      .join('text')
-      .attr('class', 'label')
-      .attr('x', (year) => xScale(year) + xScale.bandwidth() / 2)
+      .join("text")
+      .attr("class", "label")
+      .attr("x", (year) => xScale(year) + xScale.bandwidth() / 2)
       .text((year) =>
         formatNumber(getDeltaStatistic(timeseries?.[year], statistic))
       );
 
     textSelection
       .transition(t)
-      .attr('fill', STATISTIC_CONFIGS[statistic].color)
-      .attr('y', (year) => {
+      .attr("fill", STATISTIC_CONFIGS[statistic].color)
+      .attr("y", (year) => {
         const val = getDeltaStatistic(timeseries?.[year], statistic);
         return yScale(val) + (val < 0 ? 15 : -6);
       });
 
     textSelection
-      .append('tspan')
+      .append("tspan")
       .attr(
-        'dy',
+        "dy",
         (year) =>
           `${
             getDeltaStatistic(timeseries?.[year], statistic) < 0 ? 1.2 : -1.2
           }em`
       )
-      .attr('x', (year) => xScale(year) + xScale.bandwidth() / 2)
+      .attr("x", (year) => xScale(year) + xScale.bandwidth() / 2)
       .text((year, i) => {
-        if (i === 0) return '';
+        if (i === 0) return "";
         const prevVal = getDeltaStatistic(
           timeseries?.[years[i - 1]],
           statistic
         );
-        if (!prevVal) return '';
+        if (!prevVal) return "";
         const delta =
           getDeltaStatistic(timeseries?.[year], statistic) - prevVal;
-        return `${delta > 0 ? '+' : ''}${formatNumber(
+        return `${delta > 0 ? "+" : ""}${formatNumber(
           (100 * delta) / Math.abs(prevVal)
         )}%`;
       })
       .transition(t)
-      .attr('fill', STATISTIC_CONFIGS[statistic].color + '90');
+      .attr("fill", STATISTIC_CONFIGS[statistic].color + "90");
   }, [years, height, statistic, timeseries, width]);
 
   return (
@@ -193,7 +193,7 @@ function roundedBar(x, y, w, h, r) {
     `h ${w - 2 * Math.abs(r)}`,
     `q ${Math.abs(r)} 0 ${Math.abs(r)} ${r}`,
     `v ${h - r}`,
-    'Z',
+    "Z",
   ];
-  return paths.join(' ');
+  return paths.join(" ");
 }

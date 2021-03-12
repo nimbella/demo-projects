@@ -3,13 +3,13 @@ import {
   SLIDE_OUT,
   SLIDE_IN_MOBILE,
   SLIDE_OUT_MOBILE,
-} from '../animations';
+} from "../animations";
 
-import React, { useState, useCallback, useRef } from 'react';
-import * as Icon from 'react-feather';
-import { Link } from 'react-router-dom';
-import { useSpring, useTransition, animated } from 'react-spring';
-import { useLockBodyScroll, useWindowSize } from 'react-use';
+import React, { useState, useCallback, useRef } from "react";
+import * as Icon from "react-feather";
+import { Link } from "react-router-dom";
+import { useSpring, useTransition, animated } from "react-spring";
+import { useLockBodyScroll, useWindowSize } from "react-use";
 
 function Navbar({ pages, darkMode }) {
   const [expand, setExpand] = useState(false);
@@ -42,19 +42,29 @@ function Navbar({ pages, darkMode }) {
           onClick: setExpand.bind(this, !expand),
         })}
       >
-        {windowSize.width < 769 && <span>{expand ? 'Close' : 'Menu'}</span>}
+        {windowSize.width < 769 && <span>{expand ? "Close" : "Menu"}</span>}
 
         {windowSize.width > 769 && (
           <React.Fragment>
             {pages.map((page, key) => (
-                <React.Fragment key={key}>
-                  {(pages.length - 1) > key && <Link to={page.pageLink}>
-                    <span {...navLinkProps(page.pageLink, page.animationDelayForNavbar)}>
-                      {React.createElement(Icon[page.icon], {...activeNavIcon(page.pageLink)})}&nbsp;&nbsp;
+              <React.Fragment key={key}>
+                {pages.length - 1 > key && (
+                  <Link to={page.pageLink}>
+                    <span
+                      {...navLinkProps(
+                        page.pageLink,
+                        page.animationDelayForNavbar
+                      )}
+                    >
+                      {React.createElement(Icon[page.icon], {
+                        ...activeNavIcon(page.pageLink),
+                      })}
+                      &nbsp;&nbsp;
                       {page.displayName}
                     </span>
-                  </Link>}
-                </React.Fragment>
+                  </Link>
+                )}
+              </React.Fragment>
             ))}
             <span>
               <SunMoon {...{ darkMode }} />
@@ -69,8 +79,8 @@ function Navbar({ pages, darkMode }) {
             <Expand {...{ pages, setExpand, darkMode, windowSize }} />
           </animated.div>
         ) : (
-            <animated.div key={key} style={props}></animated.div>
-          )
+          <animated.div key={key} style={props}></animated.div>
+        )
       )}
     </animated.div>
   );
@@ -116,12 +126,12 @@ function Expand({ pages, setExpand, darkMode, windowSize }) {
 export default Navbar;
 
 const navLinkProps = (path, animationDelay) => ({
-  className: `${window.location.hash === `#${path}` ? 'focused' : ''}`,
+  className: `${window.location.hash === `#${path}` ? "focused" : ""}`,
 });
 
 const activeNavIcon = (path) => ({
   style: {
-    stroke: window.location.hash ===  `#${path}` ? '#4c75f2' : '',
+    stroke: window.location.hash === `#${path}` ? "#4c75f2" : "",
   },
 });
 
@@ -129,7 +139,7 @@ const SunMoon = ({ darkMode }) => {
   return (
     <div className="SunMoon" onClick={darkMode.toggle}>
       <div>
-        {darkMode.value ? <Icon.Sun color={'#ffc107'} /> : <Icon.Moon />}
+        {darkMode.value ? <Icon.Sun color={"#ffc107"} /> : <Icon.Moon />}
       </div>
     </div>
   );

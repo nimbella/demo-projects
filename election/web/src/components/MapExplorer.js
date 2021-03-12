@@ -1,4 +1,4 @@
-import MapVisualizerLoader from './loaders/MapVisualizer';
+import MapVisualizerLoader from "./loaders/MapVisualizer";
 
 import {
   MAP_META,
@@ -10,17 +10,21 @@ import {
   STATE_NAMES,
   STATISTIC_CONFIGS,
   UNKNOWN_COUNTY_KEY,
-} from '../constants';
-import {formatNumber, getStatistic, capitalize} from '../utils/commonFunctions';
+} from "../constants";
+import {
+  formatNumber,
+  getStatistic,
+  capitalize,
+} from "../utils/commonFunctions";
 
 import {
   DotFillIcon,
   ArrowLeftIcon,
   OrganizationIcon,
-} from '@primer/octicons-v2-react';
-import classnames from 'classnames';
-import equal from 'fast-deep-equal';
-import produce from 'immer';
+} from "@primer/octicons-v2-react";
+import classnames from "classnames";
+import equal from "fast-deep-equal";
+import produce from "immer";
 import React, {
   useCallback,
   useEffect,
@@ -29,16 +33,16 @@ import React, {
   useState,
   Suspense,
   lazy,
-} from 'react';
-import {useHistory} from 'react-router-dom';
-import {animated, useSpring} from 'react-spring';
-import {useSwipeable} from 'react-swipeable';
-import {useWindowSize} from 'react-use';
+} from "react";
+import { useHistory } from "react-router-dom";
+import { animated, useSpring } from "react-spring";
+import { useSwipeable } from "react-swipeable";
+import { useWindowSize } from "react-use";
 
-const MapVisualizer = lazy(() => import('./MapVisualizer'));
+const MapVisualizer = lazy(() => import("./MapVisualizer"));
 
 function MapExplorer({
-  stateCode: mapCode = 'TT',
+  stateCode: mapCode = "TT",
   data,
   mapStatistic,
   setMapStatistic,
@@ -49,7 +53,7 @@ function MapExplorer({
   expandTable,
 }) {
   const mapExplorerRef = useRef();
-  const {width} = useWindowSize();
+  const { width } = useWindowSize();
 
   const [mapView, setMapView] = useState(MAP_VIEWS.COUNTIES);
   const [mapViz, setMapViz] = useState(
@@ -60,7 +64,7 @@ function MapExplorer({
 
   const mapMeta = MAP_META[mapCode];
   const mapData =
-    mapMeta.mapType === MAP_TYPES.COUNTRY ? data : {[mapCode]: data[mapCode]};
+    mapMeta.mapType === MAP_TYPES.COUNTRY ? data : { [mapCode]: data[mapCode] };
 
   const hoveredRegion = useMemo(() => {
     const hoveredData =
@@ -151,7 +155,7 @@ function MapExplorer({
   const panelRef = useRef();
 
   useEffect(() => {
-    if (history.location.hash === '#MapExplorer') {
+    if (history.location.hash === "#MapExplorer") {
       panelRef.current.scrollIntoView();
     }
   }, [history]);
@@ -170,8 +174,8 @@ function MapExplorer({
   }, []);
 
   const spring = useSpring({
-    total: getStatistic(hoveredRegion, 'total', mapStatistic),
-    config: {tension: 250, ...SPRING_CONFIG_NUMBERS},
+    total: getStatistic(hoveredRegion, "total", mapStatistic),
+    config: { tension: 250, ...SPRING_CONFIG_NUMBERS },
   });
 
   const swipeHandlers = useSwipeable({
@@ -194,11 +198,11 @@ function MapExplorer({
   return (
     <div
       className={classnames(
-        'MapExplorer',
-        {stickied: anchor === 'mapexplorer'},
+        "MapExplorer",
+        { stickied: anchor === "mapexplorer" },
         {
           hidden:
-            anchor && (!expandTable || width < 769) && anchor !== 'mapexplorer',
+            anchor && (!expandTable || width < 769) && anchor !== "mapexplorer",
         }
       )}
     >
@@ -211,14 +215,14 @@ function MapExplorer({
           </h2>
 
           {regionHighlighted.stateCode && (
-            <h1 className={classnames('county', mapStatistic)}>
+            <h1 className={classnames("county", mapStatistic)}>
               <animated.div>
                 {spring.total.interpolate((total) =>
                   formatNumber(
                     total,
-                    statisticConfig.format !== 'short'
+                    statisticConfig.format !== "short"
                       ? statisticConfig.format
-                      : 'int',
+                      : "int",
                     mapStatistic
                   )
                 )}
@@ -228,11 +232,11 @@ function MapExplorer({
           )}
         </div>
 
-        <div className={classnames('panel-right', `is-${mapStatistic}`)}>
+        <div className={classnames("panel-right", `is-${mapStatistic}`)}>
           <div className="switch-type">
             <div
-              className={classnames('choropleth fadeInUp', {
-                'is-highlighted': mapViz === MAP_VIZS.CHOROPLETH,
+              className={classnames("choropleth fadeInUp", {
+                "is-highlighted": mapViz === MAP_VIZS.CHOROPLETH,
               })}
               onClick={handleTabClick.bind(this, MAP_VIZS.CHOROPLETH)}
               style={trail[1]}
@@ -240,8 +244,8 @@ function MapExplorer({
               {ChoroplethIcon}
             </div>
             <div
-              className={classnames('bubble fadeInUp', {
-                'is-highlighted': mapViz === MAP_VIZS.BUBBLES,
+              className={classnames("bubble fadeInUp", {
+                "is-highlighted": mapViz === MAP_VIZS.BUBBLES,
               })}
               onClick={handleTabClick.bind(this, MAP_VIZS.BUBBLES)}
               style={trail[2]}
@@ -253,8 +257,8 @@ function MapExplorer({
               <React.Fragment>
                 <div className="divider" />
                 <div
-                  className={classnames('boundary fadeInUp', {
-                    'is-highlighted': mapView === MAP_VIEWS.COUNTIES,
+                  className={classnames("boundary fadeInUp", {
+                    "is-highlighted": mapView === MAP_VIEWS.COUNTIES,
                   })}
                   onClick={handleCountyClick.bind(this)}
                   style={trail[3]}
@@ -268,7 +272,7 @@ function MapExplorer({
               <div
                 className="back fadeInUp"
                 onClick={() => {
-                  history.push('/#MapExplorer');
+                  history.push("/#MapExplorer");
                 }}
                 style={trail[4]}
               >
@@ -282,8 +286,8 @@ function MapExplorer({
               {PRIMARY_STATISTICS.map((statistic) => (
                 <div
                   key={statistic}
-                  className={classnames('statistic-option', `is-${statistic}`, {
-                    'is-highlighted': mapStatistic === statistic,
+                  className={classnames("statistic-option", `is-${statistic}`, {
+                    "is-highlighted": mapStatistic === statistic,
                   })}
                   onClick={setMapStatistic.bind(this, statistic)}
                 >
@@ -314,9 +318,9 @@ function MapExplorer({
             }
           >
             <MapVisualizer
-              {...{mapCode, mapView, mapViz}}
+              {...{ mapCode, mapView, mapViz }}
               data={mapData}
-              {...{regionHighlighted, setRegionHighlighted}}
+              {...{ regionHighlighted, setRegionHighlighted }}
               statistic={mapStatistic}
             ></MapVisualizer>
           </Suspense>
@@ -339,8 +343,8 @@ const isEqual = (prevProps, currProps) => {
     return false;
   } else if (
     !equal(
-      prevProps.data?.TT?.meta?.['last_updated'],
-      currProps.data?.TT?.meta?.['last_updated']
+      prevProps.data?.TT?.meta?.["last_updated"],
+      currProps.data?.TT?.meta?.["last_updated"]
     )
   ) {
     return false;

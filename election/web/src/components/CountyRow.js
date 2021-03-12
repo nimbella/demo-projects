@@ -1,13 +1,13 @@
-import Cell from './Cell';
-import Tooltip from './Tooltip';
+import Cell from "./Cell";
+import Tooltip from "./Tooltip";
 
-import {TABLE_STATISTICS, TABLE_STATISTICS_EXPANDED} from '../constants';
+import { TABLE_STATISTICS, TABLE_STATISTICS_EXPANDED } from "../constants";
 
-import {InfoIcon} from '@primer/octicons-v2-react';
-import classnames from 'classnames';
-import equal from 'fast-deep-equal';
-import produce from 'immer';
-import React, {useCallback} from 'react';
+import { InfoIcon } from "@primer/octicons-v2-react";
+import classnames from "classnames";
+import equal from "fast-deep-equal";
+import produce from "immer";
+import React, { useCallback } from "react";
 
 function CountyRow({
   stateCode,
@@ -19,7 +19,6 @@ function CountyRow({
   expandTable,
   lastUpdatedTT,
 }) {
-
   const highlightCounty = useCallback(() => {
     if (regionHighlighted.countyName !== countyName) {
       setRegionHighlighted(
@@ -37,15 +36,15 @@ function CountyRow({
 
   return (
     <div
-      className={classnames('row', 'county', {
-        'is-highlighted': regionHighlighted?.countyName === countyName,
+      className={classnames("row", "county", {
+        "is-highlighted": regionHighlighted?.countyName === countyName,
       })}
       onMouseEnter={highlightCounty}
     >
       <div className="cell">
         <div className="state-name">{countyName}</div>
         {data?.meta?.notes && (
-          <Tooltip {...{data: data.meta.notes}}>
+          <Tooltip {...{ data: data.meta.notes }}>
             <InfoIcon size={16} />
           </Tooltip>
         )}
@@ -54,7 +53,7 @@ function CountyRow({
       {tableStatistics.map((statistic) => (
         <Cell
           key={statistic}
-          {...{statistic, data, isPerMillion, lastUpdatedTT}}
+          {...{ statistic, data, isPerMillion, lastUpdatedTT }}
         />
       ))}
     </div>
@@ -67,7 +66,7 @@ const isCountyRowEqual = (prevProps, currProps) => {
   } else if (!equal(prevProps.data?.delta, currProps.data?.delta)) {
     return false;
   } else if (
-    !equal(prevProps.data?.['last_updated'], currProps.data?.['last_updated'])
+    !equal(prevProps.data?.["last_updated"], currProps.data?.["last_updated"])
   ) {
     return false;
   } else if (!equal(prevProps.isPerMillion, currProps.isPerMillion)) {

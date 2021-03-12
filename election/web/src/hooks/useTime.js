@@ -1,8 +1,8 @@
 //
 // useTime hook
 //
-import {DateTime} from 'luxon';
-import {useEffect, useState} from 'react';
+import { DateTime } from "luxon";
+import { useEffect, useState } from "react";
 
 export const getTime = () => {
   // This implementation uses Luxon: https://moment.github.io/luxon/

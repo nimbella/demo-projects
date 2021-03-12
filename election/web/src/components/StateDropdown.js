@@ -1,11 +1,11 @@
-import {MAP_META, STATE_NAMES} from '../constants';
+import { MAP_META, STATE_NAMES } from "../constants";
 
-import React, {useState, useCallback, useRef} from 'react';
-import {useHistory} from 'react-router-dom';
-import {useTransition, animated} from 'react-spring';
-import {useClickAway} from 'react-use';
+import React, { useState, useCallback, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import { useTransition, animated } from "react-spring";
+import { useClickAway } from "react-use";
 
-const StateDropdown = ({stateCode, trail}) => {
+const StateDropdown = ({ stateCode, trail }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef();
   const history = useHistory();
@@ -17,17 +17,17 @@ const StateDropdown = ({stateCode, trail}) => {
   const transitions = useTransition(showDropdown, null, {
     from: {
       opacity: 0,
-      transform: 'translate3d(0, 2px, 0)',
+      transform: "translate3d(0, 2px, 0)",
       zIndex: 999,
     },
     enter: {
       opacity: 1,
-      transform: 'translate3d(0, 0px, 0)',
+      transform: "translate3d(0, 0px, 0)",
       zIndex: 999,
     },
     leave: {
       opacity: 0,
-      transform: 'translate3d(0, 2px, 0)',
+      transform: "translate3d(0, 2px, 0)",
       zIndex: 999,
     },
     config: {
@@ -55,17 +55,17 @@ const StateDropdown = ({stateCode, trail}) => {
         {STATE_NAMES[stateCode]}
       </animated.h1>
 
-      {transitions.map(({item, key, props}) =>
+      {transitions.map(({ item, key, props }) =>
         item ? (
           <animated.div className="dropdown" style={props} key={key}>
             {Object.keys(MAP_META)
               .filter(
                 (stateCodeItr) =>
-                  stateCodeItr !== 'TT' && stateCodeItr !== stateCode
+                  stateCodeItr !== "TT" && stateCodeItr !== stateCode
               )
               .sort(
                 (code1, code2) =>
-                  STATE_NAMES[code1] || ''.localeCompare(STATE_NAMES[code2])
+                  STATE_NAMES[code1] || "".localeCompare(STATE_NAMES[code2])
               )
               .map((stateCodeItr) => (
                 <h1

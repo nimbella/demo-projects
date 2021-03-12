@@ -1,13 +1,13 @@
-import {SPRING_CONFIG_NUMBERS, STATISTIC_CONFIGS} from '../constants.js';
-import {formatNumber, getTableStatistic} from '../utils/commonFunctions';
+import { SPRING_CONFIG_NUMBERS, STATISTIC_CONFIGS } from "../constants.js";
+import { formatNumber, getTableStatistic } from "../utils/commonFunctions";
 
-import classnames from 'classnames';
-import equal from 'fast-deep-equal';
-import React from 'react';
-import {animated, useSpring} from 'react-spring';
+import classnames from "classnames";
+import equal from "fast-deep-equal";
+import React from "react";
+import { animated, useSpring } from "react-spring";
 
-const Cell = ({statistic, data, isPerMillion, lastUpdatedTT}) => {
-  const {total, delta} = getTableStatistic(
+const Cell = ({ statistic, data, isPerMillion, lastUpdatedTT }) => {
+  const { total, delta } = getTableStatistic(
     data,
     statistic,
     isPerMillion,
@@ -26,15 +26,15 @@ const Cell = ({statistic, data, isPerMillion, lastUpdatedTT}) => {
     <div className="cell statistic">
       {!statisticConfig.hideDelta && (
         <animated.div
-          className={classnames('delta', `is-${statistic}`)}
+          className={classnames("delta", `is-${statistic}`)}
           title={delta}
         >
           {spring.delta.interpolate((delta) =>
             delta > 0
-              ? '\u2191' + formatNumber(delta, statisticConfig.format)
+              ? "\u2191" + formatNumber(delta, statisticConfig.format)
               : delta < 0
-              ? '\u2193' + formatNumber(Math.abs(delta), statisticConfig.format)
-              : ''
+              ? "\u2193" + formatNumber(Math.abs(delta), statisticConfig.format)
+              : ""
           )}
         </animated.div>
       )}

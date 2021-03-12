@@ -1,8 +1,8 @@
-import {formatNumber} from '../utils/commonFunctions';
+import { formatNumber } from "../utils/commonFunctions";
 
-import React from 'react';
+import React from "react";
 
-function StateMeta({stateCode, data}) {
+function StateMeta({ stateCode, data }) {
   return (
     <React.Fragment>
       <div className="StateMeta population">
