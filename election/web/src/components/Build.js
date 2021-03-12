@@ -27,8 +27,8 @@ function Build() {
         <h2>
           The Github project for this React application is <a href="https://github.com/nimbella/demo-projects/tree/master/election" target="_blank" rel="noopener noreferrer">here</a>:
       </h2>
-        <p>This project is built with a React front-end for the user interface. The front-end is backed by the <a href="#/api">Nimbella Election API</a>. As an example, let's show you how to share exit poll data in your application.</p>
-        <p>It's as simple as 1, 2, 3 &amp; deploy.</p>
+        <p>This project is built with a React front-end for the user interface. The front-end is backed by the <a href="#/api">Nimbella Election API</a>. As an example, let&apos;s show you how to share exit poll data in your application.</p>
+        <p>It&apos;s as simple as 1, 2, 3 &amp; deploy.</p>
         <ol>
           <li>
             <p>In your front-end React application, import the following.</p>
@@ -88,7 +88,7 @@ useEffect(() => {
             </SyntaxHighlighter>
           </li>
         </ol>
-        <p>You're one <b>deploy</b> step away from sharing your inspiration with the world.</p>
+        <p>You&apos;re one <b>deploy</b> step away from sharing your inspiration with the world.</p>
         <h2>How to deploy your project</h2>
         <p>
           This project is built for the Nimbella cloud. This means you can share your project with the world by deploying the application
@@ -119,9 +119,9 @@ useEffect(() => {
         <SyntaxHighlighter language="javascript" style={darkMode.value ? darcula : prism}>
           GOOGLE_CIVIC_API_TOKEN=&lt;your_google_api_key&gt;  nim project deploy github:nimbella/demo-projects/election
         </SyntaxHighlighter>
-        <p>If you are in a hurry and don't want to grab a <a href="https://developers.google.com/civic-information" target="_blank" rel="noopener noreferrer">Google Civic Information API Key</a> yet, you can still deploy and use this app. Simply clone this repo locally, prepend the <b>API_ROOT_URL</b> value with <b>https://electiondemo-apigcp.nimbella.io</b> in <b>constants.js</b> and deploy using `nim project deploy demo-projects/election`. That's it, you can skip below steps.</p>
+        <p>If you are in a hurry and don&apos;t want to grab a <a href="https://developers.google.com/civic-information" target="_blank" rel="noopener noreferrer">Google Civic Information API Key</a> yet, you can still deploy and use this app. Simply clone this repo locally, prepend the <b>API_ROOT_URL</b> value with <b>https://electiondemo-apigcp.nimbella.io</b> in <b>constants.js</b> and deploy using `nim project deploy demo-projects/election`. That&apos;s it, you can skip below steps.</p>
 
-        <p>If you did not sign up with a GitHub id, then clone the project locally first, then deploy. This is because the GitHub rate limits are too low to deploy without cloning unless you're authenticated with GitHub.</p>
+        <p>If you did not sign up with a GitHub id, then clone the project locally first, then deploy. This is because the GitHub rate limits are too low to deploy without cloning unless you&apos;re authenticated with GitHub.</p>
         <SyntaxHighlighter language="javascript" style={darkMode.value ? darcula : prism}>
           {`git clone https://github.com/nimbella/demo-projects.git
 export GOOGLE_CIVIC_API_TOKEN=<your_google_api_key>

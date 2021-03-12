@@ -11,7 +11,7 @@ import {min, max, bisector} from 'd3-array';
 import {axisBottom, axisRight} from 'd3-axis';
 import {interpolatePath} from 'd3-interpolate-path';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import {select, mouse} from 'd3-selection';
+import {select, pointer} from 'd3-selection';
 import {line, curveMonotoneX} from 'd3-shape';
 // eslint-disable-next-line
 import {transition} from 'd3-transition';
@@ -167,7 +167,7 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
     };
 
     function mousemove() {
-      const xm = mouse(this)[0];
+      const xm = pointer(this)[0];
       const year = xScale.invert(xm);
       if (!isNaN(year)) {
         const bisectDate = bisector((year) => year).left;
