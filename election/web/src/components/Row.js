@@ -1,7 +1,7 @@
-import Cell from "./Cell";
-import CountyRow from "./CountyRow";
-import HeaderCell from "./HeaderCell";
-import Tooltip from "./Tooltip";
+import Cell from './Cell';
+import CountyRow from './CountyRow';
+import HeaderCell from './HeaderCell';
+import Tooltip from './Tooltip';
 
 import {
   STATE_NAMES,
@@ -9,12 +9,12 @@ import {
   TABLE_STATISTICS,
   TABLE_STATISTICS_EXPANDED,
   UNKNOWN_COUNTY_KEY,
-} from "../constants";
+} from '../constants';
 import {
   capitalize,
   formatLastUpdated,
   getTableStatistic,
-} from "../utils/commonFunctions";
+} from '../utils/commonFunctions';
 
 import {
   AlertIcon,
@@ -23,13 +23,13 @@ import {
   FoldUpIcon,
   GraphIcon,
   InfoIcon,
-} from "@primer/octicons-v2-react";
-import classnames from "classnames";
-import equal from "fast-deep-equal";
-import produce from "immer";
-import React, { useState, useCallback, useRef } from "react";
-import { useHistory } from "react-router-dom";
-import { useSessionStorage } from "react-use";
+} from '@primer/octicons-v2-react';
+import classnames from 'classnames';
+import equal from 'fast-deep-equal';
+import produce from 'immer';
+import React, {useState, useCallback, useRef} from 'react';
+import {useHistory} from 'react-router-dom';
+import {useSessionStorage} from 'react-use';
 
 function Row({
   data,
@@ -42,8 +42,8 @@ function Row({
   lastUpdatedTT,
 }) {
   const [showCounties, setShowCounties] = useState(false);
-  const [sortData, setSortData] = useSessionStorage("countySortData", {
-    sortColumn: "republican",
+  const [sortData, setSortData] = useSessionStorage('countySortData', {
+    sortColumn: 'republican',
     isAscending: false,
     delta: false,
   });
@@ -66,10 +66,10 @@ function Row({
 
   const sortingFunction = useCallback(
     (countyNameA, countyNameB) => {
-      if (sortData.sortColumn !== "countyName") {
+      if (sortData.sortColumn !== 'countyName') {
         const statisticConfig = STATISTIC_CONFIGS[sortData.sortColumn];
         const dataType =
-          sortData.delta && !statisticConfig.hideDelta ? "delta" : "total";
+          sortData.delta && !statisticConfig.hideDelta ? 'delta' : 'total';
 
         const statisticA = getTableStatistic(
           data.counties[countyNameA],
@@ -141,7 +141,7 @@ function Row({
   const handleCollapse = useCallback(() => {
     setShowCounties(false);
     rowElement.current.scrollIntoView({
-      block: "start",
+      block: 'start',
     });
 
     // eslint-disable-next-line
@@ -156,10 +156,10 @@ function Row({
     <React.Fragment>
       <div
         className={classnames(
-          "row",
-          { "is-total": stateCode === "TT" },
+          'row',
+          {'is-total': stateCode === 'TT'},
           {
-            "is-highlighted":
+            'is-highlighted':
               (stateCode && regionHighlighted?.stateCode === stateCode) ||
               (countyName &&
                 regionHighlighted?.countyName === countyName &&
@@ -175,7 +175,7 @@ function Row({
             {STATE_NAMES[stateCode] || countyNameStr}
           </div>
           {data?.meta?.notes && (
-            <Tooltip {...{ data: data.meta.notes }}>
+            <Tooltip {...{data: data.meta.notes}}>
               <InfoIcon size={16} />
             </Tooltip>
           )}
@@ -184,7 +184,7 @@ function Row({
         {tableStatistics.map((statistic) => (
           <Cell
             key={statistic}
-            {...{ data, statistic, isPerMillion, lastUpdatedTT }}
+            {...{data, statistic, isPerMillion, lastUpdatedTT}}
           />
         ))}
       </div>
@@ -193,13 +193,13 @@ function Row({
         <React.Fragment>
           <div className="state-meta">
             <div className="state-meta-top">
-              {data?.meta?.["last_updated"] && (
+              {data?.meta?.['last_updated'] && (
                 <p className="last-updated">
                   <ClockIcon />
                   {capitalize(
                     `${formatLastUpdated(
-                      (data || "".meta || "").last_updated
-                    )} ${"ago"}`
+                      (data || ''.meta || '').last_updated
+                    )} ${'ago'}`
                   )}
                 </p>
               )}
@@ -210,7 +210,7 @@ function Row({
                 <GraphIcon />
                 <span>
                   {
-                    ("See more details on {{state}}",
+                    ('See more details on {{state}}',
                     {
                       state: stateCode,
                     })
@@ -221,25 +221,25 @@ function Row({
 
             {data.counties && UNKNOWN_COUNTY_KEY in data.counties && (
               <div className="state-meta-bottom">
-                <div className={classnames("disclaimer")}>
+                <div className={classnames('disclaimer')}>
                   <AlertIcon />
                   <span>
-                    {"County-wise data not available in state bulletin"}
+                    {'County-wise data not available in state bulletin'}
                   </span>
                 </div>
               </div>
             )}
           </div>
 
-          <div className={classnames("row", "heading")}>
+          <div className={classnames('row', 'heading')}>
             <div
               className="cell heading"
-              onClick={handleSortClick.bind(this, "countyName")}
+              onClick={handleSortClick.bind(this, 'countyName')}
             >
-              <div className="county-name">{"County"}</div>
-              {sortData.sortColumn === "countyName" && (
+              <div className="county-name">{'County'}</div>
+              {sortData.sortColumn === 'countyName' && (
                 <div
-                  className={classnames("sort-icon", {
+                  className={classnames('sort-icon', {
                     invert: !sortData.isAscending,
                   })}
                 >
@@ -251,7 +251,7 @@ function Row({
             {tableStatistics.map((statistic) => (
               <HeaderCell
                 key={statistic}
-                {...{ statistic, sortData, setSortData }}
+                {...{statistic, sortData, setSortData}}
                 handleSort={handleSortClick.bind(this, statistic)}
               />
             ))}

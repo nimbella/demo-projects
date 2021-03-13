@@ -1,10 +1,10 @@
 import {
   getStatesAndCountiesFromAPI,
   getStatesAndCountiesFromMaps,
-} from "./utils/index";
+} from './utils/index';
 
-describe("Compare the map and the API states and counties", () => {
-  test("for any discrepancies", async () => {
+describe('Compare the map and the API states and counties', () => {
+  test('for any discrepancies', async () => {
     const statesAndCountiesFromAPI = await getStatesAndCountiesFromAPI();
     const statesAndCountiesFromMaps = await getStatesAndCountiesFromMaps();
 

@@ -1,10 +1,10 @@
-import * as serviceWorker from "./serviceWorker";
-import React, { Suspense, lazy } from "react";
-import { render } from "react-dom";
-import { HashRouter as Router } from "react-router-dom";
+import * as serviceWorker from './serviceWorker';
+import React, { Suspense, lazy } from 'react';
+import { render } from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
 
-const App = lazy(() => import("./App"));
-const rootElement = document.getElementById("root");
+const App = lazy(() => import('./App'));
+const rootElement = document.getElementById('root');
 
 const main = () =>
   render(
@@ -21,13 +21,13 @@ const browserSupportsAllFeatures = () => {
 };
 
 const loadScript = (src, done) => {
-  const js = document.createElement("script");
+  const js = document.createElement('script');
   js.src = src;
   js.onload = function () {
     done();
   };
   js.onerror = function () {
-    done(new Error("Failed to load script " + src));
+    done(new Error('Failed to load script ' + src));
   };
   document.head.appendChild(js);
 };
@@ -36,7 +36,7 @@ if (browserSupportsAllFeatures()) {
   main();
 } else {
   loadScript(
-    "https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=requestIdleCallback%2CIntersectionObserver",
+    'https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=requestIdleCallback%2CIntersectionObserver',
     main
   );
 }

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 const useScript = (url, body) => {
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     if (url) {
       script.src = url;
       script.async = true;
@@ -15,7 +15,7 @@ const useScript = (url, body) => {
 
     return () => {
       document.body.removeChild(script);
-    };
+    }
   }, [url, body]);
 };
 

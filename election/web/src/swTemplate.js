@@ -1,11 +1,11 @@
-if (typeof importScripts === "function") {
+if (typeof importScripts === 'function') {
   importScripts(
-    "https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js"
+    'https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js'
   );
 
   /* global workbox */
   if (workbox) {
-    console.log("Workbox is loaded 🚀");
+    console.log('Workbox is loaded 🚀');
     workbox.core.skipWaiting();
 
     /* injection point for manifest files.  */
@@ -15,7 +15,7 @@ if (typeof importScripts === "function") {
     workbox.routing.registerRoute(
       new workbox.routing.NavigationRoute(
         new workbox.strategies.NetworkFirst({
-          cacheName: "PRODUCTION",
+          cacheName: 'PRODUCTION',
         })
       )
     );
@@ -40,11 +40,11 @@ if (typeof importScripts === "function") {
 
     // Adding networkFirst for all json data. In offline mode will be fetched from cache
     workbox.routing.registerRoute(
-      new RegExp("https://api\\.ge2020usa\\.org/.*\\.json"),
+      new RegExp('https://api\\.ge2020usa\\.org/.*\\.json'),
       new workbox.strategies.NetworkFirst(),
-      "GET"
+      'GET'
     );
   } else {
-    console.log("Workbox could not be loaded. Hence, no offline support.");
+    console.log('Workbox could not be loaded. Hence, no offline support.');
   }
 }

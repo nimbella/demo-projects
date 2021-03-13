@@ -1,7 +1,7 @@
-import Tooltip from "./Tooltip";
+import Tooltip from './Tooltip';
 
-import { InfoIcon } from "@primer/octicons-v2-react";
-import React from "react";
+import {InfoIcon} from '@primer/octicons-v2-react';
+import React from 'react';
 
 function StateMetaCard({
   title,
@@ -16,7 +16,7 @@ function StateMetaCard({
     <div className={`meta-item ${className}`}>
       <div className="meta-item-top">
         <h3>{title}</h3>
-        <Tooltip {...{ data: formula }}>
+        <Tooltip {...{data: formula}}>
           <InfoIcon size={16} />
         </Tooltip>
       </div>

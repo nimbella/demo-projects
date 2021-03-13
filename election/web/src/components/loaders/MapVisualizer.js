@@ -1,13 +1,13 @@
-import { STATISTIC_CONFIGS, MAP_LEGEND_HEIGHT } from "../../constants";
+import {STATISTIC_CONFIGS, MAP_LEGEND_HEIGHT} from '../../constants';
 
-import React from "react";
-import ContentLoader from "react-content-loader";
+import React from 'react';
+import ContentLoader from 'react-content-loader';
 
 // Margins as declared in CSS
 export const MAP_BUFFER_MARGINS = 42;
 export const INDIA_ASPECT_RATIO = 0.885;
 
-const MapVisualizerLoader = ({ width, statistic }) => {
+const MapVisualizerLoader = ({width, statistic}) => {
   const windowWidth = window.innerWidth;
   // Default width for loader
   if (!width) width = windowWidth > 769 ? 480 : windowWidth;

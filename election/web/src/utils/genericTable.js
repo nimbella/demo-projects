@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
-import React, { useState } from "react";
-import { useTable, useFilters, useSortBy, usePagination } from "react-table";
+import React, {useState} from 'react';
+import {useTable, useFilters, useSortBy, usePagination} from 'react-table';
 
-export default function GenericTable({ columns, data }) {
-  const [filterInput, setFilterInput] = useState("");
+export default function GenericTable({columns, data}) {
+  const [filterInput, setFilterInput] = useState('');
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -24,7 +24,7 @@ export default function GenericTable({ columns, data }) {
 
   const handleFilterChange = (e) => {
     const value = e.target.value || undefined;
-    setFilter("Poll source", value);
+    setFilter('Poll source', value);
     setFilterInput(value);
   };
 
@@ -34,7 +34,7 @@ export default function GenericTable({ columns, data }) {
       <input
         value={filterInput}
         onChange={handleFilterChange}
-        placeholder={"Search Poll Source"}
+        placeholder={'Search Poll Source'}
       />
       <table {...getTableProps()}>
         <thead>
@@ -46,12 +46,12 @@ export default function GenericTable({ columns, data }) {
                   className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? "sort-desc"
-                        : "sort-asc"
-                      : ""
+                        ? 'sort-desc'
+                        : 'sort-asc'
+                      : ''
                   }
                 >
-                  {column.render("Header")}
+                  {column.render('Header')}
                 </th>
               ))}
             </tr>
@@ -64,9 +64,7 @@ export default function GenericTable({ columns, data }) {
               <tr className="row" {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td className="cell statistic" {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
+                    <td className="cell statistic" {...cell.getCellProps()}>{cell.render('Cell')}</td>
                   );
                 })}
               </tr>

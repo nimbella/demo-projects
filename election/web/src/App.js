@@ -1,24 +1,23 @@
-import "./App.scss";
-import Home from "./components/Home";
-import Navbar from "./components/Navbar";
+import './App.scss';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import React, { lazy, Suspense } from 'react';
+import ReactNotification from 'react-notifications-component';
+import { Route, Redirect, Switch, useLocation } from 'react-router-dom';
+import useDarkMode from 'use-dark-mode';
+import 'react-notifications-component/dist/theme.css';
 
-import React, { lazy, Suspense } from "react";
-import ReactNotification from "react-notifications-component";
-import { Route, Redirect, Switch, useLocation } from "react-router-dom";
-import useDarkMode from "use-dark-mode";
-import "react-notifications-component/dist/theme.css";
-
-const Trends = lazy(() => import("./components/Trends"));
-const ExitPolls = lazy(() => import("./components/ExitPolls"));
-const Voter = lazy(() => import("./components/Voter"));
-const Representatives = lazy(() => import("./components/Representatives"));
-const Elections = lazy(() => import("./components/Elections"));
-const Divisions = lazy(() => import("./components/Divisions"));
-const Build = lazy(() => import("./components/Build"));
-const API = lazy(() => import("./components/API"));
-const Contest = lazy(() => import("./components/Contest"));
-const Resources = lazy(() => import("./components/Resources"));
-const State = lazy(() => import("./components/State"));
+const Trends = lazy(() => import('./components/Trends'));
+const ExitPolls = lazy(() => import('./components/ExitPolls'));
+const Voter = lazy(() => import('./components/Voter'));
+const Representatives = lazy(() => import('./components/Representatives'));
+const Elections = lazy(() => import('./components/Elections'));
+const Divisions = lazy(() => import('./components/Divisions'));
+const Build = lazy(() => import('./components/Build'));
+const API = lazy(() => import('./components/API'));
+const Contest = lazy(() => import('./components/Contest'));
+const Resources = lazy(() => import('./components/Resources'));
+const State = lazy(() => import('./components/State'));
 
 const App = () => {
   const darkMode = useDarkMode(false);
@@ -26,86 +25,86 @@ const App = () => {
 
   const pages = [
     {
-      pageLink: "/",
+      pageLink: '/',
       view: Home,
-      displayName: "Home",
+      displayName: 'Home',
       showInNavbar: true,
-      icon: "Home",
+      icon: 'Home'
     },
     {
-      pageLink: "/trends",
+      pageLink: '/trends',
       view: Trends,
-      displayName: "News & Trends",
+      displayName: 'News & Trends',
       showInNavbar: true,
-      icon: "TrendingUp",
+      icon: 'TrendingUp'
     },
     {
-      pageLink: "/exitpolls",
+      pageLink: '/exitpolls',
       view: ExitPolls,
-      displayName: "Exit Polls",
+      displayName: 'Exit Polls',
       showInNavbar: true,
-      icon: "PieChart",
+      icon: 'PieChart'
     },
     {
-      pageLink: "/voter",
+      pageLink: '/voter',
       view: Voter,
-      displayName: "Voter Info",
+      displayName: 'Voter Info',
       showInNavbar: true,
-      icon: "Info",
+      icon: 'Info'
     },
     {
-      pageLink: "/representatives",
+      pageLink: '/representatives',
       view: Representatives,
-      displayName: "Representatives",
+      displayName: 'Representatives',
       showInNavbar: true,
-      icon: "Users",
+      icon: 'Users'
     },
     {
-      pageLink: "/elections",
+      pageLink: '/elections',
       view: Elections,
-      displayName: "Elections",
+      displayName: 'Elections',
       showInNavbar: true,
-      icon: "UserCheck",
+      icon: 'UserCheck'
     },
     {
-      pageLink: "/divisions",
+      pageLink: '/divisions',
       view: Divisions,
-      displayName: "Divisions",
+      displayName: 'Divisions',
       showInNavbar: true,
-      icon: "Map",
+      icon: 'Map'
     },
     {
-      pageLink: "/sourcecode",
+      pageLink: '/sourcecode',
       view: Build,
-      displayName: "Source Code",
+      displayName: 'Source Code',
       showInNavbar: true,
-      icon: "Code",
+      icon: 'Code'
     },
     {
-      pageLink: "/api",
+      pageLink: '/api',
       view: API,
-      displayName: "API",
+      displayName: 'API',
       showInNavbar: true,
-      icon: "Database",
+      icon: 'Database'
     },
     {
-      pageLink: "/contest",
+      pageLink: '/contest',
       view: Contest,
-      displayName: "Contest",
+      displayName: 'Contest',
       showInNavbar: true,
-      icon: "Award",
+      icon: 'Award'
     },
     {
-      pageLink: "/resource",
+      pageLink: '/resource',
       view: Resources,
-      displayName: "Useful Links",
+      displayName: 'Useful Links',
       showInNavbar: true,
-      icon: "Link",
+      icon: 'Link'
     },
     {
-      pageLink: "/state/:stateCode",
+      pageLink: '/state/:stateCode',
       view: State,
-      displayName: "State",
+      displayName: 'State',
       showInNavbar: false,
     },
   ];

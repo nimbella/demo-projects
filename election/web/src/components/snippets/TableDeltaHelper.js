@@ -1,8 +1,8 @@
-import { TABLE_STATISTICS } from "../../constants";
+import {TABLE_STATISTICS} from '../../constants';
 
-import { FilterIcon } from "@primer/octicons-v2-react";
-import classnames from "classnames";
-import React, { useEffect, useState } from "react";
+import {FilterIcon} from '@primer/octicons-v2-react';
+import classnames from 'classnames';
+import React, {useEffect, useState} from 'react';
 
 const TableDeltaHelper = () => {
   const [statisticIndex, setStatisticIndex] = useState(0);

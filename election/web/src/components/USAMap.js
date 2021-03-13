@@ -1,8 +1,8 @@
-import USAState from "./USAState";
-import data from "../data/usa-map-dimensions";
+import USAState from './USAState';
+import data from '../data/usa-map-dimensions';
 
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class USAMap extends React.Component {
   clickHandler = (stateAbbreviation) => {
@@ -40,7 +40,7 @@ class USAMap extends React.Component {
         <USAState
           key={stateKey}
           stateName={data[stateKey].name}
-          dimensions={data[stateKey]["dimensions"]}
+          dimensions={data[stateKey]['dimensions']}
           state={stateKey}
           fill={this.fillStateColor(stateKey)}
           onClickState={this.stateClickHandler(stateKey)}
@@ -66,14 +66,14 @@ class USAMap extends React.Component {
           <g className="DC state">
             <path
               className="DC1"
-              fill={this.fillStateColor("DC1")}
+              fill={this.fillStateColor('DC1')}
               d="M801.8,253.8 l-1.1-1.6 -1-0.8 1.1-1.6 2.2,1.5z"
             />
             <circle
               className="DC2"
               onClick={this.clickHandler}
-              data-name={"DC"}
-              fill={this.fillStateColor("DC2")}
+              data-name={'DC'}
+              fill={this.fillStateColor('DC2')}
               stroke="#FFFFFF"
               strokeWidth="1.5"
               cx="801.3"
@@ -274,8 +274,8 @@ USAMap.defaultProps = {
   onClick: () => {},
   width: 959,
   height: 593,
-  defaultFill: "#D3D3D3",
-  title: "Blank US states map",
+  defaultFill: '#D3D3D3',
+  title: 'Blank US states map',
   customize: {},
 };
 

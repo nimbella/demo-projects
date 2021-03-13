@@ -1,13 +1,13 @@
-import { PRIMARY_STATISTICS, STATISTIC_CONFIGS } from "../constants";
+import {PRIMARY_STATISTICS, STATISTIC_CONFIGS} from '../constants';
 
-import classnames from "classnames";
-import React, { useState, useCallback, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { useSpring, animated, config } from "react-spring";
-import { useMeasure } from "react-use";
+import classnames from 'classnames';
+import React, {useState, useCallback, useEffect} from 'react';
+import ReactDOM from 'react-dom';
+import {useSpring, animated, config} from 'react-spring';
+import {useMeasure} from 'react-use';
 
-const MapSwitcher = ({ mapStatistic, setMapStatistic }) => {
-  const [mapSwitcher, { width }] = useMeasure();
+const MapSwitcher = ({mapStatistic, setMapStatistic}) => {
+  const [mapSwitcher, {width}] = useMeasure();
   const [clicked, setClicked] = useState(false);
   const [count, setCount] = useState(0);
   const [spring, set] = useSpring(() => ({
@@ -51,7 +51,7 @@ const MapSwitcher = ({ mapStatistic, setMapStatistic }) => {
       {PRIMARY_STATISTICS.map((statistic, index) => (
         <div
           key={index}
-          className={classnames("clickable", { [`is-${statistic}`]: !clicked })}
+          className={classnames('clickable', {[`is-${statistic}`]: !clicked})}
           onClick={handleClick.bind(this, statistic)}
         ></div>
       ))}

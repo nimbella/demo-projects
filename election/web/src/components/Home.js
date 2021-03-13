@@ -1,22 +1,22 @@
-import Footer from "./Footer";
-import ProgressBar from "./ProgressBar";
-import USAMap from "./USAMap";
-import SplitElectoralVotes from "./SplitElectoralVotes";
-import { API_ROOT_URL } from "../constants";
-import HistoricalMaps from "../data/historical-maps";
-import { notify, fetcher } from "../utils/commonFunctions";
-import * as Icon from "react-feather";
-import React, { Component, Suspense } from "react";
-import { Helmet } from "react-helmet";
-const latestYear = "2020";
+import Footer from './Footer';
+import ProgressBar from './ProgressBar';
+import USAMap from './USAMap';
+import SplitElectoralVotes from './SplitElectoralVotes';
+import { API_ROOT_URL } from '../constants';
+import HistoricalMaps from '../data/historical-maps';
+import { notify, fetcher } from '../utils/commonFunctions';
+import * as Icon from 'react-feather';
+import React, { Component, Suspense } from 'react';
+import { Helmet } from 'react-helmet';
+const latestYear = '2020'
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      demPercentage: "",
+      demPercentage: '',
       blankPercentage: 100,
-      repPercentage: "",
-      partyFocus: "",
+      repPercentage: '',
+      partyFocus: '',
       demVotes: 0,
       repVotes: 0,
       blueStates: {},
@@ -24,235 +24,235 @@ class Home extends Component {
       showRefresh: false,
       states: {
         AL: {
-          color: "",
+          color: '',
           votes: 9,
         },
         AK: {
-          color: "",
+          color: '',
           votes: 3,
         },
         AZ: {
-          color: "",
+          color: '',
           votes: 11,
         },
         AR: {
-          color: "",
+          color: '',
           votes: 6,
         },
         CA: {
-          color: "",
+          color: '',
           votes: 55,
         },
         CO: {
-          color: "",
+          color: '',
           votes: 9,
         },
         CT: {
-          color: "",
+          color: '',
           votes: 7,
         },
         DC: {
-          color: "",
+          color: '',
           votes: 3,
         },
         DE: {
-          color: "",
+          color: '',
           votes: 3,
         },
         FL: {
-          color: "",
+          color: '',
           votes: 29,
         },
         GA: {
-          color: "",
+          color: '',
           votes: 16,
         },
         HI: {
-          color: "",
+          color: '',
           votes: 4,
         },
         ID: {
-          color: "",
+          color: '',
           votes: 4,
         },
         IL: {
-          color: "",
+          color: '',
           votes: 20,
         },
         IN: {
-          color: "",
+          color: '',
           votes: 11,
         },
         IA: {
-          color: "",
+          color: '',
           votes: 6,
         },
         KS: {
-          color: "",
+          color: '',
           votes: 6,
         },
         KY: {
-          color: "",
+          color: '',
           votes: 8,
         },
         LA: {
-          color: "",
+          color: '',
           votes: 8,
         },
         ME: {
-          color: "",
+          color: '',
           votes: 4,
         },
         ME1: {
-          color: "",
+          color: '',
           votes: 2,
         },
         ME2: {
-          color: "",
+          color: '',
           votes: 1,
         },
         ME3: {
-          color: "",
+          color: '',
           votes: 1,
         },
         MD: {
-          color: "",
+          color: '',
           votes: 10,
         },
         MA: {
-          color: "",
+          color: '',
           votes: 11,
         },
         MI: {
-          color: "",
+          color: '',
           votes: 16,
         },
         MN: {
-          color: "",
+          color: '',
           votes: 10,
         },
         MS: {
-          color: "",
+          color: '',
           votes: 6,
         },
         MO: {
-          color: "",
+          color: '',
           votes: 10,
         },
         MT: {
-          color: "",
+          color: '',
           votes: 3,
         },
         NE: {
-          color: "",
+          color: '',
           votes: 5,
         },
         NE1: {
-          color: "",
+          color: '',
           votes: 2,
         },
         NE2: {
-          color: "",
+          color: '',
           votes: 1,
         },
         NE3: {
-          color: "",
+          color: '',
           votes: 1,
         },
         NE4: {
-          color: "",
+          color: '',
           votes: 1,
         },
         NV: {
-          color: "",
+          color: '',
           votes: 6,
         },
         NH: {
-          color: "",
+          color: '',
           votes: 4,
         },
         NJ: {
-          color: "",
+          color: '',
           votes: 14,
         },
         NM: {
-          color: "",
+          color: '',
           votes: 5,
         },
         NY: {
-          color: "",
+          color: '',
           votes: 29,
         },
         NC: {
-          color: "",
+          color: '',
           votes: 15,
         },
         ND: {
-          color: "",
+          color: '',
           votes: 3,
         },
         OH: {
-          color: "",
+          color: '',
           votes: 18,
         },
         OK: {
-          color: "",
+          color: '',
           votes: 7,
         },
         OR: {
-          color: "",
+          color: '',
           votes: 7,
         },
         PA: {
-          color: "",
+          color: '',
           votes: 20,
         },
         RI: {
-          color: "",
+          color: '',
           votes: 4,
         },
         SC: {
-          color: "",
+          color: '',
           votes: 9,
         },
         SD: {
-          color: "",
+          color: '',
           votes: 3,
         },
         TN: {
-          color: "",
+          color: '',
           votes: 11,
         },
         TX: {
-          color: "",
+          color: '',
           votes: 38,
         },
         UT: {
-          color: "",
+          color: '',
           votes: 6,
         },
         VT: {
-          color: "",
+          color: '',
           votes: 3,
         },
         VA: {
-          color: "",
+          color: '',
           votes: 13,
         },
         WA: {
-          color: "",
+          color: '',
           votes: 12,
         },
         WV: {
-          color: "",
+          color: '',
           votes: 5,
         },
         WI: {
-          color: "",
+          color: '',
           votes: 10,
         },
         WY: {
-          color: "",
+          color: '',
           votes: 3,
         },
       },
@@ -267,43 +267,43 @@ class Home extends Component {
   stateToggle = (targetState) => {
     const { partyFocus, blueStates, redStates } = this.state; // save typing later
     const { color, votes } = this.state.states[targetState];
-    let newColor = "";
+    let newColor = '';
 
     // blank --> red
-    if ((color === "#D3D3D3" || color === "") && partyFocus === "republican") {
-      newColor = "red";
+    if ((color === '#D3D3D3' || color === '') && partyFocus === 'republican') {
+      newColor = 'red';
       redStates[targetState] = votes; // add to redStates object
     }
     // blank --> #007bff
     else if (
-      (color === "#D3D3D3" || color === "") &&
-      partyFocus === "democrat"
+      (color === '#D3D3D3' || color === '') &&
+      partyFocus === 'democrat'
     ) {
-      newColor = "#007bff";
+      newColor = '#007bff';
       blueStates[targetState] = votes;
     }
 
     // #007bff --> red
-    else if (color === "#007bff" && partyFocus === "republican") {
-      newColor = "red";
+    else if (color === '#007bff' && partyFocus === 'republican') {
+      newColor = 'red';
       delete blueStates[targetState]; // remove from blueStates object
       redStates[targetState] = votes; // add to redStates object
     }
     // red --> #007bff
-    else if (color === "red" && partyFocus === "democrat") {
-      newColor = "#007bff";
+    else if (color === 'red' && partyFocus === 'democrat') {
+      newColor = '#007bff';
       delete redStates[targetState];
       blueStates[targetState] = votes;
     }
 
     // red --> blank
-    else if (color === "red" && partyFocus === "republican") {
-      newColor = "#D3D3D3";
+    else if (color === 'red' && partyFocus === 'republican') {
+      newColor = '#D3D3D3';
       delete redStates[targetState];
     }
     // #007bff --> blank
-    else if (color === "#007bff" && partyFocus === "democrat") {
-      newColor = "#D3D3D3";
+    else if (color === '#007bff' && partyFocus === 'democrat') {
+      newColor = '#D3D3D3';
       delete blueStates[targetState];
     }
 
@@ -327,8 +327,8 @@ class Home extends Component {
         /* if one was clicked, update the display of ME and NE so that their 
         colors can be updated based upon split county votes  */
         if (
-          targetState.substr(0, 2) === "ME" ||
-          targetState.substr(0, 2) === "NE"
+          targetState.substr(0, 2) === 'ME' ||
+          targetState.substr(0, 2) === 'NE'
         ) {
           this.updateSplitElectoralStatesDisplay(targetState);
         }
@@ -340,8 +340,9 @@ class Home extends Component {
 
   getData = async (year) => {
     if (year === latestYear) {
-      return await fetcher(`${API_ROOT_URL}/results`);
-    } else return HistoricalMaps[year];
+      return await fetcher(`${API_ROOT_URL}/results`)
+    }
+    else return HistoricalMaps[year]
   };
 
   updateDisplayFromHistorical = async (event, value) => {
@@ -355,9 +356,9 @@ class Home extends Component {
     // eslint-disable-next-line guard-for-in
     for (const state in updatedStates) {
       updatedStates[state].color = historicalResult[state];
-      if (updatedStates[state].color === "red") {
+      if (updatedStates[state].color === 'red') {
         redStates[state] = updatedStates[state].votes;
-      } else if (updatedStates[state].color === "#007bff") {
+      } else if (updatedStates[state].color === '#007bff') {
         blueStates[state] = updatedStates[state].votes;
       }
     }
@@ -416,40 +417,40 @@ class Home extends Component {
       this.state.states.ME2.color,
       this.state.states.ME3.color,
     ];
-    const maineRedSum = maineVotes.filter((color) => color === "red").length;
-    const maineBlueSum = maineVotes.filter((color) => color === "#007bff")
+    const maineRedSum = maineVotes.filter((color) => color === 'red').length;
+    const maineBlueSum = maineVotes.filter((color) => color === '#007bff')
       .length;
-    let newMaineColor = "";
+    let newMaineColor = '';
 
     // blank
     if (maineRedSum === 0 && maineBlueSum === 0) {
-      newMaineColor = "#d3d3d3";
+      newMaineColor = '#d3d3d3';
     }
     // #007bff is up by 1, 2, or 3 (almost #007bff)
     else if (
       maineBlueSum - maineRedSum >= 1 &&
       maineBlueSum - maineRedSum <= 3
     ) {
-      newMaineColor = "lightblue";
+      newMaineColor = 'lightblue';
     }
     // #007bff is up 4 (all #007bff)
     else if (maineBlueSum - maineRedSum > 3) {
-      newMaineColor = "#007bff";
+      newMaineColor = '#007bff';
     }
     // perfect-tie (@ 1 or 2 votes each)
     else if (maineRedSum === maineBlueSum) {
-      newMaineColor = "violet";
+      newMaineColor = 'violet';
     }
     // red is up 1, 2 or 3 (almost red)
     else if (
       maineRedSum - maineBlueSum >= 1 &&
       maineRedSum - maineBlueSum <= 3
     ) {
-      newMaineColor = "lightcoral";
+      newMaineColor = 'lightcoral';
     }
     // red is up 4 (all red)
     else if (maineRedSum - maineBlueSum > 3) {
-      newMaineColor = "red";
+      newMaineColor = 'red';
     }
 
     /* Nebraska Update Logic
@@ -461,42 +462,42 @@ class Home extends Component {
       this.state.states.NE3.color,
       this.state.states.NE4.color,
     ];
-    const nebraskaRedSum = nebraskaVotes.filter((color) => color === "red")
+    const nebraskaRedSum = nebraskaVotes.filter((color) => color === 'red')
       .length;
-    const nebraskaBlueSum = nebraskaVotes.filter((color) => color === "#007bff")
+    const nebraskaBlueSum = nebraskaVotes.filter((color) => color === '#007bff')
       .length;
-    let newNebraskaColor = "";
+    let newNebraskaColor = '';
 
     // all votes blank
     if (nebraskaRedSum === 0 && nebraskaBlueSum === 0) {
-      newNebraskaColor = "#d3d3d3";
+      newNebraskaColor = '#d3d3d3';
     }
     // #007bff is up by 1, 2, 3 or 4 (almost #007bff)
     else if (
       nebraskaBlueSum - nebraskaRedSum >= 1 &&
       nebraskaBlueSum - nebraskaRedSum <= 4
     ) {
-      newNebraskaColor = "lightblue";
+      newNebraskaColor = 'lightblue';
     }
     // #007bff is up by 5 (all #007bff)
     else if (nebraskaBlueSum - nebraskaRedSum > 4) {
-      newNebraskaColor = "#007bff";
+      newNebraskaColor = '#007bff';
     }
     // perfect-tie (@ 2 votes each)
     else if (nebraskaRedSum === nebraskaBlueSum) {
-      newNebraskaColor = "violet";
+      newNebraskaColor = 'violet';
     }
     // red is up 1, 2, 3 or 4 (almost red)
     else if (
       nebraskaRedSum - nebraskaBlueSum >= 1 &&
       nebraskaRedSum - nebraskaBlueSum <= 4
     ) {
-      newNebraskaColor = "lightcoral";
+      newNebraskaColor = 'lightcoral';
     }
 
     // red is up 5 (all red)
     else if (nebraskaRedSum - nebraskaBlueSum > 4) {
-      newNebraskaColor = "red";
+      newNebraskaColor = 'red';
     }
 
     const updatedStates = Object.assign({}, this.state.states);
@@ -593,9 +594,9 @@ class Home extends Component {
         fill: this.state.states.ME.color,
         clickHandler: (event) =>
           notify(
-            "oops!",
+            'oops!',
             "Maine is not a winner-take-all state. See 'Split Electoral Votes' below.",
-            "warning"
+            'warning'
           ),
       },
       MD: {
@@ -623,9 +624,9 @@ class Home extends Component {
         fill: this.state.states.NE.color,
         clickHandler: (event) =>
           notify(
-            "oops!",
+            'oops!',
             "Nebraska is not a winner-take-all state. See 'Split Electoral Votes' below.",
-            "warning"
+            'warning'
           ),
       },
       NV: {
@@ -701,14 +702,17 @@ class Home extends Component {
   };
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.updateDisplayFromHistorical(undefined, latestYear);
+    this.updateDisplayFromHistorical(undefined, latestYear)
   }
   render() {
     return (
       <React.Fragment>
         <Helmet>
           <title>General Election 2020 USA</title>
-          <meta name="title" content="General Election 2020 USA" />
+          <meta
+            name="title"
+            content="General Election 2020 USA"
+          />
         </Helmet>
         <div className="jumbotron">
           <h1>Electoral College Map</h1>
@@ -723,17 +727,8 @@ class Home extends Component {
               <option value="2020">2020 Live</option>
               <option value="2012">2012 Actual</option>
               <option value="2016">2016 Actual</option>
-            </select>{" "}
-            &nbsp;&nbsp;
-            {this.state.showRefresh && (
-              <Icon.RefreshCcw
-                onClick={() =>
-                  this.updateDisplayFromHistorical(undefined, latestYear)
-                }
-              >
-                {" "}
-              </Icon.RefreshCcw>
-            )}
+            </select> &nbsp;&nbsp;
+            {this.state.showRefresh && <Icon.RefreshCcw onClick={() => this.updateDisplayFromHistorical(undefined, latestYear)}> </Icon.RefreshCcw>}
           </div>
         </div>
         <div className="ElectoralMap">
@@ -751,19 +746,19 @@ class Home extends Component {
               value="democrat"
               className="btn btn-primary dem-btn"
             >
-              {this.state.partyFocus === "democrat"
-                ? "Selected"
-                : "Select Blue States"}
+              {this.state.partyFocus === 'democrat'
+                ? 'Selected'
+                : 'Select Blue States'}
             </button>
 
             {this.state.demVotes >= 270 && (
-              <span className="winner-text" style={{ color: "#007bff" }}>
+              <span className="winner-text" style={{ color: '#007bff' }}>
                 Democrats Win!
               </span>
             )}
 
             {this.state.repVotes >= 270 && (
-              <span className="winner-text" style={{ color: "red" }}>
+              <span className="winner-text" style={{ color: 'red' }}>
                 Republicans Win!
               </span>
             )}
@@ -773,9 +768,9 @@ class Home extends Component {
               value="republican"
               className="btn btn-primary rep-btn"
             >
-              {this.state.partyFocus === "republican"
-                ? "Selected"
-                : "Select Red States"}
+              {this.state.partyFocus === 'republican'
+                ? 'Selected'
+                : 'Select Red States'}
             </button>
           </div>
           <USAMap

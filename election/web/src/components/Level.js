@@ -2,20 +2,16 @@ import {
   PRIMARY_STATISTICS,
   STATISTIC_CONFIGS,
   SPRING_CONFIG_NUMBERS,
-} from "../constants";
-import {
-  capitalize,
-  formatNumber,
-  getStatistic,
-} from "../utils/commonFunctions";
+} from '../constants';
+import {capitalize, formatNumber, getStatistic} from '../utils/commonFunctions';
 
-import { HeartFillIcon } from "@primer/octicons-v2-react";
-import classnames from "classnames";
-import equal from "fast-deep-equal";
-import React, { useMemo } from "react";
-import { animated, useSpring } from "react-spring";
+import {HeartFillIcon} from '@primer/octicons-v2-react';
+import classnames from 'classnames';
+import equal from 'fast-deep-equal';
+import React, {useMemo} from 'react';
+import {animated, useSpring} from 'react-spring';
 
-function PureLevelItem({ statistic, total, delta }) {
+function PureLevelItem({statistic, total, delta}) {
   const spring = useSpring({
     total: total,
     delta: delta,
@@ -48,7 +44,7 @@ function PureLevelItem({ statistic, total, delta }) {
 
 const LevelItem = React.memo(PureLevelItem);
 
-function Level({ data }) {
+function Level({data}) {
   const trail = useMemo(() => {
     const styles = [];
 
@@ -66,13 +62,13 @@ function Level({ data }) {
       {PRIMARY_STATISTICS.map((statistic, index) => (
         <animated.div
           key={index}
-          className={classnames("level-item", `is-${statistic}`, "fadeInUp")}
+          className={classnames('level-item', `is-${statistic}`, 'fadeInUp')}
           style={trail[index]}
         >
           <LevelItem
-            {...{ statistic }}
-            total={getStatistic(data, "total", statistic)}
-            delta={getStatistic(data, "delta", statistic)}
+            {...{statistic}}
+            total={getStatistic(data, 'total', statistic)}
+            delta={getStatistic(data, 'delta', statistic)}
           />
         </animated.div>
       ))}
@@ -83,8 +79,8 @@ function Level({ data }) {
 const isEqual = (prevProps, currProps) => {
   if (
     !equal(
-      getStatistic(prevProps.data, "total", "democrat"),
-      getStatistic(currProps.data, "total", "democrat")
+      getStatistic(prevProps.data, 'total', 'democrat'),
+      getStatistic(currProps.data, 'total', 'democrat')
     )
   ) {
     return false;
