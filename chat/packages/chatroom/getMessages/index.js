@@ -1,4 +1,4 @@
-const { redis } = require('nim');
+const { redis } = require('@nimbella/sdk');
 
 const main = (params) => {
   const messagePoolKey = 'chat_demo_message_pool';

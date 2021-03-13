@@ -1,4 +1,4 @@
-const { redis } = require('nim');
+const { redis } = require('@nimbella/sdk');
 const validation = require('./validation');
 
 const main = (params) => {

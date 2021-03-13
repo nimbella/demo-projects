@@ -1,4 +1,4 @@
-const nimbella = require('nim'),
+const nimbella = require('@nimbella/sdk'),
       redis = nimbella.redis()
 
 const response = (body, statusCode) => ({ statusCode: statusCode || 200, body })

@@ -1,5 +1,5 @@
 async function getSignedUrl(filename) {
-    const nimbella = require('nim')
+    const nimbella = require('@nimbella/sdk')
     const bucket   = await nimbella.storage()
 
     const file = bucket.file(filename)

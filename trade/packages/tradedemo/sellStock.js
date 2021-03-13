@@ -1,4 +1,4 @@
-const nim = require('nim'),
+const nim = require('@nimbella/sdk'),
       needle = require('needle')
 
 function subtractShares(rc, account_id, ticker, shares) {

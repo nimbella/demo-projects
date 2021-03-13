@@ -1,4 +1,4 @@
-const nim = require('nim')
+const nim = require('@nimbella/sdk')
 
 function newAccountBalance(rc, account_id, newBalance) {
   const balanceKey = 'trade_demo_balance/' + account_id

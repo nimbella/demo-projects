@@ -1,5 +1,5 @@
 const worker = require('tesseract.js'),
-      nimbella = require('nim'),
+      nimbella = require('@nimbella/sdk'),
       redis = nimbella.redis()
 
 const ocr = (url, lang, id, promise) => {

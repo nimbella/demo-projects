@@ -1,4 +1,4 @@
-const nimbella = require('nim'),
+const nimbella = require('@nimbella/sdk'),
       redis    = nimbella.redis()
 
 function main(args) {
