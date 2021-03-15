@@ -94,7 +94,7 @@
     ]
   },
   "devDependencies": {
-    "@welldone-software/why-did-you-render": "^4.2.5",
+    "@welldone-software/why-did-you-render": "^6.1.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-google": "^0.14.0",
