@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4'),
-      nimbella = require('nim'),
+      nimbella = require('@nimbella/sdk'),
       redis = nimbella.redis()
 
 async function getSignedUrl(filename) {

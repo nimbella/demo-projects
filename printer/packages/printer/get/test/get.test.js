@@ -1,5 +1,5 @@
 const chai = require('chai'),
-      nimbella = require('nim'),
+      nimbella = require('@nimbella/sdk'),
       { main } = require('../src/get'),
       expect = chai.expect,
       assert = chai.assert

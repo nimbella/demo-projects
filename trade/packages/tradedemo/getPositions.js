@@ -1,4 +1,4 @@
-const nim = require('nim'),
+const nim = require('@nimbella/sdk'),
       needle = require('needle')
 
 function mergeTickerInfo(apitoken, tickerList, positions) {

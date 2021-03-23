@@ -1,4 +1,4 @@
-const { redis } = require('nim');
+const { redis } = require('@nimbella/sdk');
 
 const main = () => {
   const adminKey = 'chat_demo_admin/';
