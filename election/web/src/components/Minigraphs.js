@@ -92,7 +92,7 @@ function Minigraphs({timeseries, date: timelineDate}) {
                 const previous = select(this).attr('d');
                 const current = linePath(date);
                 return interpolatePath(previous, current);
-              })
+              }).selection()
         );
 
       svg
@@ -127,7 +127,7 @@ function Minigraphs({timeseries, date: timelineDate}) {
               .attr('cx', (year) => xScale(year))
               .attr('cy', (year) =>
                 yScale(getStatistic(timeseries[year], 'delta', statistic))
-              )
+              ).selection()
         );
     });
   }, [years, timeseries]);

@@ -274,7 +274,7 @@ function Timeseries({timeseries, years, chartType, isUniform, isLog}) {
                   const previous = select(this).attr('d');
                   const current = linePath(year);
                   return interpolatePath(previous, current);
-                })
+                }).selection()
           );
       } else {
         /* ELECTION  TRENDS */
