@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: ['plugin:react/recommended', 'google', 'prettier', 'prettier/react'],
+  extends: ['plugin:react/recommended', 'google', 'prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -19,9 +19,10 @@ module.exports = {
   plugins: ['react', 'prettier', 'react-hooks', 'import'],
   rules: {
     'require-jsdoc': 0,
-    'prettier/prettier': 'error',
+    'prettier/prettier': 0,
     'no-invalid-this': 0,
     'react/prop-types': 0,
+    quotes: [0, "single", { "avoidEscape": true }],
     'react-hooks/rules-of-hooks': 'warn',
     'react-hooks/exhaustive-deps': 'error',
     'import/no-unresolved': [2, {commonjs: true, amd: true}],
@@ -29,7 +30,7 @@ module.exports = {
     'import/default': 2,
     'import/export': 2,
     'import/order': [
-      2,
+      0,
       {
         groups: [
           'index',

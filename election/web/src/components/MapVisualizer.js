@@ -33,7 +33,7 @@ import {
   interpolatePurples,
   interpolateOranges,
 } from 'd3-scale-chromatic';
-import {select, event} from 'd3-selection';
+import {select} from 'd3-selection';
 import {transition} from 'd3-transition';
 import React, {useCallback, useEffect, useMemo, useRef} from 'react';
 import {useHistory} from 'react-router-dom';
@@ -253,7 +253,7 @@ function MapVisualizer({
         if (onceTouchedRegion.current === d) onceTouchedRegion.current = null;
         else onceTouchedRegion.current = d;
       })
-      .on('click', (d) => {
+      .on('click', (event, d) => {
         event.stopPropagation();
         const stateCode = STATE_CODES[d.properties.st_nm];
         if (
@@ -361,7 +361,7 @@ function MapVisualizer({
           onceTouchedRegion.current = null;
         else onceTouchedRegion.current = feature;
       })
-      .on('click', (feature) => {
+      .on('click', (event, feature) => {
         event.stopPropagation();
         if (onceTouchedRegion.current || mapMeta.mapType === MAP_TYPES.STATE)
           return;

@@ -47439,7 +47439,7 @@
                 "candidates": {}
             }
         },
-        "total": {} 
+        "total": {}
     },
     "AK": {
         "counties": {
@@ -48062,12 +48062,12 @@
     "TT": {
         "total": {
             "constitution": 3807,
-            "democrat": 188794,
+            "democrat": 81195417,
             "green": 8075,
-            "libertarian": 23004,
+            "libertarian": 1791587,
             "no party affiliation": 255060,
-            "others": 12386,
-            "republican": 489371,
+            "others": 217363,
+            "republican": 74022587,
             "better for america": 5825,
             "independent": 1063,
             "prohibition": 715,
