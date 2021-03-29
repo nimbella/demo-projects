@@ -39,7 +39,7 @@
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-helmet": "^6.1.0",
-    "react-notifications-component": "^2.4.0",
+    "react-notifications-component": "^3.0.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-spring": "^8.0.27",
