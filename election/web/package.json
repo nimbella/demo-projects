@@ -32,7 +32,7 @@
     "lodash": "^4.17.15",
     "luxon": "^1.25.0",
     "mobx": "^6.1.4",
-    "react": "^17.0.1",
+    "react": "^16.14.0",
     "react-content-loader": "^6.0.2",
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.8",
