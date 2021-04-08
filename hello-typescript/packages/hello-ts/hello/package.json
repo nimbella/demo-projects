@@ -1,0 +1,7 @@
+{
+  "name": "hello-typescript",
+  "version": "1.0.0",
+  "description": "Example project using TypeScript",
+  "main": "index.js",
+  "dependencies": {}
+}

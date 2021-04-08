@@ -1,0 +1,22 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "collectCoverageFrom": [
+    "src/**/*.ts"
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "(/__tests__/.*|(\\.|/)(test|spec))\\.js$"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 0,
+      "lines": 0,
+      "statements": 0
+    }
+  },
+  "testEnvironment": "node"
+}
