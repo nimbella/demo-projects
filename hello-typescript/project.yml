@@ -1,0 +1,5 @@
+packages:
+  - name: hello-ts
+    actions:
+      - name: hello
+        runtime: nodejs:default
