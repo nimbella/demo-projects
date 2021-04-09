@@ -69,7 +69,7 @@ This will show the following result:
 
 ```
 {
-  "body": "Hello, stranger!",
+  "body": "Hello, World!",
   "statusCode": 200
 }
 ```
