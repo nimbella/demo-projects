@@ -1,0 +1,21 @@
+{
+  "name": "hello-typescript",
+  "version": "1.0.0",
+  "description": "Example project using TypeScript",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config=./.jestrc.json ./test",
+    "clean": "find src -type f \\( -iname '*.d.ts' -or -iname '*.js' ! -iname 'webpack.*' \\) | xargs rm",
+    "clear": "jest --clearCache"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.3.0",
+    "tslib": "^1.11.1",
+    "typescript": "^3.7.3",
+    "ts-loader": "^6.2.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

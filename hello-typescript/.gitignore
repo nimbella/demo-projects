@@ -1,0 +1,6 @@
+lib/src/**/*.js
+lib/src/**/*d.ts
+lib/test/**/*d.ts
+lib/test/**/*.js
+lib/coverage
+packages/hello-ts/hello/index.js
