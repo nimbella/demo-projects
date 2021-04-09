@@ -1,6 +1,0 @@
-{
-    "require": {
-        "ramsey/uuid": "^4.1",
-        "nimbella/nimbella": "^1.1"
-    }
-}
