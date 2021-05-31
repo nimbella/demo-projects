@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^3.4.1",
-    "konva": "^4.0.12",
+    "konva": "^8.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-card-flip": "^1.0.10",
