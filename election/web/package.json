@@ -17,7 +17,7 @@
     "d3-axis": "^2.1.0",
     "d3-fetch": "^2.0.0",
     "d3-format": "^2.0.0",
-    "d3-geo": "^2.0.1",
+    "d3-geo": "^3.0.1",
     "d3-interpolate": "^2.0.1",
     "d3-interpolate-path": "^2.1.2",
     "d3-scale": "^3.2.1",
