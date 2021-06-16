@@ -1,3 +1,5 @@
+actionWrapPackage: default
+
 packages:
   - name: default
     actions:
