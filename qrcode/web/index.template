@@ -19,7 +19,7 @@
 
 <body style="padding-top:100px">
   <div class="container" style="width:650px">
-    <center><img src="/api/v1/web/${process.env.__OW_NAMESPACE}/default/logo.svg" style="width:25%"></center>
+    <center><img src="/api/v1/web/nimbella/default/logo.svg" style="width:25%"></center>
     <h2>Cloud-native by construction.<br />No tools added.</h2>
     <form id="myform" onsubmit="generate(); return false">
       <div class="form-group">
@@ -40,12 +40,12 @@
     var envAPI = undefined
 
     $("#mysubmit").click(function () {
-      envAPI = '/api/v1/web/${process.env.__OW_NAMESPACE}/default/qr-java'
+      envAPI = '/api/v1/web/nimbella/default/qr-java'
       doit()
     })
 
     $("#mysubmitjs").click(function () {
-      envAPI = '/api/v1/web/${process.env.__OW_NAMESPACE}/default/qr'
+      envAPI = '/api/v1/web/nimbella/default/qr'
       doit()
     })
 
