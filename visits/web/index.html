@@ -18,29 +18,29 @@
   </head>
   <body style="padding-top:100px" onload="update()">
     <div class="container" style="width:650px;color: #43728A">
-      <center><img src="logo.png" width="30%">
-      <div style>
-        <h1 id="count">
-        </h1>
-        <p id="date">
-        </p>
-      </div>
+      <center><img src="/api/v1/web/nimbella/default/logo.svg" style="width:25%">
+        <div style>
+          <h1 id="count">
+          </h1>
+          <p id="date">
+          </p>
+        </div>
       </center>
     </div>
 
     <script type="text/javascript">
-      const base = '/api/visits'
+      const base = '/api/v1/web/nimbella/visits'
       const info = base + '/info'
       const count = base + '/counter'
       function update() {
         $.post(count, (data, status) => {
           console.log("counter", status)
-          $("#count").html(`<span>🎉 ${data} visitors</span>`)
+          $("#count").html('<span>🎉 ' + data + ' visitors</span>')
         })
 
         $.get(info, (data, status) => {
           console.log("info", status)
-          $("#date").html(`since ${data}`)
+          $("#date").html('since ' + data)
         })
       }
     </script>
