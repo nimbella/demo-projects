@@ -7,7 +7,7 @@
     "google-news-rss": "^0.4.1"
   },
   "devDependencies": {
-    "jest": "^26.5.3",
+    "jest": "^27.0.6",
     "nock": "^13.0.4"
   },
   "scripts": {
