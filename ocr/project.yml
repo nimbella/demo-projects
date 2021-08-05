@@ -6,5 +6,5 @@ packages:
       - name: imageToText
         runtime: tessjs:10
         limits:
-          memory: 768
+          memory: 76800
           timeout: 120000
